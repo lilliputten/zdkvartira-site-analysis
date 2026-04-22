@@ -1,4 +1,28 @@
+# Byte-compiled / optimized / DLL files
+.mypy_cache/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+
+# Environments
+# No `.env` files are stored in the repository, except `*.SAMPLE` ones
+.env*
+!.env*.SAMPLE
 .venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Misc
 ~*
-analyze
+analyze-sources
 *.session

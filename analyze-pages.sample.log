@@ -1,7 +1,7 @@
-❯ python analyze_pages.py
+❯ python analyze-pages.py
 Configuration:
   Base URL: https://zdkvartira.ru
-  Source directory: analyze/zdkvartira.ru
+  Source directory: analyze-sources/zdkvartira.ru
   Output directory: results
 
 Начинаю анализ страниц...

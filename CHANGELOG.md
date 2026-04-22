@@ -53,8 +53,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Project Structure
 ```
-00-crawled/
-├── analyze/zdkvartira.ru/    # Source HTML files from crawl-site
+crawl-site/
+├── analyze-sources/zdkvartira.ru/    # Source HTML files from crawl-site
 ├── results/                   # Analysis output directory
 │   ├── pages.txt             # All pages (TAB-delimited)
 │   ├── pages.csv             # All pages (CSV with quotes)
@@ -69,7 +69,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 │       ├── news-article.txt  # 1,246 pages listed
 │       └── ...               # 21 more type files
 ├── .venv/                     # Python virtual environment
-├── analyze_pages.py          # Main analysis script
+├── analyze-pages.py          # Main analysis script
 ├── package.json              # NPM package configuration
 ├── README.md                 # Project documentation
 │                             # Includes crawl-site integration guide

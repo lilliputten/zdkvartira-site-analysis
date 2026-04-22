@@ -5,6 +5,15 @@ zdkvartira.ru real estate website. This tool extracts
 page structures, identifies content blocks, and generates
 comprehensive documentation of the website's architecture.
 
+## Results
+
+- [results/](results/) - All results folder
+- [results/pages.txt](results/pages.txt) - All pages list (TAB-delimited)
+- [results/pages.csv](results/pages.csv) - All pages list (CSV format with quotes)
+- [results/types.yaml](results/types.yaml) - Complete structured data for all types
+- [results/page-types/](results/page-types/) - Page type descriptions (Markdown)
+- [results/page-lists/](results/page-lists/) - Page lists organized by type
+
 ## Features
 
 - **Comprehensive Page Analysis**: Analyzes all HTML pages
@@ -38,6 +47,8 @@ source .venv/bin/activate
 
 # Install dependencies
 pip install beautifulsoup4 pyyaml
+# Or install from `requirements.txt`:
+pip install -r requirements.txt
 ```
 
 ## Usage
@@ -47,7 +58,7 @@ pip install beautifulsoup4 pyyaml
 Run the analysis script:
 
 ```bash
-python analyze_pages.py
+python analyze-pages.py
 ```
 
 ### Configuration
@@ -61,15 +72,15 @@ Example with custom base URL:
 ```bash
 # Linux/Mac
 export ZDKVARTIRA_BASE_URL="https://example.com"
-python analyze_pages.py
+python analyze-pages.py
 
 # Windows (PowerShell)
 $env:ZDKVARTIRA_BASE_URL="https://example.com"
-python analyze_pages.py
+python analyze-pages.py
 
 # Windows (CMD)
 set ZDKVARTIRA_BASE_URL=https://example.com
-python analyze_pages.py
+python analyze-pages.py
 ```
 
 ## Creating Crawled Site with crawl-site
@@ -117,7 +128,7 @@ RETRY_DELAY_BASE=2000
 REQUEST_TIMEOUT=30000
 
 # Output directory (where HTML files will be saved)
-DEST=./crawled-content
+DEST=./crawl-dest
 
 # State directory (for resume capability)
 STATE_DIR=./crawl-state
@@ -172,7 +183,7 @@ Download all discovered pages as HTML files:
 pnpm crawl
 
 # With custom output directory
-pnpm crawl --dest=./crawled-content
+pnpm crawl --dest=./crawl-dest
 
 # Limit number of pages (for testing)
 pnpm crawl --max-pages=100
@@ -193,16 +204,13 @@ The crawler will:
 Check the output directory:
 
 ```bash
-# List crawled files
-ls crawled-content/
-
-# Check state files
-ls crawl-state/
+# List crawled results
+ls crawl-dest/
 ```
 
 You should see:
-- `crawled-content/` - HTML files with site structure
-- `crawl-state/crawl-state.yaml` - Crawl progress state
+- `crawl-dest/` - HTML files with site structure
+- `crawl-dest/crawl-state.yaml` - Crawl progress state
 - Various analysis YAML files
 
 #### 7. Move Crawled Content to Analyzer
@@ -211,13 +219,13 @@ Copy or move the crawled content to the analyzer's
 expected location:
 
 ```bash
-# From the 00-crawled directory
+# From the crawl-site directory
 # The analyzer expects files in:
-# analyze/zdkvartira.ru/
+# analyze-sources/zdkvartira.ru/
 
 # Example (adjust paths as needed):
-cp -r ../crawl-pages/crawled-content \
-  ./analyze/zdkvartira.ru/
+cp -r ../crawl-pages/crawl-dest \
+  ./analyze-sources/zdkvartira.ru/
 ```
 
 #### 8. Run the Analyzer
@@ -231,7 +239,7 @@ Now you can analyze the crawled pages:
 source .venv/bin/activate  # Linux/Mac
 
 # Run analysis
-python analyze_pages.py
+python analyze-pages.py
 ```
 
 ### Key Features of crawl-site
@@ -395,11 +403,11 @@ The analyzer identifies 23 page types:
 ## Project Structure
 
 ```
-00-crawled/
-├── analyze/
+crawl-site/
+├── analyze-sources/
 │   └── zdkvartira.ru/  # Crawled HTML files
 ├── results/            # Analysis output
-├── analyze_pages.py    # Main analysis script
+├── analyze-pages.py    # Main analysis script
 ├── TODO.md             # Project task list
 ├── package.json        # NPM package configuration
 ├── README.md           # This file
