@@ -1,11 +1,36 @@
-u# Changelog
+# Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2026-04-22
+## [0.0.2] - 2026-04-22
+
+### Improved
+- Enhanced block title generation logic to avoid meaningless CSS class-based titles
+- Added detection for page titles (`p.caption`) across all page types
+- Added detection for realty object cards (`.newhousing-item`) in new buildings list
+- Improved parent selector generation for better DOM context visibility
+- Capitalized all description texts for consistency
+- Removed redundant "CSS селектор:" references from descriptions
+- Optimized title display: use Heading when available, fallback to Description for generic blocks
+- Eliminated duplicate Heading/Description lines when used as block titles
+
+### Fixed
+- Blocks with utility class names (e.g., `.bg-white.py-2.py-4`) now show meaningful descriptions instead of formatted class names like "Bg White"
+- Page title elements (`p.caption`) were missing from analysis results
+- Realty object cards (`.newhousing-item`) were not detected in new-buildings-list page type
+- Parent selectors showing only `html > body` for all blocks - now provides more specific context where available
+
+### Technical Changes
+- Updated `generate_human_readable_title()` function with CSS utility class detection using regex patterns
+- Modified Markdown output logic to use description as fallback title when no meaningful title exists
+- Added 'p' tag to element search list for detecting page title elements
+- Implemented smart description-to-title conversion with length capping (80 characters)
+- Suppressed redundant Description field when it's used as the block title
+
+## [0.0.1] - 2026-04-22
 
 ### Added
 - Initial release of zdkvartira.ru website crawler and analyzer
@@ -18,14 +43,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Package configuration files (package.json, README.md, CHANGELOG.md)
 
 ### Features
-- **pages.txt**: Tab-delimited list of all pages
-- **pages.csv**: CSV format with UTF-8 BOM and quoted fields
-- **types.yaml**: Complete structured data with page types and blocks
-- **page-types/*.md**: Individual Markdown documentation for each page type
+- `pages.txt`: Tab-delimited list of all pages
+- `pages.csv`: CSV format with UTF-8 BOM and quoted fields
+- `types.yaml`: Complete structured data with page types and blocks
+- `page-types/*.md`: Individual Markdown documentation for each page type
   - Line wrapping at 90 characters for readability
   - Plain text descriptions without quotes
   - Main page includes header/footer; others exclude common blocks
-- **page-lists/{type}.txt**: Page lists organized by type
+- `page-lists/{type}.txt`: Page lists organized by type
   - Tab-delimited format: `{url}\t{title}`
   - Clean filenames without `-pages` suffix
   - Example: `news-article.txt`, `00-main.txt`

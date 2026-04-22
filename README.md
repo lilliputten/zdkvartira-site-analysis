@@ -11,21 +11,24 @@ comprehensive documentation of the website's architecture.
 - [results/pages.txt](results/pages.txt) - All pages list (TAB-delimited)
 - [results/pages.csv](results/pages.csv) - All pages list (CSV format with quotes)
 - [results/types.yaml](results/types.yaml) - Complete structured data for all types
-- [results/page-types/](results/page-types/) - Page type descriptions (Markdown)
-- [results/page-lists/](results/page-lists/) - Page lists organized by type
+- [results/page-types/](results/page-types/) - Page type descriptions (Markdown files)
+- [results/page-lists/](results/page-lists/) - Page lists organized by type (Markdown files)
 
 ## Features
 
 - **Comprehensive Page Analysis**: Analyzes all HTML pages
   from the crawled website
 - **Block Structure Extraction**: Identifies and documents
-  content blocks with CSS selectors
+  content blocks with CSS selectors, parent context, and content snippets
 - **Page Type Classification**: Automatically classifies
   pages into 23 different types
 - **Multiple Output Formats**: Generates results in TXT,
   CSV, YAML, and Markdown formats
 - **Structured Documentation**: Creates detailed
   documentation for each page type
+- **Smart Title Generation**: Uses meaningful headings or descriptions instead of technical CSS class names
+- **Enhanced Block Detection**: Detects page titles, realty cards, and other specialized elements
+- **Human-Readable Output**: Capitalized descriptions, deduplicated fields, and clean formatting
 
 ## Requirements
 
@@ -86,7 +89,7 @@ python analyze-pages.py
 ## Creating Crawled Site with crawl-site
 
 Before running the analyzer, you need to crawl the target
-website. We use the `crawl-site` project for this purpose.
+website. We use the [crawl-site](https://github.com/lilliputten/crawl-site) project for this purpose.
 
 ### Prerequisites
 
@@ -98,8 +101,9 @@ website. We use the `crawl-site` project for this purpose.
 #### 1. Clone or Navigate to crawl-site Project
 
 ```bash
+git clone https://github.com/lilliputten/crawl-site
 # Navigate to the crawl-site project directory
-cd D:\Work\Myhoster\260306-zdkvartira\crawl-pages
+cd ...\crawl-site
 ```
 
 #### 2. Install Dependencies
@@ -111,15 +115,12 @@ pnpm install
 
 #### 3. Configure the Crawler
 
-Create or edit `.env.local` file in the crawl-pages
+Create or edit `.env.local` file in the crawl-site
 directory:
 
 ```env
 # Target website URL
 SITE_URL=https://zdkvartira.ru
-
-# Optional: Specify sitemap URLs if available
-SITEMAP_URLS=[]
 
 # Crawl settings
 CRAWL_DELAY=1000
@@ -161,11 +162,6 @@ pnpm scan
 
 # Or specify custom site URL
 pnpm scan --site-url=https://zdkvartira.ru
-
-# With multiple sitemaps (if available)
-pnpm scan \
-  --site-url=https://zdkvartira.ru \
-  --sitemap-urls='["https://zdkvartira.ru/sitemap.xml"]'
 ```
 
 This creates:
@@ -224,7 +220,7 @@ expected location:
 # analyze-sources/zdkvartira.ru/
 
 # Example (adjust paths as needed):
-cp -r ../crawl-pages/crawl-dest \
+cp -r ../crawl-site/crawl-dest \
   ./analyze-sources/zdkvartira.ru/
 ```
 
@@ -280,7 +276,6 @@ pnpm dev
 - Check if respecting robots.txt
 
 **Issue: Missing pages**
-- Verify sitemap URLs are correct
 - Try scanning without sitemaps first
 - Check `broken-links.yaml` for errors
 
@@ -289,7 +284,7 @@ pnpm dev
 - Increase `REQUEST_TIMEOUT` if pages load slowly
 
 For more information, see:
-[crawl-site GitHub Repository](https://github.com/lilliputten/crawl-site)
+- [crawl-site GitHub Repository](https://github.com/lilliputten/crawl-site)
 
 ## Output Structure
 
@@ -403,7 +398,7 @@ The analyzer identifies 23 page types:
 ## Project Structure
 
 ```
-crawl-site/
+site-analysis/
 ├── analyze-sources/
 │   └── zdkvartira.ru/  # Crawled HTML files
 ├── results/            # Analysis output

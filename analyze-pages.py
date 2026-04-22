@@ -97,6 +97,192 @@ def page_type_to_id(page_type):
     return translations.get(page_type, re.sub(r'[^\w\s-]', '', page_type).lower().replace(' ', '-'))
 
 
+def generate_parent_selector(element):
+    """
+    Generate a CSS selector for the parent element of the given element.
+
+    Args:
+        element: BeautifulSoup element
+
+    Returns:
+        Parent CSS selector string, or empty string if no meaningful parent
+    """
+    parent = element.parent
+    if not parent or parent.name == '[document]':
+        return ""
+
+    # Build parent selector chain up to body
+    parts = []
+    current = parent
+    depth = 0
+    max_depth = 5  # Limit depth to avoid overly long selectors
+
+    while current and current.name != '[document]' and depth < max_depth:
+        parent_id = current.get('id')
+        parent_classes = current.get('class', [])
+
+        # Filter utility classes but keep more semantic ones
+        utility_classes = {
+            'container', 'container-fluid', 'row',
+            'col', 'col-md', 'col-lg', 'col-sm', 'col-xl', 'col-12', 'col-lg-8', 'col-lg-4',
+            'pb-5', 'pt-5', 'mb-5', 'mt-5', 'py-5', 'my-5', 'px-5', 'mx-5',
+            'pb-3', 'pt-3', 'mb-3', 'mt-3', 'py-3', 'my-3', 'px-3', 'mx-3',
+            'pb-4', 'pt-4', 'mb-4', 'mt-4', 'py-4', 'my-4', 'px-4', 'mx-4',
+            'pt-0', 'pb-0', 'mb-0', 'mt-0', 'p-0', 'm-0',
+            'd-flex', 'flex-column', 'align-items-center', 'justify-content-center',
+            'text-center', 'text-left', 'text-right'
+        }
+        meaningful_classes = [c for c in parent_classes if c not in utility_classes]
+
+        if parent_id:
+            # Found an ID - use it and stop (IDs are unique)
+            parts.insert(0, f"#{parent_id}")
+            break
+
+        if meaningful_classes:
+            class_str = '.'.join(meaningful_classes)
+            parts.insert(0, f"{current.name}.{class_str}")
+        else:
+            # No meaningful identifier, just use tag name
+            # But skip generic tags like div unless they're at root level
+            if current.name in ['div', 'span'] and depth > 0:
+                # Skip generic containers in the middle of the tree
+                pass
+            else:
+                parts.insert(0, current.name)
+
+        current = current.parent
+        depth += 1
+
+    if not parts:
+        return ""
+
+    return ' > '.join(parts)
+
+
+def generate_specific_selector(soup, element):
+    """
+    Generate a more specific CSS selector for an element by analyzing its context.
+
+    Args:
+        soup: BeautifulSoup object
+        element: The target element
+
+    Returns:
+        A specific CSS selector string with parent context when needed
+    """
+    # Priority 1: Use ID if present
+    elem_id = element.get('id')
+    if elem_id:
+        classes = element.get('class', [])
+        # Filter out common utility classes
+        meaningful_classes = [c for c in classes if c not in [
+            'container', 'row', 'col', 'col-md', 'col-lg', 'col-sm',
+            'pb-5', 'pt-5', 'mb-5', 'mt-5', 'py-5', 'my-5', 'pb-3', 'pt-3', 'mb-3', 'mt-3'
+        ]]
+
+        if meaningful_classes:
+            return f"#{elem_id}.{'.'.join(meaningful_classes)}"
+        return f"#{elem_id}"
+
+    # Priority 2: Use class combination with parent context
+    classes = element.get('class', [])
+    if classes:
+        # Filter common classes
+        meaningful_classes = [c for c in classes if c not in [
+            'container', 'row', 'col', 'col-md', 'col-lg', 'col-sm',
+            'pb-5', 'pt-5', 'mb-5', 'mt-5', 'py-5', 'my-5'
+        ]]
+
+        if meaningful_classes:
+            class_selector = '.'.join(meaningful_classes)
+
+            # Check uniqueness without parent
+            if len(soup.select(f".{class_selector}")) == 1:
+                return f".{class_selector}"
+
+            # Try with parent context - build parent chain
+            parent_chain = []
+            parent = element.parent
+            depth = 0
+            max_depth = 3  # Limit to 3 levels up to avoid overly long selectors
+
+            while parent and depth < max_depth:
+                parent_id = parent.get('id')
+                parent_classes = parent.get('class', [])
+
+                if parent_id:
+                    # Found parent with ID - use it
+                    parent_chain.insert(0, f"#{parent_id}")
+                    break
+
+                if parent_classes:
+                    parent_meaningful = [c for c in parent_classes if c not in [
+                        'container', 'row', 'col', 'col-md', 'col-lg', 'col-sm',
+                        'pb-5', 'pt-5', 'mb-5', 'mt-5', 'py-5', 'my-5'
+                    ]]
+                    if parent_meaningful:
+                        parent_selector = '.'.join(parent_meaningful)
+                        parent_chain.insert(0, f"{parent.name}.{parent_selector}")
+
+                parent = parent.parent
+                depth += 1
+
+            # Build final selector with parent chain
+            if parent_chain:
+                combined = ' > '.join(parent_chain + [f"{element.name}.{class_selector}"])
+                # Verify this selector is unique or at least more specific
+                if len(soup.select(combined)) <= len(soup.select(f".{class_selector}")):
+                    return combined
+
+            # Fallback: use tag with classes
+            return f"{element.name}.{class_selector}"
+
+    # Priority 3: For elements without classes, try to use parent context
+    parent = element.parent
+    if parent:
+        parent_id = parent.get('id')
+        if parent_id:
+            return f"#{parent_id} > {element.name}"
+
+        parent_classes = parent.get('class', [])
+        if parent_classes:
+            parent_meaningful = [c for c in parent_classes if c not in [
+                'container', 'row', 'col', 'col-md', 'col-lg', 'col-sm',
+                'pb-5', 'pt-5', 'mb-5', 'mt-5', 'py-5', 'my-5'
+            ]]
+            if parent_meaningful:
+                parent_selector = '.'.join(parent_meaningful)
+                return f".{parent_selector} > {element.name}"
+
+    # Last resort: just tag name
+    return element.name
+
+
+def get_content_snippet(element, max_chars=80):
+    """
+    Extract a short text snippet from an element for identification.
+
+    Args:
+        element: BeautifulSoup element
+        max_chars: Maximum length of snippet
+
+    Returns:
+        Short text snippet
+    """
+    # Get text, clean it
+    text = element.get_text(separator=' ', strip=True)
+
+    # Remove extra whitespace
+    text = re.sub(r'\s+', ' ', text)
+
+    # Truncate if too long
+    if len(text) > max_chars:
+        text = text[:max_chars] + '...'
+
+    return text.strip()
+
+
 def extract_page_info(html_path, base_url=None, base_dir=None):
     """
     Extract page information: URL, title, and content blocks.
@@ -145,25 +331,33 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
     # Track all elements with their position in the document
     block_elements = []
 
-    # Search for section elements with id attribute
+    # Search for section elements - process both with ID and with meaningful classes
     for section in soup.find_all('section'):
         block_id = section.get('id')
-        if not block_id:
-            continue
 
         # Skip technical ids
-        if block_id in ['fav-count', 'slideContainer', 'pinContainer', 'slide-block']:
+        if block_id and block_id in ['fav-count', 'slideContainer', 'pinContainer', 'slide-block']:
             continue
 
-        # Determine CSS selector
-        selector = f"#{block_id}"
+        # If no ID, check if section has meaningful classes that can serve as identifier
+        if not block_id:
+            classes = section.get('class', [])
+            # Filter out utility classes to see if there are meaningful ones
+            meaningful_classes = [c for c in classes if c not in [
+                'container', 'row', 'col', 'col-md', 'col-lg', 'col-sm',
+                'pb-5', 'pt-5', 'mb-5', 'mt-5', 'py-5', 'my-5', 'pb-3', 'pt-3', 'mb-3', 'mt-3',
+                'pt-0', 'pb-0', 'mb-0', 'mt-0', 'p-0', 'm-0'
+            ]]
 
-        # Also consider section classes
-        classes = section.get('class', [])
-        if classes:
-            class_selector = '.'.join([c for c in classes if c not in ['container', 'row', 'col', 'col-md', 'col-lg', 'col-sm', 'pb-5', 'pt-5', 'mb-5', 'mt-5', 'py-5', 'my-5']])
-            if class_selector:
-                selector = f"#{block_id}.{class_selector}" if class_selector else f"#{block_id}"
+            # Only process if section has at least one meaningful class
+            if not meaningful_classes:
+                continue
+
+            # Use first meaningful class as block_id
+            block_id = meaningful_classes[0]
+
+        # Determine CSS selector using improved method
+        selector = generate_specific_selector(soup, section)
 
         # Extract block heading (h1, h2, or .caption)
         heading = ""
@@ -178,16 +372,28 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
         elif caption:
             heading = caption.get_text().strip()
 
-        # Generate detailed block description
+        # Generate detailed block description (without content snippet)
         description = describe_block_detailed(section, block_id, heading)
+
+        # Get content snippet separately
+        snippet = get_content_snippet(section, max_chars=100)
+
+        # Generate parent selector
+        parent_selector = generate_parent_selector(section)
+
+        # Generate human-readable title
+        human_title = generate_human_readable_title(block_id, heading, description)
 
         block_elements.append({
             'element': section,
             'data': {
                 'id': block_id,
                 'selector': selector,
+                'parent': parent_selector,
                 'heading': clean_text(heading),
+                'title': clean_text(human_title),
                 'description': clean_text(description),
+                'snippet': clean_text(snippet) if snippet else '',
                 'tag': 'section'
             }
         })
@@ -196,8 +402,8 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
     processed_elements = set()
 
     # Also search for important blocks without section tag
-    # Check divs, uls, navs, and other elements
-    for element in soup.find_all(['div', 'ul', 'nav', 'aside']):
+    # Check divs, uls, navs, ps, and other elements
+    for element in soup.find_all(['div', 'ul', 'nav', 'aside', 'p']):
         elem_id = element.get('id')
         elem_classes = element.get('class', [])
         elem_name = element.name
@@ -216,13 +422,22 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
             block_type = 'mainheader' if 'mainheader' in elem_classes else 'footer'
             desc = describe_header_footer(element, block_type)
 
+            # Generate human-readable title
+            human_title = generate_human_readable_title(block_type, '', desc)
+
+            # Generate parent selector
+            parent_selector = generate_parent_selector(element)
+
             block_elements.append({
                 'element': element,
                 'data': {
                     'id': block_type,
                     'selector': f".{block_type}",
+                    'parent': parent_selector,
                     'heading': '',
+                    'title': clean_text(human_title),
                     'description': clean_text(desc),
+                    'snippet': '',
                     'tag': 'div',
                     'is_common': True
                 }
@@ -232,13 +447,20 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
 
         # Filter form (#filter) - can be any element type
         if elem_id == 'filter':
+            desc = 'Форма фильтрации и поиска. Поля для выбора параметров фильтрации, кнопки применения фильтров'
+            human_title = generate_human_readable_title('filter', '', desc)
+            parent_selector = generate_parent_selector(element)
+
             block_elements.append({
                 'element': element,
                 'data': {
                     'id': 'filter',
                     'selector': '#filter',
+                    'parent': parent_selector,
                     'heading': '',
-                    'description': 'Форма фильтрации и поиска. Поля для выбора параметров фильтрации, кнопки применения фильтров; CSS селектор: `#filter`',
+                    'title': clean_text(human_title),
+                    'description': clean_text(desc),
+                    'snippet': '',
                     'tag': elem_name
                 }
             })
@@ -252,13 +474,20 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
             if caption:
                 heading_text = caption.get_text().strip()
 
+            desc = describe_top_back(element, heading_text)
+            human_title = generate_human_readable_title('top-back', heading_text, desc)
+            parent_selector = generate_parent_selector(element)
+
             block_elements.append({
                 'element': element,
                 'data': {
                     'id': 'top-back',
                     'selector': '.top-back',
+                    'parent': parent_selector,
                     'heading': clean_text(heading_text),
-                    'description': clean_text(describe_top_back(element, heading_text)),
+                    'title': clean_text(human_title),
+                    'description': clean_text(desc),
+                    'snippet': '',
                     'tag': 'div'
                 }
             })
@@ -267,37 +496,144 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
 
         # breadcrumbs (any element type)
         if 'breadcrumbs' in elem_classes:
+            # Generate more specific selector
+            selector = generate_specific_selector(soup, element)
+            desc = 'Навигационная цепочка (хлебные крошки)'
+            human_title = generate_human_readable_title('breadcrumbs', '', desc)
+            parent_selector = generate_parent_selector(element)
+            
             block_elements.append({
                 'element': element,
                 'data': {
                     'id': 'breadcrumbs',
-                    'selector': '.breadcrumbs',
+                    'selector': selector,
+                    'parent': parent_selector,
                     'heading': '',
-                    'description': 'Навигационная цепочка (хлебные крошки)',
+                    'title': clean_text(human_title),
+                    'description': clean_text(desc),
+                    'snippet': '',
                     'tag': elem_name
                 }
             })
             processed_elements.add(elem_key)
             continue
 
-        # Content container with news/articles list
-        # Detect containers that hold lists of content items
+        # Page title (p.caption) - appears on various pages
+        if elem_name == 'p' and 'caption' in elem_classes:
+            caption_text = element.get_text().strip()
+            if caption_text:
+                desc = f'Заголовок страницы: "{caption_text}"'
+                human_title = caption_text
+                parent_selector = generate_parent_selector(element)
+                
+                block_elements.append({
+                    'element': element,
+                    'data': {
+                        'id': 'page-title',
+                        'selector': 'p.caption',
+                        'parent': parent_selector,
+                        'heading': '',
+                        'title': clean_text(human_title),
+                        'description': clean_text(desc),
+                        'snippet': '',
+                        'tag': 'p'
+                    }
+                })
+                processed_elements.add(elem_key)
+                continue
+
+        # Realty object cards (.newhousing-item) - new buildings list
+        if elem_name == 'div' and 'newhousing-item' in elem_classes:
+            # Extract card details
+            caption_elem = element.find(class_='newhousing-item__caption')
+            caption = caption_elem.get_text().strip() if caption_elem else ''
+            
+            type_elem = element.find(class_='newhousing-item__type')
+            prop_type = type_elem.get_text().strip() if type_elem else ''
+            
+            price_elem = element.find(class_='newhousing-item__price')
+            price = price_elem.get_text().strip() if price_elem else ''
+            
+            desc = 'Карточка объекта недвижимости'
+            if caption:
+                desc += f' с названием: "{caption}"'
+            if prop_type:
+                desc += f'; тип/адрес: {prop_type}'
+            if price:
+                desc += f'; цена: {price}'
+            
+            human_title = caption if caption else 'Карточка новостройки'
+            parent_selector = generate_parent_selector(element)
+            
+            block_elements.append({
+                'element': element,
+                'data': {
+                    'id': 'newhousing-item',
+                    'selector': '.newhousing-item',
+                    'parent': parent_selector,
+                    'heading': '',
+                    'title': clean_text(human_title),
+                    'description': clean_text(desc),
+                    'snippet': '',
+                    'tag': 'div'
+                }
+            })
+            processed_elements.add(elem_key)
+            continue
+
+        # Content container with news/articles list - IMPROVED DETECTION
+        # Only detect if it's truly a content list, not just any container
         if elem_name == 'div' and 'container' in elem_classes and not elem_id:
-            # Check for direct content children (news cards, articles, etc.)
+            # Skip if this container is inside a section we've already processed
+            parent_section = element.find_parent('section')
+            if parent_section and parent_section.get('id'):
+                continue
+
+            # Check for direct content children that look like news/article cards
+            # Be more specific about what constitutes a content card
             content_children = element.find_all(['article', 'div'],
-                                                 class_=re.compile(r'd-flex|item|card|news|article|post'))
+                                                 class_=re.compile(r'news|article|post|card'))
+
+            # Also check for common news/article structures
+            if len(content_children) < 3:
+                # Try alternative pattern: look for repeated similar structures
+                # that have images, titles, and dates (typical news card pattern)
+                potential_cards = element.find_all('div', class_=re.compile(r'd-flex|col-'))
+                cards_with_content = []
+                for card in potential_cards:
+                    has_image = card.find('img')
+                    has_link = card.find('a')
+                    has_text = card.find(string=re.compile(r'.{20,}'))
+                    if has_image and has_link and has_text:
+                        cards_with_content.append(card)
+                content_children = cards_with_content
+
             # Filter out navigation and menu items
             content_items = [c for c in content_children
                            if not c.parent or 'nav' not in str(c.parent.get('class', []))]
 
+            # Only mark as content-list if we have substantial content AND no better ID exists
             if len(content_items) >= 3:  # At least 3 content items indicates a list
+                # Generate more specific selector using parent context
+                selector = generate_specific_selector(soup, element)
+
+                # Get snippet for identification
+                snippet = get_content_snippet(element, max_chars=100)
+
+                desc = 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента'
+                human_title = generate_human_readable_title('content-list', '', desc)
+                parent_selector = generate_parent_selector(element)
+
                 block_elements.append({
                     'element': element,
                     'data': {
                         'id': 'content-list',
-                        'selector': '.container',
+                        'selector': selector,
+                        'parent': parent_selector,
                         'heading': '',
-                        'description': 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`',
+                        'title': clean_text(human_title),
+                        'description': clean_text(desc),
+                        'snippet': clean_text(snippet) if snippet else '',
                         'tag': 'div'
                     }
                 })
@@ -312,13 +648,20 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
             has_next_prev = bool(element.find_all(string=re.compile(r'следующая|предыдущая|next|prev', re.I)))
 
             if has_page_links or has_numbers or has_next_prev or 'pagination' in ' '.join(elem_classes):
+                desc = 'Навигация по страницам (пагинация). Ссылки на предыдущую/следующую страницу, номера страниц'
+                human_title = generate_human_readable_title('pagination', '', desc)
+                parent_selector = generate_parent_selector(element)
+
                 block_elements.append({
                     'element': element,
                     'data': {
                         'id': 'pagination',
                         'selector': 'nav' if elem_name == 'nav' else f".{'.'.join(elem_classes)}",
+                        'parent': parent_selector,
                         'heading': '',
-                        'description': 'Навигация по страницам (пагинация). Ссылки на предыдущую/следующую страницу, номера страниц; CSS селектор: `nav` или класс пагинации',
+                        'title': clean_text(human_title),
+                        'description': clean_text(desc),
+                        'snippet': '',
                         'tag': elem_name
                     }
                 })
@@ -378,7 +721,6 @@ def describe_header_footer(element, block_type):
         parts = [
             "Главное меню и шапка сайта",
             "Содержит: время работы, кнопки 'Избранное' и 'Сравнение', логотип, название 'Офис в Железнодорожном', телефон, главное меню, кнопка подачи заявки, поиск",
-            "CSS селектор: `.mainheader`",
             "Общий блок для всех страниц, не учитывается при определении типа страницы"
         ]
         return "; ".join(parts)
@@ -386,7 +728,6 @@ def describe_header_footer(element, block_type):
         parts = [
             "Подвал сайта",
             "Содержит: контакты, общая информация, меню навигации",
-            "CSS селектор: `.footer`",
             "Общий блок для всех страниц, не учитывается при определении типа страницы"
         ]
         return "; ".join(parts)
@@ -428,9 +769,118 @@ def describe_top_back(element, heading):
         if fields:
             parts.append(f"Поля поиска: {', '.join(fields)}")
 
-    parts.append("CSS селектор: `.top-back`")
-
     return "; ".join(parts)
+
+
+def generate_human_readable_title(block_id, heading, description):
+    """
+    Generate a human-readable title for a block based on its ID, heading, and description.
+    Priority: 1) Heading (if exists), 2) Predefined title map, 3) Description (if meaningful), 4) Formatted block_id
+    
+    Args:
+        block_id: Block identifier (from id attribute or class name)
+        heading: Block heading text (if any)
+        description: Block description text
+    
+    Returns:
+        Human-readable title string, or empty string if should be omitted
+    """
+    
+    # Priority 1: If there's a heading, use it as the title
+    if heading:
+        return heading
+    
+    # Map of block IDs to human-readable Russian titles
+    title_map = {
+        'breadcrumbs': 'Навигационная цепочка',
+        'object__about': 'Каталог объектов недвижимости',
+        'adv-price': 'Планировки и цены',
+        'experts': 'Служба показов',
+        'map': 'Карта расположения',
+        'maps': 'Транспортная доступность',
+        'otdelka': 'Типы отделки',
+        'help': 'Инфраструктура',
+        'advantages': 'Преимущества проекта',
+        'serial-section': 'Информационный блок',
+        'photos': 'Фотоотчёты',
+        'flat-change': 'Взаимозачёт',
+        'materials': 'Документация проекта',
+        'search-inner': 'Расширенный поиск',
+        'search-more': 'Дополнительные фильтры',
+        'form': 'Форма обратной связи',
+        'special': 'Специальные предложения',
+        'search-gray': 'Поиск по каталогу',
+        'mainheader': 'Шапка сайта',
+        'footer': 'Подвал сайта',
+        'filter': 'Фильтр поиска',
+        'news': 'Новости',
+        'actions': 'Акции',
+        'services': 'Услуги',
+        'add': 'Дополнительные ссылки',
+        'word': 'Обращение руководителя',
+        'last-video-reviews': 'Видеоотзывы',
+        'news-detail': 'Содержание новости',
+        'other-news': 'Другие новости',
+        'office': 'Фотографии офиса',
+        'team': 'Команда сотрудников',
+        'reviews': 'Отзывы клиентов',
+        'faq-list': 'Часто задаваемые вопросы',
+        'stages': 'Этапы работы',
+        'consultation': 'Консультация специалиста',
+        'contacts-info': 'Контактная информация',
+        'pagination': 'Навигация по страницам',
+        'content-list': 'Список материалов',
+        'page-title': 'Заголовок страницы',
+        'newhousing-item': 'Карточка новостройки',
+    }
+    
+    # Priority 2: If we have a predefined title for this block_id, use it
+    if block_id in title_map:
+        return title_map[block_id]
+    
+    # Priority 3: Use description if it's meaningful and different from generic patterns
+    # Skip descriptions that are too generic or start with technical terms
+    if description:
+        # Check if description is meaningful (not just generic patterns)
+        generic_patterns = [
+            'галерея карточек',
+            'текстовый информационный',
+            'форма обратной связи',
+            'каталог объектов',
+            'блок новостей',
+            'изображения и фотографии'
+        ]
+        
+        desc_lower = description.lower()
+        is_generic = any(pattern in desc_lower for pattern in generic_patterns)
+        
+        # If description is not generic and not too long, use first part as title
+        if not is_generic and len(description) < 100:
+            # Take first sentence or first 60 characters
+            title_from_desc = description.split(';')[0].strip()
+            if len(title_from_desc) > 10 and len(title_from_desc) < 80:
+                return title_from_desc
+    
+    # Priority 4: Fallback - capitalize and format the block_id
+    # But only if it looks like a meaningful ID (has underscores or is not just CSS classes)
+    
+    # Check if block_id looks like a CSS utility class (short, with hyphens, no underscores)
+    # Examples: bg-white, py-2, pt-4, col-lg-8
+    import re
+    is_utility_class = bool(re.match(r'^[a-z]{2,4}-[a-z0-9]+$', block_id))
+    
+    if is_utility_class:
+        # This is a CSS utility class, not a meaningful ID
+        # Return empty string - we'll use description as fallback in output
+        return ''
+    
+    if '_' in block_id or '-' in block_id:
+        # Replace underscores and hyphens with spaces, capitalize words
+        formatted = block_id.replace('_', ' ').replace('-', ' ')
+        return formatted.title()
+    
+    # If block_id is just a simple word, capitalize it
+    return block_id.capitalize() if block_id else ''
 
 
 def describe_block_detailed(element, block_id, heading):
@@ -530,14 +980,15 @@ def describe_block_detailed(element, block_id, heading):
         else:
             descriptions.append("текстовый информационный блок")
 
-    # Add heading if present
-    if heading:
-        descriptions.insert(0, f"Заголовок: \"{heading}\"")
+    # Note: Heading and CSS selector are stored separately in block data, not in description
 
-    # Add CSS selector
-    descriptions.append(f"CSS селектор: `#{block_id}`")
+    result = "; ".join(descriptions)
 
-    return "; ".join(descriptions)
+    # Capitalize first letter of the description
+    if result:
+        result = result[0].upper() + result[1:] if len(result) > 1 else result.upper()
+
+    return result
 
 
 def get_block_signature(blocks):
@@ -659,17 +1110,19 @@ def classify_page_type(page_info):
     return "Другая страница"
 
 
-def wrap_text(text, width=70):
+def wrap_text(text, title_len=0, width=80):
     """
-    Wrap long text lines to specified width (default 90 characters).
+    Wrap long text lines to specified width (default 70 characters).
     Preserves existing line breaks and wraps only long lines.
+    First line is shorter by title_len to account for prefix text.
 
     Args:
         text: Input text string
-        width: Maximum line width (default 90)
+        title_len: Length of prefix/title that appears before wrapped text (default 0)
+        width: Maximum line width (default 70)
 
     Returns:
-        Text with wrapped lines
+        Text with wrapped lines, first line adjusted for title_len
     """
     if not text or len(text) <= width:
         return text
@@ -679,18 +1132,20 @@ def wrap_text(text, width=70):
     wrapped_paragraphs = []
 
     for paragraph in paragraphs:
-        if len(paragraph) <= width:
+        if len(paragraph) <= width - title_len:
             wrapped_paragraphs.append(paragraph)
         else:
             # Wrap long lines at word boundaries
             words = paragraph.split(' ')
             lines = []
             current_line = ""
+            # First line has reduced width to accommodate title/prefix
+            first_line_width = width - title_len
 
             for word in words:
                 if not current_line:
                     current_line = word
-                elif len(current_line) + 1 + len(word) <= width:
+                elif len(current_line) + 1 + len(word) <= (first_line_width if not lines else width):
                     current_line += " " + word
                 else:
                     lines.append(current_line)
@@ -881,11 +1336,23 @@ def main():
                 'selector': block['selector'],
             }
 
+            # Add parent selector if present
+            if block.get('parent'):
+                block_info['parent'] = block['parent']
+
+            # Add human-readable title
+            if block.get('title'):
+                block_info['title'] = block['title']
+
             if block.get('heading'):
                 block_info['heading'] = block['heading']
 
             if block.get('description'):
                 block_info['description'] = block['description']
+
+            # Add content snippet if present
+            if block.get('snippet'):
+                block_info['snippet'] = block['snippet']
 
             if block.get('is_common'):
                 block_info['common_block'] = True
@@ -923,11 +1390,23 @@ def main():
                 'selector': block['selector'],
             }
 
+            # Add parent selector if present
+            if block.get('parent'):
+                block_info['parent'] = block['parent']
+
+            # Add human-readable title
+            if block.get('title'):
+                block_info['title'] = block['title']
+
             if block.get('heading'):
                 block_info['heading'] = block['heading']
 
             if block.get('description'):
                 block_info['description'] = block['description']
+
+            # Add content snippet if present
+            if block.get('snippet'):
+                block_info['snippet'] = block['snippet']
 
             type_info['blocks'].append(block_info)
 
@@ -967,18 +1446,52 @@ def main():
             f.write(f"## Content Blocks ({len(type_info['blocks'])})\n\n")
 
             for i, block in enumerate(type_info['blocks'], 1):
-                f.write(f"### {i}. {block['id']}\n\n")
+                # Determine what to show as the block header
+                display_title = block.get('title', '')
+                heading = block.get('heading', '')
+                description = block.get('description', '')
+                
+                # If no meaningful title, use description as fallback
+                if not display_title and description:
+                    # Use first sentence or first part of description as title
+                    display_title = description.split(';')[0].strip()
+                    # Cap length to avoid overly long titles
+                    if len(display_title) > 80:
+                        display_title = display_title[:77] + '...'
+                
+                # Check if title came from heading
+                title_from_heading = heading and display_title == heading
+                
+                # Determine if we should show description
+                # Don't show if it matches the title or if title was derived from description
+                title_from_description = not block.get('title') and description and display_title
+                show_description = description and (not display_title or (description.lower() != display_title.lower() and not title_from_description))
+
+                f.write(f"### {i}. {display_title}\n\n")
                 f.write(f"- **Selector:** `{block['selector']}`\n")
 
-                if block.get('heading'):
-                    # Wrap heading if too long
-                    heading = wrap_text(block['heading'])
-                    f.write(f"- **Heading:** {heading}\n")
+                # Add parent selector if present
+                if block.get('parent'):
+                    parent = wrap_text(block['parent'])
+                    f.write(f"- **Parent:** `{parent}`\n")
 
-                if block.get('description'):
-                    # Wrap description text and use plain text without quotes
-                    desc = wrap_text(block['description'])
-                    f.write(f"- **Description:** {desc}\n")
+                # Only show heading if it wasn't used as the title
+                if heading and not title_from_heading:
+                    title_prefix = "- **Heading:** "
+                    heading_text = wrap_text(heading, len(title_prefix))
+                    f.write(f"{title_prefix}{heading_text}\n")
+
+                # Show description only if it's different from title
+                if show_description:
+                    desc_prefix = "- **Description:** "
+                    desc_text = wrap_text(description, len(desc_prefix))
+                    f.write(f"{desc_prefix}{desc_text}\n")
+
+                # Add content snippet as separate line if present
+                if block.get('snippet'):
+                    snippet_prefix = "- **Пример содержимого:** "
+                    snippet_text = wrap_text(block['snippet'], len(snippet_prefix))
+                    f.write(f"{snippet_prefix}{snippet_text}\n")
 
                 if block.get('common_block'):
                     f.write(f"- **Common Block:** Yes\n")

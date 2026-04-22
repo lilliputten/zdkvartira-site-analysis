@@ -10,27 +10,29 @@
 
 ## Content Blocks (4)
 
-### 1. top-back
+### 1. Аналитика
 
 - **Selector:** `.top-back`
-- **Heading:** Аналитика
-- **Description:** Hero блок с заголовком раздела (заголовок: "Аналитика"); CSS селектор:
-`.top-back`
+- **Parent:** `html > body`
+- **Description:** Hero блок с заголовком раздела (заголовок: "Аналитика")
 
-### 2. content-list
-
-- **Selector:** `.container`
-- **Description:** Список материалов (новости, статьи, аналитика). Контейнер с карточками
-контента; CSS селектор: `.container`
-
-### 3. breadcrumbs
+### 2. Навигационная цепочка
 
 - **Selector:** `.breadcrumbs`
+- **Parent:** `html > body`
 - **Description:** Навигационная цепочка (хлебные крошки)
 
-### 4. filter
+### 3. Аналитика
+
+- **Selector:** `p.caption`
+- **Parent:** `html > body > div.top-back > div.top-back__bg.inner-top.top-back__fixed-height >
+div`
+- **Description:** Заголовок страницы: "Аналитика"
+
+### 4. Фильтр поиска
 
 - **Selector:** `#filter`
-- **Description:** Форма фильтрации и поиска. Поля для выбора параметров фильтрации,
-кнопки применения фильтров; CSS селектор: `#filter`
+- **Parent:** `html > body`
+- **Description:** Форма фильтрации и поиска. Поля для выбора параметров
+фильтрации, кнопки применения фильтров
 
