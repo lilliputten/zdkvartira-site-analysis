@@ -1,0 +1,21 @@
+{
+  "name": "zdkvartira-site-analysis",
+  "version": "0.0.1",
+  "description": "Analyzer for zdkvartira.ru real estate website",
+  "main": "analyze_pages.py",
+  "scripts": {
+    "analyze": "python analyze_pages.py",
+    "clean": "rm -rf results"
+  },
+  "keywords": [
+    "crawler",
+    "scraper",
+    "real-estate",
+    "zdkvartira",
+    "analysis"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}

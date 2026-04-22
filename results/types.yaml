@@ -1,0 +1,723 @@
+Главная страница:
+  id: 00-main
+  description: Главная страница
+  example_url: https://zdkvartira.ru/
+  example_title: Агентство недвижимости в Железнодорожном, Балашихе | Купить квартиру от «МИЭЛЬ»
+  total_pages: 1
+  blocks:
+  - id: mainheader
+    selector: .mainheader
+    description: 'Главное меню и шапка сайта; Содержит: время работы, кнопки ''Избранное'' и ''Сравнение'', логотип, название
+      ''Офис в Железнодорожном'', телефон, главное меню, кнопка подачи заявки, поиск; CSS селектор: `.mainheader`; Общий блок
+      для всех страниц, не учитывается при определении типа страницы'
+    common_block: true
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: top-back
+    selector: .top-back
+    heading: Недвижимость в Железнодорожном, Балашихе
+    description: 'Hero блок с заголовком раздела (заголовок: "Недвижимость в Железнодорожном, Балашихе"); Включает форму поиска
+      недвижимости; Поля поиска: ''Цена от'', ''Цена до'', ''search''; CSS селектор: `.top-back`'
+  - id: actions
+    selector: '#actions.gray-block.serial-section'
+    heading: Самое интересное
+    description: 'Заголовок: "Самое интересное"; Анонсы акций ("Самое интересное"). Карточки с баннерами для акций: графическая
+      подложка, аудитория, текст предложения, датой проведения; CSS селектор: `#actions`'
+  - id: special
+    selector: '#special.white-block.serial-section'
+    heading: Суперпредложения
+    description: 'Заголовок: "Суперпредложения"; Секция с объектами недвижимости ("Суперпредложения"). Карточки объектов с
+      превью, кнопками "к сравнению" и "в избранное", адресом, типом объекта и параметрами (площадь, этаж, направление); CSS
+      селектор: `#special`'
+  - id: services
+    selector: '#services.gray-block.serial-section'
+    heading: Услуги
+    description: 'Заголовок: "Услуги"; Быстрые ссылки на разделы услуг ("Услуги"). Иконки с названием услуги со ссылками на
+      страницы услуг; CSS селектор: `#services`'
+  - id: news
+    selector: '#news.serial-section'
+    heading: Новости
+    description: 'Заголовок: "Новости"; Новости сайта. Карточки новостей с превью, тегом, датой и кратким анонсом; CSS селектор:
+      `#news`'
+  - id: add
+    selector: '#add.gray-block.rad-block'
+    description: 'Переходы к служебным разделам: "Проверено МИЭЛЬ", "Аналитика цен", "Работа в офисе"; CSS селектор: `#add`'
+  - id: word
+    selector: '#word.serial-section'
+    heading: Обращение руководителя
+    description: 'Заголовок: "Обращение руководителя"; Обращение руководителя. Фото генерального директора, текст обращения;
+      CSS селектор: `#word`'
+  - id: last-video-reviews
+    selector: '#last-video-reviews.d-none.gray-block.serial-section'
+    heading: Видеоотзывы
+    description: 'Заголовок: "Видеоотзывы"; Видеоотзывы. Видео с Rutube с описанием (имя клиента) и датой. Ссылка перехода
+      в раздел видеоотзывов; CSS селектор: `#last-video-reviews`'
+  - id: form
+    selector: '#form.blue-block.text-center'
+    heading: Не нашли ответ на свой вопрос?
+    description: 'Заголовок: "Не нашли ответ на свой вопрос?"; Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля:
+      имя, телефон, email, кнопка отправки; CSS селектор: `#form`'
+  - id: footer
+    selector: .footer
+    description: 'Подвал сайта; Содержит: контакты, общая информация, меню навигации; CSS селектор: `.footer`; Общий блок
+      для всех страниц, не учитывается при определении типа страницы'
+    common_block: true
+  pages_count: 1
+Аналитика:
+  id: analytics
+  description: Аналитика
+  example_url: https://zdkvartira.ru/аналитика/
+  example_title: Новости офиса, Миэль Офис в Железнодорожном
+  total_pages: 1
+  blocks:
+  - id: top-back
+    selector: .top-back
+    heading: Аналитика
+    description: 'Hero блок с заголовком раздела (заголовок: "Аналитика"); CSS селектор: `.top-back`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: filter
+    selector: '#filter'
+    description: 'Форма фильтрации и поиска. Поля для выбора параметров фильтрации, кнопки применения фильтров; CSS селектор:
+      `#filter`'
+  pages_count: 1
+Вакансии:
+  id: vacancies
+  description: Вакансии
+  example_url: https://zdkvartira.ru/вакансии/
+  example_title: Работа в «МИЭЛЬ - Железнодорожный». Привлекательные условия оплаты.
+  total_pages: 1
+  blocks:
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: top-back
+    selector: .top-back
+    heading: Работа в «МИЭЛЬ - Железнодорожный»
+    description: 'Hero блок с заголовком раздела (заголовок: "Работа в «МИЭЛЬ - Железнодорожный»"); CSS селектор: `.top-back`'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: word
+    selector: '#word'
+    heading: Почему мы?
+    description: 'Заголовок: "Почему мы?"; Обращение руководителя. Фото генерального директора, текст обращения; CSS селектор:
+      `#word`'
+  - id: vacancy
+    selector: '#vacancy'
+    heading: Открытые вакансии
+    description: 'Заголовок: "Открытые вакансии"; блок новостей; CSS селектор: `#vacancy`'
+  - id: story
+    selector: '#story.gray-block'
+    heading: Истории успеха
+    description: 'Заголовок: "Истории успеха"; информация о команде сотрудников; CSS селектор: `#story`'
+  - id: prefuter
+    selector: '#prefuter.img-block'
+    heading: Не нашли нужной вакансии, но хотите присоединиться к нам?
+    description: 'Заголовок: "Не нашли нужной вакансии, но хотите присоединиться к нам?"; текстовый информационный блок; CSS
+      селектор: `#prefuter`'
+  pages_count: 1
+Детальная страница FAQ:
+  id: faq-detail
+  description: Детальная страница FAQ
+  example_url: https://zdkvartira.ru/часто-задаваемы-вопросы/вы-можете-получить-скидку-у-застройщика/
+  example_title: Часто задаваемые вопросы - Миэль Офис в Железнодорожном.
+  total_pages: 19
+  blocks:
+  - id: top-back
+    selector: .top-back
+    heading: Часто задаваемы вопросы
+    description: 'Hero блок с заголовком раздела (заголовок: "Часто задаваемы вопросы"); CSS селектор: `.top-back`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: faq-list
+    selector: '#faq-list'
+    heading: Часто задаваемые вопросы
+    description: 'Заголовок: "Часто задаваемые вопросы"; Список часто задаваемых вопросов. Категории вопросов с раскрывающимися
+      ответами; CSS селектор: `#faq-list`'
+  pages_count: 19
+Детальная страница акции:
+  id: promotion-detail
+  description: Детальная страница акции
+  example_url: https://zdkvartira.ru/акции-и-скидки/в-день-рождения-особые-условия-и-скидка-10-на-любую-услугу/
+  example_title: В День Рождения особые условия и скидка -10% на любую услугу. Миэль офис в Железнодорожном. 2542
+  total_pages: 6
+  blocks:
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: content
+    selector: '#content.pb-2'
+    heading: В День Рождения особые условия и скидка -10% на любую услугу
+    description: 'Заголовок: "В День Рождения особые условия и скидка -10% на любую услугу"; акции и специальные предложения;
+      CSS селектор: `#content`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: form
+    selector: '#form.blue-block.text-center'
+    heading: Не нашли ответ на свой вопрос?
+    description: 'Заголовок: "Не нашли ответ на свой вопрос?"; Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля:
+      имя, телефон, email, кнопка отправки; CSS селектор: `#form`'
+  pages_count: 6
+Детальная страница новостройки:
+  id: new-building-detail
+  description: Детальная страница новостройки
+  example_url: https://zdkvartira.ru/новостройки/центр-на-проспекте-героев/
+  example_title: Купить новостройку Центр на проспекте Героев в Железнодорожном, Балашихе. 1, 2-комнатные квартиры, студии.
+  total_pages: 2
+  blocks:
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: adv-price
+    selector: '#adv-price.mb-3'
+    heading: Планировки и цены
+    description: 'Заголовок: "Планировки и цены"; галерея карточек с изображениями; CSS селектор: `#adv-price`'
+  - id: experts
+    selector: '#experts.gray-block.serial-section'
+    heading: Служба показов
+    description: 'Заголовок: "Служба показов"; галерея карточек с изображениями; CSS селектор: `#experts`'
+  - id: map
+    selector: '#map.object__map'
+    description: 'Карта проезда. Интерактивная карта Яндекс с отметкой расположения офиса; CSS селектор: `#map`'
+  - id: maps
+    selector: '#maps.map-item__holder'
+    description: 'галерея карточек с изображениями; CSS селектор: `#maps`'
+  - id: otdelka
+    selector: '#otdelka.gray-block.serial-section'
+    heading: Типы отделки
+    description: 'Заголовок: "Типы отделки"; каталог объектов недвижимости; CSS селектор: `#otdelka`'
+  - id: help
+    selector: '#help.serial-section'
+    heading: Инфраструктура
+    description: 'Заголовок: "Инфраструктура"; галерея карточек с изображениями; CSS селектор: `#help`'
+  - id: advantages
+    selector: '#advantages.light-blue-block.pb-3'
+    heading: Преимущества проекта
+    description: 'Заголовок: "Преимущества проекта"; Преимущества компании. Блок с иконками и описанием ключевых преимуществ
+      работы с компанией; CSS селектор: `#advantages`'
+  - id: photos
+    selector: '#photos.gray-block.serial-section'
+    heading: Фотоотчёты
+    description: 'Заголовок: "Фотоотчёты"; галерея карточек с изображениями; CSS селектор: `#photos`'
+  - id: flat-change
+    selector: '#flat-change.img-block'
+    heading: Взаимозачёт
+    description: 'Заголовок: "Взаимозачёт"; блок новостей; CSS селектор: `#flat-change`'
+  - id: materials
+    selector: '#materials'
+    heading: Документация проекта
+    description: 'Заголовок: "Документация проекта"; галерея карточек с изображениями; CSS селектор: `#materials`'
+  pages_count: 2
+Детальная страница объекта:
+  id: property-detail
+  description: Детальная страница объекта
+  example_url: https://zdkvartira.ru/объекты/
+  example_title: Купить квартиру в Железнодорожном, Балашихе.  1,2,3 и 4-комнатные квартиры
+  total_pages: 35
+  blocks:
+  - id: search-inner
+    selector: '#search-inner.py-4'
+    description: 'Расширенный поиск недвижимости. Фильтры по параметрам: тип сделки, тип объекта, цена, площадь, этаж и другие
+      параметры; CSS селектор: `#search-inner`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: search-more
+    selector: '#search-more.collapse.search-more'
+    description: 'форма поиска и фильтрации объектов; CSS селектор: `#search-more`'
+  - id: map
+    selector: '#map.object__map.result-map__map.col-12.col-lg-8.p-0'
+    description: 'Карта проезда. Интерактивная карта Яндекс с отметкой расположения офиса; CSS селектор: `#map`'
+  - id: form
+    selector: '#form.blue-block.text-center'
+    heading: Не нашли ответ на свой вопрос?
+    description: 'Заголовок: "Не нашли ответ на свой вопрос?"; Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля:
+      имя, телефон, email, кнопка отправки; CSS селектор: `#form`'
+  - id: special
+    selector: '#special.result-map__list.gray-block.p-4.col-12.col-lg-4'
+    description: 'Секция с объектами недвижимости ("Суперпредложения"). Карточки объектов с превью, кнопками "к сравнению"
+      и "в избранное", адресом, типом объекта и параметрами (площадь, этаж, направление); CSS селектор: `#special`'
+  - id: search-gray
+    selector: '#search-gray'
+    heading: Квартиры в Железнодорожном, Балашихе
+    description: 'Заголовок: "Квартиры в Железнодорожном, Балашихе"; форма обратной связи или заявки; каталог объектов недвижимости;
+      CSS селектор: `#search-gray`'
+  pages_count: 35
+Другая страница:
+  id: other-page
+  description: Другая страница
+  example_url: https://zdkvartira.ru/arenda-kvartir-balashiha/
+  example_title: Снять квартиру в Балашихе. Аренда недорого. От 3 выгодных вариантов
+  total_pages: 14
+  blocks:
+  - id: search-inner
+    selector: '#search-inner.py-4'
+    description: 'Расширенный поиск недвижимости. Фильтры по параметрам: тип сделки, тип объекта, цена, площадь, этаж и другие
+      параметры; CSS селектор: `#search-inner`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: search-more
+    selector: '#search-more.collapse.search-more'
+    description: 'форма поиска и фильтрации объектов; CSS селектор: `#search-more`'
+  - id: map
+    selector: '#map.object__map.result-map__map.col-12.col-lg-8.p-0'
+    description: 'Карта проезда. Интерактивная карта Яндекс с отметкой расположения офиса; CSS селектор: `#map`'
+  - id: form
+    selector: '#form.blue-block.text-center'
+    heading: Не нашли ответ на свой вопрос?
+    description: 'Заголовок: "Не нашли ответ на свой вопрос?"; Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля:
+      имя, телефон, email, кнопка отправки; CSS селектор: `#form`'
+  - id: special
+    selector: '#special.result-map__list.gray-block.p-4.col-12.col-lg-4'
+    description: 'Секция с объектами недвижимости ("Суперпредложения"). Карточки объектов с превью, кнопками "к сравнению"
+      и "в избранное", адресом, типом объекта и параметрами (площадь, этаж, направление); CSS селектор: `#special`'
+  - id: seo
+    selector: '#seo'
+    description: 'каталог объектов недвижимости; CSS селектор: `#seo`'
+  - id: search-gray
+    selector: '#search-gray'
+    heading: Аренда квартир в Балашихе
+    description: 'Заголовок: "Аренда квартир в Балашихе"; форма обратной связи или заявки; каталог объектов недвижимости;
+      CSS селектор: `#search-gray`'
+  pages_count: 14
+Каталог объектов недвижимости:
+  id: property-catalog
+  description: Каталог объектов недвижимости
+  example_url: https://zdkvartira.ru/1k-kvartira-zheleznodorozhnyy/
+  example_title: Купить 1-комнатную квартиру в Железнодорожном недорого. Агентство по недвижимости
+  total_pages: 11
+  blocks:
+  - id: search-inner
+    selector: '#search-inner.py-4'
+    description: 'Расширенный поиск недвижимости. Фильтры по параметрам: тип сделки, тип объекта, цена, площадь, этаж и другие
+      параметры; CSS селектор: `#search-inner`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: search-more
+    selector: '#search-more.collapse.search-more'
+    description: 'форма поиска и фильтрации объектов; CSS селектор: `#search-more`'
+  - id: map
+    selector: '#map.object__map.result-map__map.col-12.col-lg-8.p-0'
+    description: 'Карта проезда. Интерактивная карта Яндекс с отметкой расположения офиса; CSS селектор: `#map`'
+  - id: form
+    selector: '#form.blue-block.text-center'
+    heading: Не нашли ответ на свой вопрос?
+    description: 'Заголовок: "Не нашли ответ на свой вопрос?"; Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля:
+      имя, телефон, email, кнопка отправки; CSS селектор: `#form`'
+  - id: special
+    selector: '#special.result-map__list.gray-block.p-4.col-12.col-lg-4'
+    description: 'Секция с объектами недвижимости ("Суперпредложения"). Карточки объектов с превью, кнопками "к сравнению"
+      и "в избранное", адресом, типом объекта и параметрами (площадь, этаж, направление); CSS селектор: `#special`'
+  - id: seo
+    selector: '#seo'
+    description: 'блок новостей; CSS селектор: `#seo`'
+  - id: search-gray
+    selector: '#search-gray'
+    heading: 1-комнатные квартиры в Железнодорожном
+    description: 'Заголовок: "1-комнатные квартиры в Железнодорожном"; форма обратной связи или заявки; каталог объектов недвижимости;
+      CSS селектор: `#search-gray`'
+  pages_count: 11
+Контакты:
+  id: contacts
+  description: Контакты
+  example_url: https://zdkvartira.ru/контакты/
+  example_title: Агентство недвижимости «МИЭЛЬ». Более 7 000 сделок в городе.
+  total_pages: 1
+  blocks:
+  - id: top-back
+    selector: .top-back
+    heading: Контакты
+    description: 'Hero блок с заголовком раздела (заголовок: "Контакты"); CSS селектор: `.top-back`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: word
+    selector: '#word.serial-section.pt-2.pb-3'
+    heading: Контакты офиса
+    description: 'Заголовок: "Контакты офиса"; Обращение руководителя. Фото генерального директора, текст обращения; CSS селектор:
+      `#word`'
+  - id: office
+    selector: '#office.serial-section'
+    heading: Фотографии офиса
+    description: 'Заголовок: "Фотографии офиса"; Фотографии офиса. Галерея фотографий офисных помещений с возможностью просмотра
+      в полном размере; CSS селектор: `#office`'
+  pages_count: 1
+Личный кабинет (избранное/сравнение):
+  id: user-account
+  description: Личный кабинет (избранное/сравнение)
+  example_url: https://zdkvartira.ru/realty/compares.html/
+  example_title: Сравнение.
+  total_pages: 2
+  blocks:
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: form
+    selector: '#form.blue-block.text-center'
+    heading: Не нашли ответ на свой вопрос?
+    description: 'Заголовок: "Не нашли ответ на свой вопрос?"; Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля:
+      имя, телефон, email, кнопка отправки; CSS селектор: `#form`'
+  pages_count: 2
+О компании:
+  id: about
+  description: О компании
+  example_url: https://zdkvartira.ru/о-компании/
+  example_title: Агентство недвижимости «МИЭЛЬ». Лидер рынка в Железнодорожном
+  total_pages: 1
+  blocks:
+  - id: top-back
+    selector: .top-back
+    heading: МИЭЛЬ в Железнодорожном
+    description: 'Hero блок с заголовком раздела (заголовок: "МИЭЛЬ в Железнодорожном"); CSS селектор: `.top-back`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: word
+    selector: '#word'
+    heading: Об офисе
+    description: 'Заголовок: "Об офисе"; Обращение руководителя. Фото генерального директора, текст обращения; CSS селектор:
+      `#word`'
+  - id: services
+    selector: '#services.gray-block.serial-section'
+    heading: Факты о МИЭЛЬ, Офис в Железнодорожном
+    description: 'Заголовок: "Факты о МИЭЛЬ, Офис в Железнодорожном"; Быстрые ссылки на разделы услуг ("Услуги"). Иконки с
+      названием услуги со ссылками на страницы услуг; CSS селектор: `#services`'
+  - id: trust
+    selector: '#trust.serial-section'
+    heading: Не знаете кому довериться?
+    description: 'Заголовок: "Не знаете кому довериться?"; каталог объектов недвижимости; CSS селектор: `#trust`'
+  - id: sertificats
+    selector: '#sertificats.gray-block.serial-section'
+    heading: Наши награды
+    description: 'Заголовок: "Наши награды"; изображения и фотографии; CSS селектор: `#sertificats`'
+  - id: office
+    selector: '#office.serial-section'
+    heading: Будни и праздники
+    description: 'Заголовок: "Будни и праздники"; Фотографии офиса. Галерея фотографий офисных помещений с возможностью просмотра
+      в полном размере; CSS селектор: `#office`'
+  - id: last-video-reviews
+    selector: '#last-video-reviews.d-none.gray-block.serial-section'
+    heading: Видеоотзывы
+    description: 'Заголовок: "Видеоотзывы"; Видеоотзывы. Видео с Rutube с описанием (имя клиента) и датой. Ссылка перехода
+      в раздел видеоотзывов; CSS селектор: `#last-video-reviews`'
+  - id: actions
+    selector: '#actions.serial-section'
+    heading: Отзывы
+    description: 'Заголовок: "Отзывы"; Анонсы акций ("Самое интересное"). Карточки с баннерами для акций: графическая подложка,
+      аудитория, текст предложения, датой проведения; CSS селектор: `#actions`'
+  - id: news
+    selector: '#news.serial-section.gray-block'
+    heading: Новости
+    description: 'Заголовок: "Новости"; Новости сайта. Карточки новостей с превью, тегом, датой и кратким анонсом; CSS селектор:
+      `#news`'
+  pages_count: 1
+Профиль сотрудника:
+  id: staff-profile
+  description: Профиль сотрудника
+  example_url: https://zdkvartira.ru/команда-миэль/ahmadiev-vladimir-vladimirovich/
+  example_title: Ахмадиев Владимир Владимирович. Специалист по аренде. Миэль офис в Железнодорожном
+  total_pages: 18
+  blocks:
+  - id: top-back
+    selector: .top-back
+    heading: Наши Эксперты
+    description: 'Hero блок с заголовком раздела (заголовок: "Наши Эксперты"); CSS селектор: `.top-back`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: word
+    selector: '#word'
+    heading: Ахмадиев Владимир
+    description: 'Заголовок: "Ахмадиев Владимир"; Обращение руководителя. Фото генерального директора, текст обращения; CSS
+      селектор: `#word`'
+  - id: my-obj
+    selector: '#my-obj.gray-block'
+    heading: Мои объекты
+    description: 'Заголовок: "Мои объекты"; каталог объектов недвижимости; CSS селектор: `#my-obj`'
+  pages_count: 18
+Результаты поиска:
+  id: search-results
+  description: Результаты поиска
+  example_url: https://zdkvartira.ru/search/
+  example_title: ''
+  total_pages: 1
+  blocks:
+  - id: search-list
+    selector: '#search-list.gray-block.pt-2'
+    heading: Страница поиска
+    description: 'Заголовок: "Страница поиска"; форма обратной связи или заявки; форма поиска и фильтрации объектов; CSS селектор:
+      `#search-list`'
+  - id: form
+    selector: '#form.blue-block.text-center'
+    heading: Нужна помощь?
+    description: 'Заголовок: "Нужна помощь?"; Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон,
+      email, кнопка отправки; CSS селектор: `#form`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  pages_count: 1
+Служебная страница:
+  id: system-page
+  description: Служебная страница
+  example_url: https://zdkvartira.ru/pages/sitemap.html/
+  example_title: Карта сайта - Миэль Офис в Железнодорожном.
+  total_pages: 1
+  blocks:
+  - id: top-back
+    selector: .top-back
+    heading: Карта сайта
+    description: 'Hero блок с заголовком раздела (заголовок: "Карта сайта"); CSS селектор: `.top-back`'
+  - id: services
+    selector: '#services.gray-block'
+    description: 'Быстрые ссылки на разделы услуг ("Услуги"). Иконки с названием услуги со ссылками на страницы услуг; CSS
+      селектор: `#services`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  pages_count: 1
+Список FAQ:
+  id: faq-list
+  description: Список FAQ
+  example_url: https://zdkvartira.ru/часто-задаваемы-вопросы/
+  example_title: Часто задаваемые вопросы - Миэль Офис в Железнодорожном.
+  total_pages: 1
+  blocks:
+  - id: top-back
+    selector: .top-back
+    heading: Часто задаваемы вопросы
+    description: 'Hero блок с заголовком раздела (заголовок: "Часто задаваемы вопросы"); CSS селектор: `.top-back`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: faq-list
+    selector: '#faq-list'
+    heading: Часто задаваемые вопросы
+    description: 'Заголовок: "Часто задаваемые вопросы"; Список часто задаваемых вопросов. Категории вопросов с раскрывающимися
+      ответами; CSS селектор: `#faq-list`'
+  pages_count: 1
+Список акций:
+  id: promotions-list
+  description: Список акций
+  example_url: https://zdkvartira.ru/акции-и-скидки/
+  example_title: Действующие акции
+  total_pages: 1
+  blocks:
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: content
+    selector: '#content'
+    heading: Все акции
+    description: 'Заголовок: "Все акции"; акции и специальные предложения; CSS селектор: `#content`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  pages_count: 1
+Список новостей:
+  id: news-list
+  description: Список новостей
+  example_url: https://zdkvartira.ru/новости/
+  example_title: Последние новости в сфере недвижимости. Агентство недвижимости «МИЭЛЬ»
+  total_pages: 2
+  blocks:
+  - id: top-back
+    selector: .top-back
+    heading: Новости
+    description: 'Hero блок с заголовком раздела (заголовок: "Новости"); CSS селектор: `.top-back`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: filter
+    selector: '#filter'
+    description: 'Форма фильтрации и поиска. Поля для выбора параметров фильтрации, кнопки применения фильтров; CSS селектор:
+      `#filter`'
+  - id: pagination
+    selector: nav
+    description: 'Навигация по страницам (пагинация). Ссылки на предыдущую/следующую страницу, номера страниц; CSS селектор:
+      `nav` или класс пагинации'
+  pages_count: 2
+Список новостроек:
+  id: new-buildings-list
+  description: Список новостроек
+  example_url: https://zdkvartira.ru/новостройки/
+  example_title: Купить новостройку в Железнодорожном, Балашихе. 1, 2, 3 и 4-комнатные квартиры, студии.
+  total_pages: 1
+  blocks:
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  pages_count: 1
+Список отзывов:
+  id: reviews-list
+  description: Список отзывов
+  example_url: https://zdkvartira.ru/список-отзывов/
+  example_title: Отзывы об агентстве недвижимости «МИЭЛЬ», Офис «В Железнодорожном»
+  total_pages: 1
+  blocks:
+  - id: top-back
+    selector: .top-back
+    heading: Отзывы «МИЭЛЬ»
+    description: 'Hero блок с заголовком раздела (заголовок: "Отзывы «МИЭЛЬ»"); CSS селектор: `.top-back`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: video
+    selector: '#video'
+    heading: Отзывы «МИЭЛЬ» Добавить отзыв
+    description: 'Заголовок: "Отзывы «МИЭЛЬ» Добавить отзыв"; форма обратной связи или заявки; видеоотзывы клиентов; CSS селектор:
+      `#video`'
+  - id: filter
+    selector: '#filter'
+    description: 'Форма фильтрации и поиска. Поля для выбора параметров фильтрации, кнопки применения фильтров; CSS селектор:
+      `#filter`'
+  - id: pagination
+    selector: nav
+    description: 'Навигация по страницам (пагинация). Ссылки на предыдущую/следующую страницу, номера страниц; CSS селектор:
+      `nav` или класс пагинации'
+  pages_count: 1
+Список сотрудников:
+  id: staff-list
+  description: Список сотрудников
+  example_url: https://zdkvartira.ru/команда-миэль/
+  example_title: Команда МИЭЛЬ, Офис в Железнодорожном. Работаем 7 дней  в неделю.
+  total_pages: 1
+  blocks:
+  - id: top-back
+    selector: .top-back
+    heading: Наши Эксперты
+    description: 'Hero блок с заголовком раздела (заголовок: "Наши Эксперты"); CSS селектор: `.top-back`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: team
+    selector: '#team.pb-2'
+    heading: Команда МИЭЛЬ, Офис в Железнодорожном
+    description: 'Заголовок: "Команда МИЭЛЬ, Офис в Железнодорожном"; Информация о команде сотрудников. Карточки специалистов
+      с фото, должностью, контактами; CSS селектор: `#team`'
+  - id: all-team
+    selector: '#all-team.gray-block.pb-2.all-team'
+    heading: Отдел продаж
+    description: 'Заголовок: "Отдел продаж"; информация о команде сотрудников; CSS селектор: `#all-team`'
+  - id: admin-team
+    selector: '#admin-team.gray-block'
+    heading: Менеджмент
+    description: 'Заголовок: "Менеджмент"; информация о команде сотрудников; CSS селектор: `#admin-team`'
+  - id: form
+    selector: '#form.blue-block.text-center'
+    heading: Хотите стать частью нашей команды?
+    description: 'Заголовок: "Хотите стать частью нашей команды?"; Форма обратной связи ("Не нашли ответ на свой вопрос?").
+      Поля: имя, телефон, email, кнопка отправки; CSS селектор: `#form`'
+  pages_count: 1
+Страница новости:
+  id: news-article
+  description: Страница новости
+  example_url: https://zdkvartira.ru/новости/1-марта-офису-в-тюмени-год/
+  example_title: 1 марта офису «В ТЮМЕНИ» – год! Миэль офис в Железнодорожном. 260
+  total_pages: 1246
+  blocks:
+  - id: top-back
+    selector: .top-back
+    heading: Новости
+    description: 'Hero блок с заголовком раздела (заголовок: "Новости"); CSS селектор: `.top-back`'
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    description: Навигационная цепочка (хлебные крошки)
+  - id: news-detail
+    selector: '#news-detail'
+    description: 'Детальное содержание новости. Заголовок, дата публикации, автор, полный текст новости с изображениями; CSS
+      селектор: `#news-detail`'
+  - id: other-news
+    selector: '#other-news.gray-block.other-news'
+    description: 'Навигация по другим новостям. Ссылки на предыдущую и следующую новость, превью связанной новости; CSS селектор:
+      `#other-news`'
+  pages_count: 1246
+Страница услуги:
+  id: service-page
+  description: Страница услуги
+  example_url: https://zdkvartira.ru/услуги/ипотека/
+  example_title: Покупка квартиры, дома в ипотеку в Железнодорожном, Балашихе.
+  total_pages: 7
+  blocks:
+  - id: content-list
+    selector: .container
+    description: 'Список материалов (новости, статьи, аналитика). Контейнер с карточками контента; CSS селектор: `.container`'
+  - id: top-back
+    selector: .top-back
+    heading: Ипотека в Железнодорожном, Балашихе
+    description: 'Hero блок с заголовком раздела (заголовок: "Ипотека в Железнодорожном, Балашихе"); CSS селектор: `.top-back`'
+  - id: mort
+    selector: '#mort.gray-block.pb-3'
+    heading: Ипотечный Калькулятор
+    description: 'Заголовок: "Ипотечный Калькулятор"; форма обратной связи или заявки; текстовый информационный блок; CSS
+      селектор: `#mort`'
+  - id: facts
+    selector: '#facts.gray-block.pt-2'
+    heading: Факты о нас
+    description: 'Заголовок: "Факты о нас"; акции и специальные предложения; CSS селектор: `#facts`'
+  - id: actions
+    selector: '#actions.serial-section.mt-3.py-3'
+    heading: Действующие акции и скидки по услуге
+    description: 'Заголовок: "Действующие акции и скидки по услуге"; Анонсы акций ("Самое интересное"). Карточки с баннерами
+      для акций: графическая подложка, аудитория, текст предложения, датой проведения; CSS селектор: `#actions`'
+  - id: help
+    selector: '#help.gray-block'
+    heading: Хотим Вам рассказать,как мы работаем со своими клиентами
+    description: 'Заголовок: "Хотим Вам рассказать,как мы работаем со своими клиентами"; акции и специальные предложения;
+      CSS селектор: `#help`'
+  - id: banks
+    selector: '#banks.py-4'
+    heading: Наши банки-партнеры
+    description: 'Заголовок: "Наши банки-партнеры"; галерея карточек с изображениями; CSS селектор: `#banks`'
+  - id: faq
+    selector: '#faq.serial-section'
+    heading: Часто задаваемые вопросы
+    description: 'Заголовок: "Часто задаваемые вопросы"; каталог услуг компании; CSS селектор: `#faq`'
+  - id: form
+    selector: '#form.blue-block.text-center'
+    heading: Не нашли ответ на свой вопрос?
+    description: 'Заголовок: "Не нашли ответ на свой вопрос?"; Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля:
+      имя, телефон, email, кнопка отправки; CSS селектор: `#form`'
+  pages_count: 7
