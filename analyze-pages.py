@@ -1258,7 +1258,8 @@ def main():
     sys.stdout.flush()
     with open(os.path.join(output_dir, 'pages.txt'), 'w', encoding='utf-8') as f:
         for page in sorted(pages, key=lambda x: x['url']):
-            f.write(f"{page['url']}\t{page['type']}\t{page['title']}\n")
+            type_id = page_type_to_id(page['type'])
+            f.write(f"{page['url']}\t{type_id}\t{page['title']}\n")
 
     print(f"Сохранено {len(pages)} страниц в pages.txt")
     sys.stdout.flush()
@@ -1270,7 +1271,8 @@ def main():
         writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         writer.writerow(['url', 'type', 'title'])
         for page in sorted(pages, key=lambda x: x['url']):
-            writer.writerow([page['url'], page['type'], page['title']])
+            type_id = page_type_to_id(page['type'])
+            writer.writerow([page['url'], type_id, page['title']])
 
     print(f"Сохранено {len(pages)} страниц в pages.csv")
     sys.stdout.flush()
