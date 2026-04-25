@@ -1,9 +1,9 @@
 # Site Scan Report
 
 - **Site URL**: https://zdkvartira.ru/
-- **Scan Started**: 2026.04.25 14:04:40 +0300
-- **Scan Finished**: 2026.04.25 14:06:04 +0300
-- **Time Elapsed**: 1m 24s
+- **Scan Started**: 2026.04.25 16:04:56 +0300
+- **Scan Finished**: 2026.04.25 16:06:17 +0300
+- **Time Elapsed**: 1m 21s
 - **Domain**: zdkvartira.ru
 
 ---
@@ -15,10 +15,10 @@
 - **Internal Links Found**: 2238
 - **External Links Found**: 474 (82 unique domains)
 - **JavaScript Links**: 5
-- **Special Links** (#, tel:, mailto:): 20
+- **Special Links**: 20 (#, tel:, mailto:)
 - **Broken Links**: 27
 - **Redirected Pages**: 20
-- **Total Link Relations**: 140531
+- **Total Link Relations**: 98064
 
 ## Broken Links
 
@@ -88,143 +88,145 @@ Pages with the highest number of incoming links:
 
 | Rank | URL | Incoming Links |
 |------|-----|----------------|
-| 1 | [https://zdkvartira.ru/](https://zdkvartira.ru/) | 8117 |
-| 2 | [https://zdkvartira.ru/список-отзывов/](https://zdkvartira.ru/список-отзывов/) | 6817 |
-| 3 | [https://zdkvartira.ru/команда-миэль/](https://zdkvartira.ru/команда-миэль/) | 6811 |
-| 4 | [https://zdkvartira.ru/новости-офиса/](https://zdkvartira.ru/новости-офиса/) | 5629 |
-| 5 | [https://zdkvartira.ru/объекты/городская-недвижимость/](https://zdkvartira.ru/объекты/городская-недвижимость/) | 5477 |
-| 6 | [https://zdkvartira.ru/услуги/продать-квартиру/](https://zdkvartira.ru/услуги/продать-квартиру/) | 5442 |
-| 7 | [https://zdkvartira.ru/услуги/ипотека/](https://zdkvartira.ru/услуги/ипотека/) | 5439 |
-| 8 | [https://zdkvartira.ru/вакансии/](https://zdkvartira.ru/вакансии/) | 5436 |
-| 9 | [https://zdkvartira.ru/объекты/загородная-недвижимость/](https://zdkvartira.ru/объекты/загородная-недвижимость/) | 5436 |
-| 10 | [https://zdkvartira.ru/услуги/купить-квартиру/](https://zdkvartira.ru/услуги/купить-квартиру/) | 5435 |
-| 11 | [https://zdkvartira.ru/услуги/сдать-квартиру/](https://zdkvartira.ru/услуги/сдать-квартиру/) | 5434 |
-| 12 | [https://zdkvartira.ru/услуги/снять-квартиру/](https://zdkvartira.ru/услуги/снять-квартиру/) | 5434 |
-| 13 | [https://zdkvartira.ru/услуги/сопровождение-сделки/](https://zdkvartira.ru/услуги/сопровождение-сделки/) | 5434 |
-| 14 | [https://zdkvartira.ru/объекты/коммерческая-недвижимость/](https://zdkvartira.ru/объекты/коммерческая-недвижимость/) | 5433 |
-| 15 | [https://zdkvartira.ru/часто-задаваемы-вопросы/](https://zdkvartira.ru/часто-задаваемы-вопросы/) | 5433 |
-| 16 | [https://zdkvartira.ru/программа-лояльности/](https://zdkvartira.ru/программа-лояльности/) | 4083 |
-| 17 | [https://zdkvartira.ru/правовой-сертификат/](https://zdkvartira.ru/правовой-сертификат/) | 4079 |
-| 18 | [https://zdkvartira.ru/новостройки/](https://zdkvartira.ru/новостройки/) | 4077 |
-| 19 | [https://zdkvartira.ru/контакты/](https://zdkvartira.ru/контакты/) | 4075 |
-| 20 | [https://zdkvartira.ru/о-компании/](https://zdkvartira.ru/о-компании/) | 4075 |
-| 21 | [https://zdkvartira.ru/акции-и-скидки/](https://zdkvartira.ru/акции-и-скидки/) | 2718 |
-| 22 | [http://redconnect.ru/](http://redconnect.ru/) | 2718 |
-| 23 | [https://zdkvartira.ru/информационная-политика/](https://zdkvartira.ru/информационная-политика/) | 2717 |
-| 24 | [https://zdkvartira.ru/pages/sitemap](https://zdkvartira.ru/pages/sitemap) | 2716 |
-| 25 | [https://zdkvartira.ru/realty/compares](https://zdkvartira.ru/realty/compares) | 2716 |
-| 26 | [https://zdkvartira.ru/realty/favorites](https://zdkvartira.ru/realty/favorites) | 2716 |
-| 27 | [https://zdkvartira.ru/search/](https://zdkvartira.ru/search/) | 2716 |
-| 28 | [https://zdkvartira.ru/новости/](https://zdkvartira.ru/новости/) | 2114 |
-| 29 | [https://zdkvartira.ru/новости/как-выбрать-лучшую-квартиру-студию/](https://zdkvartira.ru/новости/как-выбрать-лучшую-квартиру-студию/) | 2104 |
-| 30 | [https://zdkvartira.ru/новости-офиса/450-тысяч-поддержки-для-семей-с-детьми-рождение-3-и-последующего-ребенка/](https://zdkvartira.ru/новости-офиса/450-тысяч-поддержки-для-семей-с-детьми-рождение-3-и-последующего-ребенка/) | 401 |
-| 31 | [http://mos.ru/](http://mos.ru/) | 267 |
-| 32 | [https://zdkvartira.ru/согласие-на-обработку-персональных-данных/](https://zdkvartira.ru/согласие-на-обработку-персональных-данных/) | 88 |
-| 33 | [https://zdkvartira.ru/объекты/](https://zdkvartira.ru/объекты/) | 74 |
-| 34 | [https://zdkvartira.ru/команда-миэль/kondaurov-andrej-aleksandrovich/](https://zdkvartira.ru/команда-миэль/kondaurov-andrej-aleksandrovich/) | 72 |
-| 35 | [http://balashiha.ru/](http://balashiha.ru/) | 64 |
-| 36 | [http://arenda.miel.ru/](http://arenda.miel.ru/) | 34 |
-| 37 | [https://max.ru/u/f9LHodD0cOK1I7cUGRvZvN1DN4wJB1BNSH1x63SXkz\_wYQskRxXSVlId3II](https://max.ru/u/f9LHodD0cOK1I7cUGRvZvN1DN4wJB1BNSH1x63SXkz_wYQskRxXSVlId3II) | 29 |
-| 38 | [https://t.me/ElenaButyr](https://t.me/ElenaButyr) | 29 |
-| 39 | [https://www.miel.ru/about/leaders/86599149/](https://www.miel.ru/about/leaders/86599149/) | 26 |
-| 40 | [http://new.miel.ru/](http://new.miel.ru/) | 24 |
-| 41 | [https://www.miel.ru/about/leaders/15696/](https://www.miel.ru/about/leaders/15696/) | 24 |
-| 42 | [https://zdkvartira.ru/новости-офиса/лучшее-предложение-по-кредитованию-от-банка-втб/](https://zdkvartira.ru/новости-офиса/лучшее-предложение-по-кредитованию-от-банка-втб/) | 22 |
-| 43 | [https://zdkvartira.ru/команда-миэль/butyirkina-elena-borisovna/](https://zdkvartira.ru/команда-миэль/butyirkina-elena-borisovna/) | 21 |
-| 44 | [https://arenda.miel.ru/](https://arenda.miel.ru/) | 20 |
-| 45 | [http://www.miel.ru/about/leaders/86599149/](http://www.miel.ru/about/leaders/86599149/) | 19 |
-| 46 | [https://zdkvartira.ru/акции-и-скидки/в-день-рождения-особые-условия-и-скидка-10-на-любую-услугу/](https://zdkvartira.ru/акции-и-скидки/в-день-рождения-особые-условия-и-скидка-10-на-любую-услугу/) | 18 |
-| 47 | [https://zdkvartira.ru/акции-и-скидки/для-учителей-военных-и-врачей/](https://zdkvartira.ru/акции-и-скидки/для-учителей-военных-и-врачей/) | 18 |
-| 48 | [https://zdkvartira.ru/объекты/городская-недвижимость/2-комнатная-квартира-в-г-балашиха-47/](https://zdkvartira.ru/объекты/городская-недвижимость/2-комнатная-квартира-в-г-балашиха-47/) | 18 |
-| 49 | [http://www.miel.ru/about/leaders/15696/](http://www.miel.ru/about/leaders/15696/) | 18 |
-| 50 | [http://zbulvar.ru/](http://zbulvar.ru/) | 18 |
+| 1 | [https://zdkvartira.ru/](https://zdkvartira.ru/) | 6759 |
+| 2 | [https://zdkvartira.ru/список-отзывов/](https://zdkvartira.ru/список-отзывов/) | 5459 |
+| 3 | [https://zdkvartira.ru/команда-миэль/](https://zdkvartira.ru/команда-миэль/) | 5453 |
+| 4 | [https://zdkvartira.ru/новости-офиса/](https://zdkvartira.ru/новости-офиса/) | 4271 |
+| 5 | [https://zdkvartira.ru/объекты/городская-недвижимость/](https://zdkvartira.ru/объекты/городская-недвижимость/) | 4119 |
+| 6 | [https://zdkvartira.ru/услуги/продать-квартиру/](https://zdkvartira.ru/услуги/продать-квартиру/) | 4084 |
+| 7 | [https://zdkvartira.ru/услуги/ипотека/](https://zdkvartira.ru/услуги/ипотека/) | 4081 |
+| 8 | [https://zdkvartira.ru/объекты/загородная-недвижимость/](https://zdkvartira.ru/объекты/загородная-недвижимость/) | 4078 |
+| 9 | [https://zdkvartira.ru/вакансии/](https://zdkvartira.ru/вакансии/) | 4078 |
+| 10 | [https://zdkvartira.ru/услуги/купить-квартиру/](https://zdkvartira.ru/услуги/купить-квартиру/) | 4077 |
+| 11 | [https://zdkvartira.ru/услуги/сдать-квартиру/](https://zdkvartira.ru/услуги/сдать-квартиру/) | 4076 |
+| 12 | [https://zdkvartira.ru/услуги/снять-квартиру/](https://zdkvartira.ru/услуги/снять-квартиру/) | 4076 |
+| 13 | [https://zdkvartira.ru/услуги/сопровождение-сделки/](https://zdkvartira.ru/услуги/сопровождение-сделки/) | 4076 |
+| 14 | [https://zdkvartira.ru/объекты/коммерческая-недвижимость/](https://zdkvartira.ru/объекты/коммерческая-недвижимость/) | 4075 |
+| 15 | [https://zdkvartira.ru/часто-задаваемы-вопросы/](https://zdkvartira.ru/часто-задаваемы-вопросы/) | 4075 |
+| 16 | [https://zdkvartira.ru/программа-лояльности/](https://zdkvartira.ru/программа-лояльности/) | 2725 |
+| 17 | [https://zdkvartira.ru/правовой-сертификат/](https://zdkvartira.ru/правовой-сертификат/) | 2721 |
+| 18 | [https://zdkvartira.ru/новостройки/](https://zdkvartira.ru/новостройки/) | 2719 |
+| 19 | [https://zdkvartira.ru/о-компании/](https://zdkvartira.ru/о-компании/) | 2717 |
+| 20 | [https://zdkvartira.ru/контакты/](https://zdkvartira.ru/контакты/) | 2717 |
+| 21 | [https://zdkvartira.ru/акции-и-скидки/](https://zdkvartira.ru/акции-и-скидки/) | 1360 |
+| 22 | [https://zdkvartira.ru/информационная-политика/](https://zdkvartira.ru/информационная-политика/) | 1359 |
+| 23 | [http://redconnect.ru/](http://redconnect.ru/) | 1359 |
+| 24 | [https://zdkvartira.ru/realty/favorites](https://zdkvartira.ru/realty/favorites) | 1358 |
+| 25 | [https://zdkvartira.ru/realty/compares](https://zdkvartira.ru/realty/compares) | 1358 |
+| 26 | [https://zdkvartira.ru/search/](https://zdkvartira.ru/search/) | 1358 |
+| 27 | [https://zdkvartira.ru/pages/sitemap](https://zdkvartira.ru/pages/sitemap) | 1358 |
+| 28 | [https://zdkvartira.ru/новости/](https://zdkvartira.ru/новости/) | 1057 |
+| 29 | [https://zdkvartira.ru/новости/как-выбрать-лучшую-квартиру-студию/](https://zdkvartira.ru/новости/как-выбрать-лучшую-квартиру-студию/) | 1053 |
+| 30 | [https://zdkvartira.ru/новости-офиса/450-тысяч-поддержки-для-семей-с-детьми-рождение-3-и-последующего-ребенка/](https://zdkvartira.ru/новости-офиса/450-тысяч-поддержки-для-семей-с-детьми-рождение-3-и-последующего-ребенка/) | 207 |
+| 31 | [http://mos.ru/](http://mos.ru/) | 134 |
+| 32 | [https://zdkvartira.ru/команда-миэль/kondaurov-andrej-aleksandrovich/](https://zdkvartira.ru/команда-миэль/kondaurov-andrej-aleksandrovich/) | 48 |
+| 33 | [https://zdkvartira.ru/согласие-на-обработку-персональных-данных/](https://zdkvartira.ru/согласие-на-обработку-персональных-данных/) | 46 |
+| 34 | [https://zdkvartira.ru/объекты/](https://zdkvartira.ru/объекты/) | 37 |
+| 35 | [http://balashiha.ru/](http://balashiha.ru/) | 32 |
+| 36 | [https://t.me/ElenaButyr](https://t.me/ElenaButyr) | 21 |
+| 37 | [https://max.ru/u/f9LHodD0cOK1I7cUGRvZvN1DN4wJB1BNSH1x63SXkz\_wYQskRxXSVlId3II](https://max.ru/u/f9LHodD0cOK1I7cUGRvZvN1DN4wJB1BNSH1x63SXkz_wYQskRxXSVlId3II) | 21 |
+| 38 | [http://arenda.miel.ru/](http://arenda.miel.ru/) | 19 |
+| 39 | [https://zdkvartira.ru/команда-миэль/butyirkina-elena-borisovna/](https://zdkvartira.ru/команда-миэль/butyirkina-elena-borisovna/) | 14 |
+| 40 | [https://www.miel.ru/about/leaders/86599149/](https://www.miel.ru/about/leaders/86599149/) | 13 |
+| 41 | [http://new.miel.ru/](http://new.miel.ru/) | 12 |
+| 42 | [https://www.miel.ru/about/leaders/15696/](https://www.miel.ru/about/leaders/15696/) | 12 |
+| 43 | [https://zdkvartira.ru/новости-офиса/лучшее-предложение-по-кредитованию-от-банка-втб/](https://zdkvartira.ru/новости-офиса/лучшее-предложение-по-кредитованию-от-банка-втб/) | 11 |
+| 44 | [https://zdkvartira.ru/media/images/07559731-9f03-47e2-837a-6646a25fd487.original.jpg](https://zdkvartira.ru/media/images/07559731-9f03-47e2-837a-6646a25fd487.original.jpg) | 10 |
+| 45 | [https://zdkvartira.ru/media/images/b0805761-0a07-4f92-99a7-e1154f875b22.original.jpg](https://zdkvartira.ru/media/images/b0805761-0a07-4f92-99a7-e1154f875b22.original.jpg) | 10 |
+| 46 | [http://www.miel.ru/about/leaders/86599149/](http://www.miel.ru/about/leaders/86599149/) | 10 |
+| 47 | [https://arenda.miel.ru/](https://arenda.miel.ru/) | 10 |
+| 48 | [https://zdkvartira.ru/акции-и-скидки/для-учителей-военных-и-врачей/](https://zdkvartira.ru/акции-и-скидки/для-учителей-военных-и-врачей/) | 9 |
+| 49 | [https://zdkvartira.ru/акции-и-скидки/в-день-рождения-особые-условия-и-скидка-10-на-любую-услугу/](https://zdkvartira.ru/акции-и-скидки/в-день-рождения-особые-условия-и-скидка-10-на-любую-услугу/) | 9 |
+| 50 | [https://zdkvartira.ru/новости-офиса/режим-работы-офиса-в-праздничные-дни--/](https://zdkvartira.ru/новости-офиса/режим-работы-офиса-в-праздничные-дни--/) | 9 |
 
 ## External Domains
 
 Found links to 82 unique external domains:
 
-- [miel.ru](https://miel.ru) (49 links)
-- [uvao.mos.ru](https://uvao.mos.ru) (43 links)
-- [www.mytyshi.ru](https://www.mytyshi.ru) (36 links)
-- [www.miel.ru](https://www.miel.ru) (35 links)
-- [izmaylowo.mos.ru](https://izmaylowo.mos.ru) (32 links)
-- [aeroport.mos.ru](https://aeroport.mos.ru) (31 links)
-- [khoroshevskiy.mos.ru](https://khoroshevskiy.mos.ru) (23 links)
-- [i.miel.ru](https://i.miel.ru) (20 links)
-- [районные-будни.рф](https://районные-будни.рф) (20 links)
-- [taganskiy.caoinform.ru](https://taganskiy.caoinform.ru) (18 links)
-- [bibirevo.mos.ru](https://bibirevo.mos.ru) (16 links)
-- [gazeta-bibirevo.ru](https://gazeta-bibirevo.ru) (15 links)
-- [tagan.mos.ru](https://tagan.mos.ru) (11 links)
-- [www.facebook.com](https://www.facebook.com) (10 links)
-- [youtu.be](https://youtu.be) (10 links)
-- [horoshevka-gazeta.ru](https://horoshevka-gazeta.ru) (9 links)
-- [vyhino-zhulebino.mos.ru](https://vyhino-zhulebino.mos.ru) (7 links)
-- [vestitaganka.moscow](https://vestitaganka.moscow) (5 links)
-- [kvartira.miel.ru](https://kvartira.miel.ru) (4 links)
-- [petrovskipark.ru](https://petrovskipark.ru) (4 links)
-- [www.mos.ru](https://www.mos.ru) (4 links)
-- [arenda.miel.ru](https://arenda.miel.ru) (3 links)
-- [butovo.miel.ru](https://butovo.miel.ru) (2 links)
-- [cheremushki.miel.ru](https://cheremushki.miel.ru) (2 links)
-- [dorogomilovo.mos.ru](https://dorogomilovo.mos.ru) (2 links)
-- [krylatskoe.mos.ru](https://krylatskoe.mos.ru) (2 links)
-- [new.miel.ru](https://new.miel.ru) (2 links)
-- [online.miel.ru](https://online.miel.ru) (2 links)
-- [stroi.mos.ru](https://stroi.mos.ru) (2 links)
-- [tass.ru](https://tass.ru) (2 links)
-- [www.youtube.com](https://www.youtube.com) (2 links)
-- [11.miel.ru](https://11.miel.ru) (1 links)
-- [aif.ru](https://aif.ru) (1 links)
-- [ak.miel.ru](https://ak.miel.ru) (1 links)
-- [alekseevsky.miel.ru](https://alekseevsky.miel.ru) (1 links)
-- [balashiha.miel.ru](https://balashiha.miel.ru) (1 links)
-- [balashiha.ru](https://balashiha.ru) (1 links)
-- [domeo.ru](https://domeo.ru) (1 links)
-- [frunzenskaya.miel.ru](https://frunzenskaya.miel.ru) (1 links)
-- [gazeta-alekseevsky.ru](https://gazeta-alekseevsky.ru) (1 links)
-- [gazeta-kuzminki.ru](https://gazeta-kuzminki.ru) (1 links)
-- [gazeta.krl-uprava.ru](https://gazeta.krl-uprava.ru) (1 links)
-- [grandpark.miel.ru](https://grandpark.miel.ru) (1 links)
-- [izmaylovo.miel.ru](https://izmaylovo.miel.ru) (1 links)
-- [korsakov.miel.ru](https://korsakov.miel.ru) (1 links)
-- [kp.ru](https://kp.ru) (1 links)
-- [krasnogorsk.miel.ru](https://krasnogorsk.miel.ru) (1 links)
-- [lubercy.miel.ru](https://lubercy.miel.ru) (1 links)
-- [max.ru](https://max.ru) (1 links)
-- [mitichi.miel.ru](https://mitichi.miel.ru) (1 links)
-- [mos.ru](https://mos.ru) (1 links)
-- [mosday.ru](https://mosday.ru) (1 links)
-- [mskagency.ru](https://mskagency.ru) (1 links)
-- [mv.miel.ru](https://mv.miel.ru) (1 links)
-- [nedoma.mos.ru](https://nedoma.mos.ru) (1 links)
-- [newsvostok.ru](https://newsvostok.ru) (1 links)
-- [newvostok.ru](https://newvostok.ru) (1 links)
-- [novogireevo.mos.ru](https://novogireevo.mos.ru) (1 links)
-- [nvg.miel.ru](https://nvg.miel.ru) (1 links)
-- [peredelkino.miel.ru](https://peredelkino.miel.ru) (1 links)
-- [podolsk.miel.ru](https://podolsk.miel.ru) (1 links)
-- [promo.nmarket.pro](https://promo.nmarket.pro) (1 links)
-- [ratingruneta.ru](https://ratingruneta.ru) (1 links)
-- [realcongress.ru](https://realcongress.ru) (1 links)
-- [redconnect.ru](https://redconnect.ru) (1 links)
-- [riamo.ru](https://riamo.ru) (1 links)
-- [severstolici.ru](https://severstolici.ru) (1 links)
-- [shodnenskaya.miel.ru](https://shodnenskaya.miel.ru) (1 links)
-- [sokol.miel.ru](https://sokol.miel.ru) (1 links)
-- [suchevka.miel.ru](https://suchevka.miel.ru) (1 links)
-- [t.me](https://t.me) (1 links)
-- [taganka.miel.ru](https://taganka.miel.ru) (1 links)
-- [tretyakovskaya.miel.ru](https://tretyakovskaya.miel.ru) (1 links)
-- [univer.miel.ru](https://univer.miel.ru) (1 links)
-- [vao.mos.ru](https://vao.mos.ru) (1 links)
-- [vm.ru](https://vm.ru) (1 links)
-- [volg.miel.ru](https://volg.miel.ru) (1 links)
-- [www.krylatskoye.ru](https://www.krylatskoye.ru) (1 links)
-- [www.mskagency.ru](https://www.mskagency.ru) (1 links)
-- [www.sobyanin.ru](https://www.sobyanin.ru) (1 links)
-- [yandex.ru](https://yandex.ru) (1 links)
-- [zbulvar.ru](https://zbulvar.ru) (1 links)
+| Rank | Links | URL |
+|------|-------|-----|
+| 1 | 49 | [miel.ru](https://miel.ru) |
+| 2 | 43 | [uvao.mos.ru](https://uvao.mos.ru) |
+| 3 | 36 | [www.mytyshi.ru](https://www.mytyshi.ru) |
+| 4 | 35 | [www.miel.ru](https://www.miel.ru) |
+| 5 | 32 | [izmaylowo.mos.ru](https://izmaylowo.mos.ru) |
+| 6 | 31 | [aeroport.mos.ru](https://aeroport.mos.ru) |
+| 7 | 23 | [khoroshevskiy.mos.ru](https://khoroshevskiy.mos.ru) |
+| 8 | 20 | [i.miel.ru](https://i.miel.ru) |
+| 9 | 20 | [районные-будни.рф](https://районные-будни.рф) |
+| 10 | 18 | [taganskiy.caoinform.ru](https://taganskiy.caoinform.ru) |
+| 11 | 16 | [bibirevo.mos.ru](https://bibirevo.mos.ru) |
+| 12 | 15 | [gazeta-bibirevo.ru](https://gazeta-bibirevo.ru) |
+| 13 | 11 | [tagan.mos.ru](https://tagan.mos.ru) |
+| 14 | 10 | [www.facebook.com](https://www.facebook.com) |
+| 15 | 10 | [youtu.be](https://youtu.be) |
+| 16 | 9 | [horoshevka-gazeta.ru](https://horoshevka-gazeta.ru) |
+| 17 | 7 | [vyhino-zhulebino.mos.ru](https://vyhino-zhulebino.mos.ru) |
+| 18 | 5 | [vestitaganka.moscow](https://vestitaganka.moscow) |
+| 19 | 4 | [kvartira.miel.ru](https://kvartira.miel.ru) |
+| 20 | 4 | [petrovskipark.ru](https://petrovskipark.ru) |
+| 21 | 4 | [www.mos.ru](https://www.mos.ru) |
+| 22 | 3 | [arenda.miel.ru](https://arenda.miel.ru) |
+| 23 | 2 | [butovo.miel.ru](https://butovo.miel.ru) |
+| 24 | 2 | [cheremushki.miel.ru](https://cheremushki.miel.ru) |
+| 25 | 2 | [dorogomilovo.mos.ru](https://dorogomilovo.mos.ru) |
+| 26 | 2 | [krylatskoe.mos.ru](https://krylatskoe.mos.ru) |
+| 27 | 2 | [new.miel.ru](https://new.miel.ru) |
+| 28 | 2 | [online.miel.ru](https://online.miel.ru) |
+| 29 | 2 | [stroi.mos.ru](https://stroi.mos.ru) |
+| 30 | 2 | [tass.ru](https://tass.ru) |
+| 31 | 2 | [www.youtube.com](https://www.youtube.com) |
+| 32 | 1 | [11.miel.ru](https://11.miel.ru) |
+| 33 | 1 | [aif.ru](https://aif.ru) |
+| 34 | 1 | [ak.miel.ru](https://ak.miel.ru) |
+| 35 | 1 | [alekseevsky.miel.ru](https://alekseevsky.miel.ru) |
+| 36 | 1 | [balashiha.miel.ru](https://balashiha.miel.ru) |
+| 37 | 1 | [balashiha.ru](https://balashiha.ru) |
+| 38 | 1 | [domeo.ru](https://domeo.ru) |
+| 39 | 1 | [frunzenskaya.miel.ru](https://frunzenskaya.miel.ru) |
+| 40 | 1 | [gazeta-alekseevsky.ru](https://gazeta-alekseevsky.ru) |
+| 41 | 1 | [gazeta-kuzminki.ru](https://gazeta-kuzminki.ru) |
+| 42 | 1 | [gazeta.krl-uprava.ru](https://gazeta.krl-uprava.ru) |
+| 43 | 1 | [grandpark.miel.ru](https://grandpark.miel.ru) |
+| 44 | 1 | [izmaylovo.miel.ru](https://izmaylovo.miel.ru) |
+| 45 | 1 | [korsakov.miel.ru](https://korsakov.miel.ru) |
+| 46 | 1 | [kp.ru](https://kp.ru) |
+| 47 | 1 | [krasnogorsk.miel.ru](https://krasnogorsk.miel.ru) |
+| 48 | 1 | [lubercy.miel.ru](https://lubercy.miel.ru) |
+| 49 | 1 | [max.ru](https://max.ru) |
+| 50 | 1 | [mitichi.miel.ru](https://mitichi.miel.ru) |
+| 51 | 1 | [mos.ru](https://mos.ru) |
+| 52 | 1 | [mosday.ru](https://mosday.ru) |
+| 53 | 1 | [mskagency.ru](https://mskagency.ru) |
+| 54 | 1 | [mv.miel.ru](https://mv.miel.ru) |
+| 55 | 1 | [nedoma.mos.ru](https://nedoma.mos.ru) |
+| 56 | 1 | [newsvostok.ru](https://newsvostok.ru) |
+| 57 | 1 | [newvostok.ru](https://newvostok.ru) |
+| 58 | 1 | [novogireevo.mos.ru](https://novogireevo.mos.ru) |
+| 59 | 1 | [nvg.miel.ru](https://nvg.miel.ru) |
+| 60 | 1 | [peredelkino.miel.ru](https://peredelkino.miel.ru) |
+| 61 | 1 | [podolsk.miel.ru](https://podolsk.miel.ru) |
+| 62 | 1 | [promo.nmarket.pro](https://promo.nmarket.pro) |
+| 63 | 1 | [ratingruneta.ru](https://ratingruneta.ru) |
+| 64 | 1 | [realcongress.ru](https://realcongress.ru) |
+| 65 | 1 | [redconnect.ru](https://redconnect.ru) |
+| 66 | 1 | [riamo.ru](https://riamo.ru) |
+| 67 | 1 | [severstolici.ru](https://severstolici.ru) |
+| 68 | 1 | [shodnenskaya.miel.ru](https://shodnenskaya.miel.ru) |
+| 69 | 1 | [sokol.miel.ru](https://sokol.miel.ru) |
+| 70 | 1 | [suchevka.miel.ru](https://suchevka.miel.ru) |
+| 71 | 1 | [t.me](https://t.me) |
+| 72 | 1 | [taganka.miel.ru](https://taganka.miel.ru) |
+| 73 | 1 | [tretyakovskaya.miel.ru](https://tretyakovskaya.miel.ru) |
+| 74 | 1 | [univer.miel.ru](https://univer.miel.ru) |
+| 75 | 1 | [vao.mos.ru](https://vao.mos.ru) |
+| 76 | 1 | [vm.ru](https://vm.ru) |
+| 77 | 1 | [volg.miel.ru](https://volg.miel.ru) |
+| 78 | 1 | [www.krylatskoye.ru](https://www.krylatskoye.ru) |
+| 79 | 1 | [www.mskagency.ru](https://www.mskagency.ru) |
+| 80 | 1 | [www.sobyanin.ru](https://www.sobyanin.ru) |
+| 81 | 1 | [yandex.ru](https://yandex.ru) |
+| 82 | 1 | [zbulvar.ru](https://zbulvar.ru) |
 
 ## Scan Configuration
 
@@ -239,7 +241,6 @@ Found links to 82 unique external domains:
 
 The following files were generated in the `crawl-default/` directory:
 
-- `sitemap.yaml` - Complete list of discovered URLs
 - `sitemap-structure.yaml` - Hierarchical sitemap structure
 - `crawl-state.yaml` - Scan state and statistics
 - `internal-links.yaml` - All internal links
@@ -255,4 +256,4 @@ Downloaded HTML content is saved in the `crawled-content/` directory.
 
 ---
 
-*Report generated on 2026.04.25 14:06:06 +0300*
+*Report generated on 2026.04.25 16:06:19 +0300*

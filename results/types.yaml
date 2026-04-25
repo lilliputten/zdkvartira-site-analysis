@@ -712,9 +712,9 @@
   - id: top-back
     selector: .top-back
     parent: html > body
-    title: Часто задаваемы вопросы
-    heading: Часто задаваемы вопросы
-    description: 'Hero блок с заголовком раздела (заголовок: "Часто задаваемы вопросы")'
+    title: Часто задаваемые вопросы
+    heading: Часто задаваемые вопросы
+    description: 'Hero блок с заголовком раздела (заголовок: "Часто задаваемые вопросы")'
   - id: breadcrumbs
     selector: .breadcrumbs
     parent: html > body
@@ -723,8 +723,8 @@
   - id: page-title
     selector: p.caption
     parent: html > body > div.top-back > div.top-back__bg.inner-top > div
-    title: Часто задаваемы вопросы
-    description: 'Заголовок страницы: "Часто задаваемы вопросы"'
+    title: Часто задаваемые вопросы
+    description: 'Заголовок страницы: "Часто задаваемые вопросы"'
   - id: faq-list
     selector: '#faq-list'
     parent: html > body
