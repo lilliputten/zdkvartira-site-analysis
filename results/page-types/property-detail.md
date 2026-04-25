@@ -6,7 +6,7 @@
 
 **Example Title:** Купить квартиру в Железнодорожном, Балашихе.  1,2,3 и 4-комнатные квартиры
 
-**Total Pages:** 37
+**Total Pages:** 39
 
 ## Content Blocks (7)
 

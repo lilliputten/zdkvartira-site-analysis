@@ -1,53 +1,54 @@
 # Site Scan Report
 
 - **Site URL**: https://zdkvartira.ru/
-- **Scan Started**: 2026.04.25 02:14 +0300
-- **Scan Finished**: 2026.04.25 02:41 +0300
+- **Scan Started**: 2026.04.25 12:14:14 +0300
+- **Scan Finished**: 2026.04.25 12:15:37 +0300
+- **Time Elapsed**: 1m 24s
 - **Domain**: zdkvartira.ru
 
 ---
 
 ## Summary
 
-- **Total Pages Scanned**: 1357
-- **Pages Successfully Crawled**: 1357
-- **Internal Links Found**: 2234
+- **Total Pages Scanned**: 2718
+- **Pages Successfully Crawled**: 1359
+- **Internal Links Found**: 2238
 - **External Links Found**: 479 (87 unique domains)
 - **Broken Links**: 27
 - **Redirected Pages**: 20
-- **Total Link Relations**: 102210
+- **Total Link Relations**: 146229
 
 ## Broken Links
 
 The following internal links returned errors:
 
-- `https://zdkvartira.ru/office/murmansk/` (HTTP 404)
-- `https://zdkvartira.ru/аналитика-цен/` (HTTP 500)
-- `https://zdkvartira.ru/команда-миэль/maman-ekaterina-nikolaevna/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/балашиха-вошла-в-пилотный-проект-по-созданию-альтернативных-мест-в-дошкольных-образовательных-учреждениях/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/в-россии-банки-открыли-прием-заявок-для-оформления-ипотеки-по-льготной-ставке-в-65-процента/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/дорогие-друзья-поздравляем-вас-с-днем-города/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/дорогие-женщины-наши-клиенты-поздравляем-вас-с-международным-женским-днём/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/новая-трасса-москва-казань/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/поздравляем-с-новым-годом-и-рождеством/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/при-продаже-жилья-земли-страховка-по-вкладу-вырастет-до-10-млн-рублей/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/программу-льготной-ипотеки-продлили-до-1-июля-2021-года/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/расширение-леоновского-шоссе/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/режим-работы-офиса-в-праздничные-дни__/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/режим-работы-офиса-в-праздничные-дни____/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/режим-работы-офиса/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/сбербанк-снижает-ставки-по-ипотеке-при-электронной-регистрации-сделок/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/сегодня-нам-30-лет-с-днем-рождения-миэль/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/уважаемые-клиенты-_-_-_/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/уважаемые-клиенты/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/уважаемые-клиенты_/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/уважаемые-клиенты___/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/уважаемые-клиенты_____/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/уважаемые-клиенты_________/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/уважаемые-клиенты___________/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/уважаемые-клиенты_______________________/` (HTTP 404)
-- `https://zdkvartira.ru/новости-офиса/уважаемые-клиенты______________________________________________________________________/` (HTTP 404)
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоят-услуги-по-сдаче-квартиры-в-аренду/` (HTTP 404)
+- [https://zdkvartira.ru/office/murmansk/](https://zdkvartira.ru/office/murmansk/) (HTTP 404)
+- [https://zdkvartira.ru/аналитика-цен/](https://zdkvartira.ru/аналитика-цен/) (HTTP 500)
+- [https://zdkvartira.ru/команда-миэль/maman-ekaterina-nikolaevna/](https://zdkvartira.ru/команда-миэль/maman-ekaterina-nikolaevna/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/балашиха-вошла-в-пилотный-проект-по-созданию-альтернативных-мест-в-дошкольных-образовательных-учреждениях/](https://zdkvartira.ru/новости-офиса/балашиха-вошла-в-пилотный-проект-по-созданию-альтернативных-мест-в-дошкольных-образовательных-учреждениях/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/в-россии-банки-открыли-прием-заявок-для-оформления-ипотеки-по-льготной-ставке-в-65-процента/](https://zdkvartira.ru/новости-офиса/в-россии-банки-открыли-прием-заявок-для-оформления-ипотеки-по-льготной-ставке-в-65-процента/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/дорогие-друзья-поздравляем-вас-с-днем-города/](https://zdkvartira.ru/новости-офиса/дорогие-друзья-поздравляем-вас-с-днем-города/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/дорогие-женщины-наши-клиенты-поздравляем-вас-с-международным-женским-днём/](https://zdkvartira.ru/новости-офиса/дорогие-женщины-наши-клиенты-поздравляем-вас-с-международным-женским-днём/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/новая-трасса-москва-казань/](https://zdkvartira.ru/новости-офиса/новая-трасса-москва-казань/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/поздравляем-с-новым-годом-и-рождеством/](https://zdkvartira.ru/новости-офиса/поздравляем-с-новым-годом-и-рождеством/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/при-продаже-жилья-земли-страховка-по-вкладу-вырастет-до-10-млн-рублей/](https://zdkvartira.ru/новости-офиса/при-продаже-жилья-земли-страховка-по-вкладу-вырастет-до-10-млн-рублей/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/программу-льготной-ипотеки-продлили-до-1-июля-2021-года/](https://zdkvartira.ru/новости-офиса/программу-льготной-ипотеки-продлили-до-1-июля-2021-года/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/расширение-леоновского-шоссе/](https://zdkvartira.ru/новости-офиса/расширение-леоновского-шоссе/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/режим-работы-офиса-в-праздничные-дни\_\_/](https://zdkvartira.ru/новости-офиса/режим-работы-офиса-в-праздничные-дни__/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/режим-работы-офиса-в-праздничные-дни\_\_\_\_/](https://zdkvartira.ru/новости-офиса/режим-работы-офиса-в-праздничные-дни____/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/режим-работы-офиса/](https://zdkvartira.ru/новости-офиса/режим-работы-офиса/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/сбербанк-снижает-ставки-по-ипотеке-при-электронной-регистрации-сделок/](https://zdkvartira.ru/новости-офиса/сбербанк-снижает-ставки-по-ипотеке-при-электронной-регистрации-сделок/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/сегодня-нам-30-лет-с-днем-рождения-миэль/](https://zdkvartira.ru/новости-офиса/сегодня-нам-30-лет-с-днем-рождения-миэль/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/уважаемые-клиенты-\_-\_-\_/](https://zdkvartira.ru/новости-офиса/уважаемые-клиенты-_-_-_/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/уважаемые-клиенты/](https://zdkvartira.ru/новости-офиса/уважаемые-клиенты/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/уважаемые-клиенты\_/](https://zdkvartira.ru/новости-офиса/уважаемые-клиенты_/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/уважаемые-клиенты\_\_\_/](https://zdkvartira.ru/новости-офиса/уважаемые-клиенты___/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/уважаемые-клиенты\_\_\_\_\_/](https://zdkvartira.ru/новости-офиса/уважаемые-клиенты_____/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/уважаемые-клиенты\_\_\_\_\_\_\_\_\_/](https://zdkvartira.ru/новости-офиса/уважаемые-клиенты_________/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/уважаемые-клиенты\_\_\_\_\_\_\_\_\_\_\_/](https://zdkvartira.ru/новости-офиса/уважаемые-клиенты___________/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/уважаемые-клиенты\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_/](https://zdkvartira.ru/новости-офиса/уважаемые-клиенты_______________________/) (HTTP 404)
+- [https://zdkvartira.ru/новости-офиса/уважаемые-клиенты\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_/](https://zdkvartira.ru/новости-офиса/уважаемые-клиенты______________________________________________________________________/) (HTTP 404)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоят-услуги-по-сдаче-квартиры-в-аренду/](https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоят-услуги-по-сдаче-квартиры-в-аренду/) (HTTP 404)
 
 ## Redirected Pages
 
@@ -55,29 +56,29 @@ Pages that redirect to other URLs:
 
 ### 301 Redirects (19)
 
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоят-услуги-по-продаже-квартиры/` → `https://zdkvartira.ru/часто-задаваемы-вопросы/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/как-быстро-продается-квартира-по-рыночной-цене/` → `https://zdkvartira.ru/часто-задаваемы-вопросы/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/лучше-продавать-квартиру-в-одном-агентстве-недвижимости-или-в-нескольких/` → `https://zdkvartira.ru/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/зачем-нужен-риэлтор-при-покупке-квартиры/` → `https://zdkvartira.ru/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоит-услуга-по-поиску-и-оформлению-квартиры/` → `https://zdkvartira.ru/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/могу-ли-я-ещё-сам-подбирать-варианты-квартир/` → `https://zdkvartira.ru/часто-задаваемы-вопросы/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/как-быстро-сдается-квартира/` → `https://zdkvartira.ru/часто-задаваемы-вопросы/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/какие-документы-нужны-чтобы-сдать-квартиру/` → `https://zdkvartira.ru/часто-задаваемы-вопросы/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/что-делать-если-нам-придется-освободить-квартиру-раньше-срока-по-независящим-от-нас-причинам/` → `https://zdkvartira.ru/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоят-услуги-по-аренде-квартиры/` → `https://zdkvartira.ru/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/можно-ли-получить-платежные-документы-чтобы-компенсировать-расходы-по-аренде-квартиры-у-себя-на-предприятии/` → `https://zdkvartira.ru/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/вы-можете-получить-скидку-у-застройщика/` → `https://zdkvartira.ru/часто-задаваемы-вопросы/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоят-услуги-по-подбору-квартиры-в-новостройке/` → `https://zdkvartira.ru/часто-задаваемы-вопросы/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/смогу-ли-я-одобрить-ипотеку-обратившись-в-миэль/` → `https://zdkvartira.ru/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/какие-документы-необходимы-для-получения-ипотечного-кредита/` → `https://zdkvartira.ru/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоит-услуга-одобрения-ипотеки/` → `https://zdkvartira.ru/часто-задаваемы-вопросы/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/можете-сопроводить-сделку-с-альтернативой-и-сторонними-участниками-сделки/` → `https://zdkvartira.ru/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/кто-должен-оплачивать-сопровождение-сделки/` → `https://zdkvartira.ru/`
-- `https://zdkvartira.ru/часто-задаваемы-вопросы/что-дает-правовой-сертификат-миэль/` → `https://zdkvartira.ru/`
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоят-услуги-по-продаже-квартиры/](https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоят-услуги-по-продаже-квартиры/) → [https://zdkvartira.ru/часто-задаваемы-вопросы/](https://zdkvartira.ru/часто-задаваемы-вопросы/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/как-быстро-продается-квартира-по-рыночной-цене/](https://zdkvartira.ru/часто-задаваемы-вопросы/как-быстро-продается-квартира-по-рыночной-цене/) → [https://zdkvartira.ru/часто-задаваемы-вопросы/](https://zdkvartira.ru/часто-задаваемы-вопросы/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/лучше-продавать-квартиру-в-одном-агентстве-недвижимости-или-в-нескольких/](https://zdkvartira.ru/часто-задаваемы-вопросы/лучше-продавать-квартиру-в-одном-агентстве-недвижимости-или-в-нескольких/) → [https://zdkvartira.ru/](https://zdkvartira.ru/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/зачем-нужен-риэлтор-при-покупке-квартиры/](https://zdkvartira.ru/часто-задаваемы-вопросы/зачем-нужен-риэлтор-при-покупке-квартиры/) → [https://zdkvartira.ru/](https://zdkvartira.ru/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоит-услуга-по-поиску-и-оформлению-квартиры/](https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоит-услуга-по-поиску-и-оформлению-квартиры/) → [https://zdkvartira.ru/](https://zdkvartira.ru/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/могу-ли-я-ещё-сам-подбирать-варианты-квартир/](https://zdkvartira.ru/часто-задаваемы-вопросы/могу-ли-я-ещё-сам-подбирать-варианты-квартир/) → [https://zdkvartira.ru/часто-задаваемы-вопросы/](https://zdkvartira.ru/часто-задаваемы-вопросы/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/как-быстро-сдается-квартира/](https://zdkvartira.ru/часто-задаваемы-вопросы/как-быстро-сдается-квартира/) → [https://zdkvartira.ru/часто-задаваемы-вопросы/](https://zdkvartira.ru/часто-задаваемы-вопросы/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/какие-документы-нужны-чтобы-сдать-квартиру/](https://zdkvartira.ru/часто-задаваемы-вопросы/какие-документы-нужны-чтобы-сдать-квартиру/) → [https://zdkvartira.ru/часто-задаваемы-вопросы/](https://zdkvartira.ru/часто-задаваемы-вопросы/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/что-делать-если-нам-придется-освободить-квартиру-раньше-срока-по-независящим-от-нас-причинам/](https://zdkvartira.ru/часто-задаваемы-вопросы/что-делать-если-нам-придется-освободить-квартиру-раньше-срока-по-независящим-от-нас-причинам/) → [https://zdkvartira.ru/](https://zdkvartira.ru/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоят-услуги-по-аренде-квартиры/](https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоят-услуги-по-аренде-квартиры/) → [https://zdkvartira.ru/](https://zdkvartira.ru/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/можно-ли-получить-платежные-документы-чтобы-компенсировать-расходы-по-аренде-квартиры-у-себя-на-предприятии/](https://zdkvartira.ru/часто-задаваемы-вопросы/можно-ли-получить-платежные-документы-чтобы-компенсировать-расходы-по-аренде-квартиры-у-себя-на-предприятии/) → [https://zdkvartira.ru/](https://zdkvartira.ru/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/вы-можете-получить-скидку-у-застройщика/](https://zdkvartira.ru/часто-задаваемы-вопросы/вы-можете-получить-скидку-у-застройщика/) → [https://zdkvartira.ru/часто-задаваемы-вопросы/](https://zdkvartira.ru/часто-задаваемы-вопросы/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоят-услуги-по-подбору-квартиры-в-новостройке/](https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоят-услуги-по-подбору-квартиры-в-новостройке/) → [https://zdkvartira.ru/часто-задаваемы-вопросы/](https://zdkvartira.ru/часто-задаваемы-вопросы/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/смогу-ли-я-одобрить-ипотеку-обратившись-в-миэль/](https://zdkvartira.ru/часто-задаваемы-вопросы/смогу-ли-я-одобрить-ипотеку-обратившись-в-миэль/) → [https://zdkvartira.ru/](https://zdkvartira.ru/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/какие-документы-необходимы-для-получения-ипотечного-кредита/](https://zdkvartira.ru/часто-задаваемы-вопросы/какие-документы-необходимы-для-получения-ипотечного-кредита/) → [https://zdkvartira.ru/](https://zdkvartira.ru/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоит-услуга-одобрения-ипотеки/](https://zdkvartira.ru/часто-задаваемы-вопросы/сколько-стоит-услуга-одобрения-ипотеки/) → [https://zdkvartira.ru/часто-задаваемы-вопросы/](https://zdkvartira.ru/часто-задаваемы-вопросы/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/можете-сопроводить-сделку-с-альтернативой-и-сторонними-участниками-сделки/](https://zdkvartira.ru/часто-задаваемы-вопросы/можете-сопроводить-сделку-с-альтернативой-и-сторонними-участниками-сделки/) → [https://zdkvartira.ru/](https://zdkvartira.ru/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/кто-должен-оплачивать-сопровождение-сделки/](https://zdkvartira.ru/часто-задаваемы-вопросы/кто-должен-оплачивать-сопровождение-сделки/) → [https://zdkvartira.ru/](https://zdkvartira.ru/)
+- [https://zdkvartira.ru/часто-задаваемы-вопросы/что-дает-правовой-сертификат-миэль/](https://zdkvartira.ru/часто-задаваемы-вопросы/что-дает-правовой-сертификат-миэль/) → [https://zdkvartira.ru/](https://zdkvartira.ru/)
 
 ### 302 Redirects (1)
 
-- `https://zdkvartira.ru/объекты/` → `https://zdkvartira.ru/объекты/городская-недвижимость/`
+- [https://zdkvartira.ru/объекты/](https://zdkvartira.ru/объекты/) → [https://zdkvartira.ru/объекты/городская-недвижимость/](https://zdkvartira.ru/объекты/городская-недвижимость/)
 
 ## Top 50 Most Linked Pages
 
@@ -85,56 +86,56 @@ Pages with the highest number of incoming links:
 
 | Rank | URL | Incoming Links |
 |------|-----|----------------|
-| 1 | https://zdkvartira.ru/ | 6749 |
-| 2 | https://zdkvartira.ru/список-отзывов/ | 5451 |
-| 3 | https://zdkvartira.ru/команда-миэль/ | 5445 |
-| 4 | javascript://void(0) | 4271 |
-| 5 | https://zdkvartira.ru/новости-офиса/ | 4265 |
-| 6 | https://zdkvartira.ru/объекты/городская-недвижимость/ | 4111 |
-| 7 | https://zdkvartira.ru/услуги/продать-квартиру/ | 4078 |
-| 8 | https://zdkvartira.ru/услуги/ипотека/ | 4075 |
-| 9 | https://zdkvartira.ru/объекты/загородная-недвижимость/ | 4072 |
-| 10 | https://zdkvartira.ru/вакансии/ | 4072 |
-| 11 | https://zdkvartira.ru/услуги/купить-квартиру/ | 4071 |
-| 12 | https://zdkvartira.ru/услуги/сдать-квартиру/ | 4070 |
-| 13 | https://zdkvartira.ru/услуги/снять-квартиру/ | 4070 |
-| 14 | https://zdkvartira.ru/услуги/сопровождение-сделки/ | 4070 |
-| 15 | https://zdkvartira.ru/объекты/коммерческая-недвижимость/ | 4069 |
-| 16 | https://zdkvartira.ru/часто-задаваемы-вопросы/ | 4069 |
-| 17 | https://zdkvartira.ru/программа-лояльности/ | 2721 |
-| 18 | https://zdkvartira.ru/правовой-сертификат/ | 2717 |
-| 19 | https://zdkvartira.ru/новостройки/ | 2715 |
-| 20 | https://zdkvartira.ru/о-компании/ | 2713 |
-| 21 | https://zdkvartira.ru/контакты/ | 2713 |
-| 22 | https://zdkvartira.ru/акции-и-скидки/ | 1358 |
-| 23 | https://zdkvartira.ru/информационная-политика/ | 1357 |
-| 24 | http://redconnect.ru/ | 1357 |
-| 25 | https://zdkvartira.ru/realty/favorites | 1356 |
-| 26 | https://zdkvartira.ru/realty/compares | 1356 |
-| 27 | https://zdkvartira.ru/search/ | 1356 |
-| 28 | https://zdkvartira.ru/pages/sitemap | 1356 |
-| 29 | https://zdkvartira.ru/новости/ | 1057 |
-| 30 | https://zdkvartira.ru/новости/как-выбрать-лучшую-квартиру-студию/ | 1053 |
-| 31 | https://zdkvartira.ru/новости-офиса/450-тысяч-поддержки-для-семей-с-детьми-рождение-3-и-последующего-ребенка/ | 207 |
-| 32 | http://mos.ru/ | 134 |
-| 33 | https://zdkvartira.ru/согласие-на-обработку-персональных-данных/ | 46 |
-| 34 | https://zdkvartira.ru/команда-миэль/kondaurov-andrej-aleksandrovich/ | 44 |
-| 35 | https://zdkvartira.ru/аналитика-цен/ | 41 |
-| 36 | https://zdkvartira.ru/объекты/ | 35 |
-| 37 | http://balashiha.ru/ | 32 |
-| 38 | https://t.me/ElenaButyr | 21 |
-| 39 | https://max.ru/u/f9LHodD0cOK1I7cUGRvZvN1DN4wJB1BNSH1x63SXkz_wYQskRxXSVlId3II | 21 |
-| 40 | http://arenda.miel.ru/ | 19 |
-| 41 | https://zdkvartira.ru/команда-миэль/butyirkina-elena-borisovna/ | 13 |
-| 42 | https://www.miel.ru/about/leaders/86599149/ | 13 |
-| 43 | http://new.miel.ru/ | 12 |
-| 44 | https://www.miel.ru/about/leaders/15696/ | 12 |
-| 45 | https://zdkvartira.ru/новости-офиса/лучшее-предложение-по-кредитованию-от-банка-втб/ | 11 |
-| 46 | https://zdkvartira.ru/объекты/городская-недвижимость/1-комнатная-квартира-в-г-балашиха-no4261/ | 10 |
-| 47 | https://zdkvartira.ru/media/images/07559731-9f03-47e2-837a-6646a25fd487.original.jpg | 10 |
-| 48 | https://zdkvartira.ru/media/images/b0805761-0a07-4f92-99a7-e1154f875b22.original.jpg | 10 |
-| 49 | http://www.miel.ru/about/leaders/86599149/ | 10 |
-| 50 | https://arenda.miel.ru/ | 10 |
+| 1 | [https://zdkvartira.ru/](https://zdkvartira.ru/) | 8117 |
+| 2 | [https://zdkvartira.ru/список-отзывов/](https://zdkvartira.ru/список-отзывов/) | 6817 |
+| 3 | [https://zdkvartira.ru/команда-миэль/](https://zdkvartira.ru/команда-миэль/) | 6811 |
+| 4 | [javascript://void(0)](javascript://void(0)) | 5644 |
+| 5 | [https://zdkvartira.ru/новости-офиса/](https://zdkvartira.ru/новости-офиса/) | 5629 |
+| 6 | [https://zdkvartira.ru/объекты/городская-недвижимость/](https://zdkvartira.ru/объекты/городская-недвижимость/) | 5477 |
+| 7 | [https://zdkvartira.ru/услуги/продать-квартиру/](https://zdkvartira.ru/услуги/продать-квартиру/) | 5442 |
+| 8 | [https://zdkvartira.ru/услуги/ипотека/](https://zdkvartira.ru/услуги/ипотека/) | 5439 |
+| 9 | [https://zdkvartira.ru/вакансии/](https://zdkvartira.ru/вакансии/) | 5436 |
+| 10 | [https://zdkvartira.ru/объекты/загородная-недвижимость/](https://zdkvartira.ru/объекты/загородная-недвижимость/) | 5436 |
+| 11 | [https://zdkvartira.ru/услуги/купить-квартиру/](https://zdkvartira.ru/услуги/купить-квартиру/) | 5435 |
+| 12 | [https://zdkvartira.ru/услуги/сдать-квартиру/](https://zdkvartira.ru/услуги/сдать-квартиру/) | 5434 |
+| 13 | [https://zdkvartira.ru/услуги/снять-квартиру/](https://zdkvartira.ru/услуги/снять-квартиру/) | 5434 |
+| 14 | [https://zdkvartira.ru/услуги/сопровождение-сделки/](https://zdkvartira.ru/услуги/сопровождение-сделки/) | 5434 |
+| 15 | [https://zdkvartira.ru/объекты/коммерческая-недвижимость/](https://zdkvartira.ru/объекты/коммерческая-недвижимость/) | 5433 |
+| 16 | [https://zdkvartira.ru/часто-задаваемы-вопросы/](https://zdkvartira.ru/часто-задаваемы-вопросы/) | 5433 |
+| 17 | [https://zdkvartira.ru/программа-лояльности/](https://zdkvartira.ru/программа-лояльности/) | 4083 |
+| 18 | [https://zdkvartira.ru/правовой-сертификат/](https://zdkvartira.ru/правовой-сертификат/) | 4079 |
+| 19 | [https://zdkvartira.ru/новостройки/](https://zdkvartira.ru/новостройки/) | 4077 |
+| 20 | [https://zdkvartira.ru/контакты/](https://zdkvartira.ru/контакты/) | 4075 |
+| 21 | [https://zdkvartira.ru/о-компании/](https://zdkvartira.ru/о-компании/) | 4075 |
+| 22 | [https://zdkvartira.ru/акции-и-скидки/](https://zdkvartira.ru/акции-и-скидки/) | 2718 |
+| 23 | [http://redconnect.ru/](http://redconnect.ru/) | 2718 |
+| 24 | [https://zdkvartira.ru/информационная-политика/](https://zdkvartira.ru/информационная-политика/) | 2717 |
+| 25 | [https://zdkvartira.ru/pages/sitemap](https://zdkvartira.ru/pages/sitemap) | 2716 |
+| 26 | [https://zdkvartira.ru/realty/compares](https://zdkvartira.ru/realty/compares) | 2716 |
+| 27 | [https://zdkvartira.ru/realty/favorites](https://zdkvartira.ru/realty/favorites) | 2716 |
+| 28 | [https://zdkvartira.ru/search/](https://zdkvartira.ru/search/) | 2716 |
+| 29 | [https://zdkvartira.ru/новости/](https://zdkvartira.ru/новости/) | 2114 |
+| 30 | [https://zdkvartira.ru/новости/как-выбрать-лучшую-квартиру-студию/](https://zdkvartira.ru/новости/как-выбрать-лучшую-квартиру-студию/) | 2104 |
+| 31 | [https://zdkvartira.ru/новости-офиса/450-тысяч-поддержки-для-семей-с-детьми-рождение-3-и-последующего-ребенка/](https://zdkvartira.ru/новости-офиса/450-тысяч-поддержки-для-семей-с-детьми-рождение-3-и-последующего-ребенка/) | 401 |
+| 32 | [http://mos.ru/](http://mos.ru/) | 267 |
+| 33 | [https://zdkvartira.ru/согласие-на-обработку-персональных-данных/](https://zdkvartira.ru/согласие-на-обработку-персональных-данных/) | 88 |
+| 34 | [https://zdkvartira.ru/объекты/](https://zdkvartira.ru/объекты/) | 74 |
+| 35 | [https://zdkvartira.ru/команда-миэль/kondaurov-andrej-aleksandrovich/](https://zdkvartira.ru/команда-миэль/kondaurov-andrej-aleksandrovich/) | 72 |
+| 36 | [http://balashiha.ru/](http://balashiha.ru/) | 64 |
+| 37 | [http://arenda.miel.ru/](http://arenda.miel.ru/) | 34 |
+| 38 | [https://max.ru/u/f9LHodD0cOK1I7cUGRvZvN1DN4wJB1BNSH1x63SXkz\_wYQskRxXSVlId3II](https://max.ru/u/f9LHodD0cOK1I7cUGRvZvN1DN4wJB1BNSH1x63SXkz_wYQskRxXSVlId3II) | 29 |
+| 39 | [https://t.me/ElenaButyr](https://t.me/ElenaButyr) | 29 |
+| 40 | [https://www.miel.ru/about/leaders/86599149/](https://www.miel.ru/about/leaders/86599149/) | 26 |
+| 41 | [http://new.miel.ru/](http://new.miel.ru/) | 24 |
+| 42 | [https://www.miel.ru/about/leaders/15696/](https://www.miel.ru/about/leaders/15696/) | 24 |
+| 43 | [https://zdkvartira.ru/новости-офиса/лучшее-предложение-по-кредитованию-от-банка-втб/](https://zdkvartira.ru/новости-офиса/лучшее-предложение-по-кредитованию-от-банка-втб/) | 22 |
+| 44 | [https://zdkvartira.ru/команда-миэль/butyirkina-elena-borisovna/](https://zdkvartira.ru/команда-миэль/butyirkina-elena-borisovna/) | 21 |
+| 45 | [https://zdkvartira.ru/аналитика-цен/](https://zdkvartira.ru/аналитика-цен/) | 20 |
+| 46 | [https://arenda.miel.ru/](https://arenda.miel.ru/) | 20 |
+| 47 | [http://www.miel.ru/about/leaders/86599149/](http://www.miel.ru/about/leaders/86599149/) | 19 |
+| 48 | [https://zdkvartira.ru/акции-и-скидки/в-день-рождения-особые-условия-и-скидка-10-на-любую-услугу/](https://zdkvartira.ru/акции-и-скидки/в-день-рождения-особые-условия-и-скидка-10-на-любую-услугу/) | 18 |
+| 49 | [https://zdkvartira.ru/акции-и-скидки/для-учителей-военных-и-врачей/](https://zdkvartira.ru/акции-и-скидки/для-учителей-военных-и-врачей/) | 18 |
+| 50 | [https://zdkvartira.ru/объекты/городская-недвижимость/2-комнатная-квартира-в-г-балашиха-47/](https://zdkvartira.ru/объекты/городская-недвижимость/2-комнатная-квартира-в-г-балашиха-47/) | 18 |
 
 ## External Domains
 
@@ -231,11 +232,11 @@ Found links to 87 unique external domains:
 ## Scan Configuration
 
 - **Crawl Delay**: 1000ms
-- **Max Retries**: 2
+- **Max Retries**: 1
 - **Request Timeout**: 3000ms
 - **Respect robots.txt**: No
 - **Exclude Rules**: 7 rules
-- **URLs Excluded**: 1589
+- **URLs Excluded**: 1645
 
 ## Generated Files
 
@@ -255,4 +256,4 @@ Downloaded HTML content is saved in the `crawled-content/` directory.
 
 ---
 
-*Report generated on 2026.04.25 02:41 +0300*
+*Report generated on 2026.04.25 12:15:40 +0300*
