@@ -2,11 +2,11 @@
 
 **ID:** `property-detail`
 
-**Example URL:** https://zdkvartira.ru/объекты/
+**Example URL:** https://zdkvartira.ru/объекты/городская-недвижимость/
 
 **Example Title:** Купить квартиру в Железнодорожном, Балашихе.  1,2,3 и 4-комнатные квартиры
 
-**Total Pages:** 35
+**Total Pages:** 37
 
 ## Content Blocks (7)
 

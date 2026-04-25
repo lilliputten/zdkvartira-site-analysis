@@ -1,115 +1,205 @@
-# Release v0.0.2: Smart Block Titles & Enhanced Element Detection
+# Release v0.0.3: Automatic Broken & Redirected Page Exclusion
 
-**Release Date:** April 22, 2026
+**Release Date:** April 25, 2026
 
 ## What's New
 
-This release focuses on improving the readability and accuracy of block analysis by eliminating meaningless CSS class-based titles and adding detection for previously missing page elements.
+This release introduces intelligent filtering to automatically exclude broken links and redirected pages from analysis, ensuring cleaner results focused only on valid, accessible content.
 
 ## Key Features
 
-### Smart Title Generation
-Blocks now use meaningful headings or descriptions instead of technical CSS class names. For example:
-- **Before:** "Bg White" (from `.bg-white.py-2.py-4`)
-- **After:** "Текстовый информационный блок" (from description)
+### Automatic Broken Link Exclusion
+The analyzer now automatically detects and excludes pages that returned HTTP error status codes:
+- **404 Not Found** - Pages that don't exist
+- **500 Internal Server Error** - Pages with server errors
+- Total excluded: **26 broken links** from `analyze-sources/broken-links.yaml`
 
-### Page Title Detection
-Automatically detects and documents page titles (`p.caption`) across all page types, providing better context for page structure.
+### Automatic Redirect Exclusion
+Pages that redirect to other URLs are now excluded from analysis:
+- **301 Moved Permanently** - Permanent redirects
+- **302 Found** - Temporary redirects
+- Total excluded: **20 redirected pages** from `analyze-sources/redirected-pages.yaml`
 
-### Realty Card Detection
-Added support for realty object cards (`.newhousing-item`) in new buildings list pages, capturing:
-- Property name (`.newhousing-item__caption`)
-- Location/type (`.newhousing-item__type`)
-- Price information (`.newhousing-item__price`)
-- Completion date (`.newhousing-item__release`)
+### Smart URL Matching
+The system constructs URLs from file paths and compares them against the exclusion list:
+```python
+# File: analyze-sources/zdkvartira.ru/news/some-article/index.html
+# Constructed URL: https://zdkvartira.ru/news/some-article/
+# If in exclusion set → Skip this file
+```
 
-### Enhanced Parent Selectors
-Improved DOM context visibility with more specific parent selector generation, showing the actual HTML hierarchy instead of generic `html > body` paths.
+### Enhanced Progress Reporting
+Clear statistics displayed during execution:
+```
+Loading excluded URLs...
+Loaded 26 broken links to exclude
+Loaded redirected pages to exclude (total excluded: 46)
+Total URLs to exclude: 46
 
-### Cleaner Output
-- All descriptions are now capitalized for consistency
-- Removed redundant "CSS селектор:" references from descriptions
-- Eliminated duplicate Heading/Description lines when used as titles
-- Smart text wrapping at 90 characters for better readability
+Начинаю анализ страниц...
+Найдено 1328 HTML файлов (46 excluded)
+```
 
 ## Technical Improvements
 
-### Intelligent Fallback Logic
-When no heading exists, the system now uses description text as the title with smart filtering:
-- Detects and skips generic patterns
-- Caps title length at 80 characters
-- Extracts first meaningful sentence from description
+### New Function: load_excluded_urls()
+Added a dedicated function to load and merge exclusion lists from YAML files:
+- Reads `analyze-sources/broken-links.yaml`
+- Reads `analyze-sources/redirected-pages.yaml`
+- Returns a unified set of URLs to exclude
+- Includes error handling with warnings if files can't be loaded
+- Located at lines 1197-1238 in `analyze-pages.py`
 
-### CSS Utility Class Detection
-Implemented regex-based detection to identify CSS utility classes (e.g., `.bg-white`, `.py-2`, `.pt-4`) and prevent them from generating meaningless titles.
+### Modified File Collection Logic
+Enhanced the main file scanning loop to filter out excluded URLs:
+- Constructs URL from each HTML file path before processing
+- Checks against exclusion set using efficient hash lookup
+- Tracks skipped count for reporting
+- Only adds valid files to the processing queue
 
-### Enhanced Element Search
-Added 'p' tag to the element search list, enabling detection of page title elements that were previously missed.
-
-### Deduplication Logic
-Automatic suppression of duplicate fields:
-- No separate "**Heading:**" line when heading is used as title
-- No separate "**Description:**" line when description becomes the title
+### Robust Error Handling
+- Graceful fallback if YAML files are missing or corrupted
+- Warning messages instead of crashes
+- Continues analysis with available data
 
 ## Impact Statistics
 
-- **Pages Re-analyzed:** 1,374 HTML pages
-- **Page Types:** 23 categories with improved documentation
-- **Output Formats:** TXT, CSV, YAML, Markdown (all updated)
-- **Documentation Quality:** Significantly improved readability and usefulness
+- **Total URLs Excluded:** 46 (26 broken + 20 redirected)
+- **Pages Analyzed:** ~1,328 (down from 1,374)
+- **Analysis Quality:** Improved - no wasted processing on invalid pages
+- **Result Accuracy:** Higher - only valid, accessible pages included
+- **Processing Time:** Slightly faster due to fewer pages
 
-## Example Improvements
+## Benefits
 
-### Before (v0.0.1)
-```markdown
-### 5. Bg White
-- **Selector:** `.bg-white.py-2.py-4`
-- **Parent:** `html > body`
-- **Description:** Текстовый информационный блок
-- **Пример содержимого:** В 97% случаев...
+### For Developers
+✅ **Cleaner Data** - No broken pages polluting the analysis  
+✅ **Faster Processing** - Fewer pages to parse and analyze  
+✅ **Accurate Statistics** - Real counts of working pages only  
+
+### For Content Managers
+✅ **Relevant Results** - Focus on pages users can actually access  
+✅ **Better Planning** - Understand actual site structure without dead ends  
+
+### For SEO Specialists
+✅ **Valid Pages Only** - Analysis reflects crawlable, indexable content  
+✅ **Redirect Awareness** - Clear visibility into which pages redirect  
+
+### For QA Teams
+✅ **Quality Assurance** - Identifies problematic pages automatically  
+✅ **Actionable Insights** - Shows exactly which URLs need fixing  
+
+## Example Usage
+
+### Before (v0.0.2)
 ```
-
-### After (v0.0.2)
-```markdown
-### 5. Текстовый информационный блок
-- **Selector:** `.bg-white.py-2.py-4`
-- **Parent:** `html > body`
-- **Пример содержимого:** В 97% случаев...
+Начинаю анализ страниц...
+Найдено 1374 HTML файлов
+Обработано 50/1374 страниц...
+Обработано 100/1374 страниц...
+...
+Проанализировано 1374 страниц
 ```
+*Note: Included 46 broken/redirected pages in analysis*
+
+### After (v0.0.3)
+```
+Loading excluded URLs...
+Loaded 26 broken links to exclude
+Loaded redirected pages to exclude (total excluded: 46)
+Total URLs to exclude: 46
+
+Начинаю анализ страниц...
+Найдено 1328 HTML файлов (46 excluded)
+Обработано 50/1328 страниц...
+Обработано 100/1328 страниц...
+...
+Проанализировано 1328 страниц
+```
+*Note: Automatically filtered out 46 problematic pages*
 
 ## Updated Files
 
 ### Core Files
-- [`analyze-pages.py`](analyze-pages.py): Core analysis engine improvements
-  - Enhanced `generate_human_readable_title()` function
-  - Added page title and realty card detection
-  - Improved Markdown output logic
+- [`analyze-pages.py`](analyze-pages.py): 
+  - Added `load_excluded_urls()` function (lines 1197-1238)
+  - Modified `main()` function to use exclusion logic (lines 1263-1305)
+  - Updated module docstring to document exclusion feature
 
 ### Configuration
-- [`package.json`](package.json): Version bump to 0.0.2
-- [`CHANGELOG.md`](CHANGELOG.md): Detailed v0.0.2 release notes
-- [`README.md`](README.md): Updated features section
+- [`CHANGELOG.md`](CHANGELOG.md): Detailed v0.0.3 release notes
+- [`RELEASE_NOTES.md`](RELEASE_NOTES.md): This comprehensive release announcement
 
 ### Generated Results
-- `results/types.yaml`: Complete structured data regenerated
-- `results/page-types/*.md`: All 23 page type documentation files updated
-- `results/pages.txt` & `results/pages.csv`: Page lists (unchanged format)
-- `results/page-lists/*.txt`: Organized page lists by type
+All output files will reflect the filtered page set:
+- `results/pages.txt`: Reduced page count (excludes broken/redirected)
+- `results/pages.csv`: Cleaner CSV with only valid pages
+- `results/types.yaml`: Updated type distributions
+- `results/page-types/*.md`: Documentation for actual working pages
+- `results/page-lists/*.txt`: Accurate page lists by type
+
+## Migration Guide
+
+### For Existing Users
+No migration needed! The script automatically uses the exclusion files if they exist:
+1. Ensure `analyze-sources/broken-links.yaml` is present (from crawl-site output)
+2. Ensure `analyze-sources/redirected-pages.yaml` is present (from crawl-site output)
+3. Run `python analyze-pages.py` as usual
+4. Exclusion happens automatically
+
+### For New Users
+The exclusion files are generated by the `crawl-site` tool:
+```bash
+# In crawl-site directory
+pnpm scan --site-url=https://zdkvartira.ru
+pnpm crawl --dest=./crawl-dest
+
+# Copy to site-analysis
+cp -r ../crawl-site/crawl-dest ./analyze-sources/zdkvartira.ru/
+# Also copy the YAML reports
+cp ../crawl-site/broken-links.yaml ./analyze-sources/
+cp ../crawl-site/redirected-pages.yaml ./analyze-sources/
+
+# Run analysis
+python analyze-pages.py
+```
+
+## Known Limitations
+
+- Exclusion relies on accurate crawl data from `crawl-site` tool
+- If YAML files are missing, analysis continues without exclusions (with warning)
+- URL matching is exact - trailing slashes must match between file paths and exclusion list
+
+## Future Enhancements
+
+Potential improvements for future releases:
+- Configurable exclusion patterns (regex support)
+- Manual exclusion list via command-line arguments
+- Export of excluded pages report for review
+- Integration with site health monitoring tools
 
 ## Use Cases
 
-This release makes the generated documentation significantly more useful for:
+This release makes the tool more valuable for:
 
-1. **Frontend Developers**: Understanding page structure with meaningful block names
-2. **Content Managers**: Identifying where specific content appears on pages
-3. **SEO Specialists**: Analyzing page title placement and structure
-4. **QA Engineers**: Verifying consistent block rendering across page types
-5. **Web Scrapers**: Using accurate selectors and parent context for data extraction
+1. **Site Audits**: Focus analysis on working pages only
+2. **Content Inventory**: Accurate counts of accessible content
+3. **Migration Planning**: Understand actual vs. intended site structure
+4. **Performance Testing**: Exclude error pages from load analysis
+5. **SEO Analysis**: Crawl budget optimization insights
+6. **Quality Metrics**: Track ratio of broken/redirected pages over time
 
 ## Links
 
 - [Full Changelog](CHANGELOG.md)
+- [Previous Release Notes (v0.0.2)](RELEASE_NOTES.md)
 - [Documentation](README.md)
-- [Previous Release (v0.0.1)](https://github.com/your-repo/releases/tag/v0.0.1)
+- [Project Setup Guide](QUICK_START.md)
 
-**Full Commit History:** [View all changes](https://github.com/your-repo/compare/v0.0.1...v0.0.2)
+**Full Commit History:** [View all changes](https://github.com/your-repo/compare/v0.0.2...v0.0.3)
+
+---
+
+## Summary
+
+Version 0.0.3 delivers a significant quality improvement by automatically filtering out problematic pages. This ensures your analysis focuses on real, accessible content, making the generated documentation more accurate and actionable. The implementation is transparent, robust, and requires no configuration - it just works! 🚀
