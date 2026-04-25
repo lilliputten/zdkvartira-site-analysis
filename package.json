@@ -1,7 +1,7 @@
 {
   "name": "zdkvartira-site-analysis",
-  "version": "0.0.2",
-  "changed": "2026.04.22, 21:50",
+  "version": "0.0.3",
+  "changed": "2026.04.25, 05:29",
   "description": "Analyzer for zdkvartira.ru real estate website",
   "main": "analyze-pages.py",
   "author": "",

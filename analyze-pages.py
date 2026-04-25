@@ -19,6 +19,7 @@ Features:
 - Text cleaning (removes line breaks and multiple spaces)
 - Main page includes header/footer blocks; other pages exclude common blocks
 - English dash-case IDs for all page types
+- Excludes broken links (404, 500 errors) and redirected pages (301, 302)
 """
 
 import os
@@ -1194,6 +1195,50 @@ def format_block_for_yaml(block, is_example=True):
     return '\n'.join(lines)
 
 
+def load_excluded_urls(script_dir):
+    """
+    Load URLs to exclude from analysis (broken links and redirects).
+    
+    Args:
+        script_dir: Directory containing the script
+        
+    Returns:
+        Set of URLs to exclude
+    """
+    excluded_urls = set()
+    analyze_sources_dir = os.path.join(script_dir, 'analyze-sources')
+    
+    # Load broken links
+    broken_links_path = os.path.join(analyze_sources_dir, 'broken-links.yaml')
+    if os.path.exists(broken_links_path):
+        try:
+            with open(broken_links_path, 'r', encoding='utf-8') as f:
+                broken_links = yaml.safe_load(f)
+                if broken_links:
+                    for item in broken_links:
+                        if 'url' in item:
+                            excluded_urls.add(item['url'])
+            print(f"Loaded {len([u for u in excluded_urls])} broken links to exclude")
+        except Exception as e:
+            print(f"Warning: Could not load broken-links.yaml: {e}")
+    
+    # Load redirected pages
+    redirected_pages_path = os.path.join(analyze_sources_dir, 'redirected-pages.yaml')
+    if os.path.exists(redirected_pages_path):
+        try:
+            with open(redirected_pages_path, 'r', encoding='utf-8') as f:
+                redirected_pages = yaml.safe_load(f)
+                if redirected_pages:
+                    for item in redirected_pages:
+                        if 'url' in item:
+                            excluded_urls.add(item['url'])
+            print(f"Loaded redirected pages to exclude (total excluded: {len(excluded_urls)})")
+        except Exception as e:
+            print(f"Warning: Could not load redirected-pages.yaml: {e}")
+    
+    return excluded_urls
+
+
 def main():
     """
     Main function to analyze all HTML pages.
@@ -1215,6 +1260,13 @@ def main():
     print(f"  Output directory: results")
     sys.stdout.flush()
 
+    # Load excluded URLs (broken links and redirects)
+    print("\nLoading excluded URLs...")
+    sys.stdout.flush()
+    excluded_urls = load_excluded_urls(script_dir)
+    print(f"Total URLs to exclude: {len(excluded_urls)}")
+    sys.stdout.flush()
+
     # Создаем директории вывода если не существуют
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs(page_types_dir, exist_ok=True)
@@ -1226,13 +1278,32 @@ def main():
     # Собираем все HTML файлы
     pages = []
     html_files = []
+    skipped_count = 0
 
     for root, dirs, files in os.walk(base_dir):
         for file in files:
             if file.endswith('.html'):
-                html_files.append(os.path.join(root, file))
+                html_path = os.path.join(root, file)
+                
+                # Calculate the URL that would correspond to this file
+                rel_path = os.path.relpath(html_path, start=base_dir)
+                rel_path = rel_path.replace('\\', '/')
+                
+                # Construct URL to check against exclusion list
+                if rel_path == 'index.html':
+                    url = BASE_URL + "/"
+                else:
+                    path_part = rel_path.replace('/index.html', '')
+                    url = f"{BASE_URL}/{path_part}/"
+                
+                # Skip if URL is in exclusion list
+                if url in excluded_urls:
+                    skipped_count += 1
+                    continue
+                
+                html_files.append(html_path)
 
-    print(f"Найдено {len(html_files)} HTML файлов")
+    print(f"Найдено {len(html_files)} HTML файлов ({skipped_count} excluded)")
     sys.stdout.flush()
 
     # Анализируем каждую страницу

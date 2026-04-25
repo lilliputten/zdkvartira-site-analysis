@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.3] - 2026-04-25
+
+### Added
+- Automatic exclusion of broken links (404, 500 errors) from analysis
+- Automatic exclusion of redirected pages (301, 302) from analysis
+- New `load_excluded_urls()` function to load exclusion lists from YAML files
+- Exclusion statistics displayed during script execution
+
+### Changed
+- Updated docstring to document the exclusion feature
+- Modified main() function to filter out excluded URLs before processing
+- Enhanced progress reporting to show count of excluded files
+
+### Technical Details
+- Reads `analyze-sources/broken-links.yaml` for broken link URLs
+- Reads `analyze-sources/redirected-pages.yaml` for redirected page URLs
+- Constructs URLs from file paths and compares against exclusion set
+- Skips matching files during HTML file collection phase
+- Total exclusions: 46 URLs (26 broken + 20 redirected)
+
 ## [0.0.2] - 2026-04-22
 
 ### Improved
