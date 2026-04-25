@@ -217,11 +217,11 @@ expected location:
 ```bash
 # From the crawl-site directory
 # The analyzer expects files in:
-# analyze-sources/zdkvartira.ru/
+# sources/zdkvartira.ru/
 
 # Example (adjust paths as needed):
 cp -r ../crawl-site/crawl-dest \
-  ./analyze-sources/zdkvartira.ru/
+  ./sources/zdkvartira.ru/
 ```
 
 #### 8. Run the Analyzer
@@ -399,7 +399,7 @@ The analyzer identifies 23 page types:
 
 ```
 site-analysis/
-├── analyze-sources/
+├── sources/
 │   └── zdkvartira.ru/  # Crawled HTML files
 ├── results/            # Analysis output
 ├── analyze-pages.py    # Main analysis script

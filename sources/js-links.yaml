@@ -1,0 +1,5 @@
+- javascript:document.getElementById('s-form').submit()
+- javascript:routeAuto()
+- javascript:routeBus()
+- javascript:routeTrain()
+- javascript:void(0)

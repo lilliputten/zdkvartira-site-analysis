@@ -12,18 +12,18 @@ This release introduces intelligent filtering to automatically exclude broken li
 The analyzer now automatically detects and excludes pages that returned HTTP error status codes:
 - **404 Not Found** - Pages that don't exist
 - **500 Internal Server Error** - Pages with server errors
-- Total excluded: **26 broken links** from `analyze-sources/broken-links.yaml`
+- Total excluded: **26 broken links** from `sources/broken-links.yaml`
 
 ### Automatic Redirect Exclusion
 Pages that redirect to other URLs are now excluded from analysis:
 - **301 Moved Permanently** - Permanent redirects
 - **302 Found** - Temporary redirects
-- Total excluded: **20 redirected pages** from `analyze-sources/redirected-pages.yaml`
+- Total excluded: **20 redirected pages** from `sources/redirected-pages.yaml`
 
 ### Smart URL Matching
 The system constructs URLs from file paths and compares them against the exclusion list:
 ```python
-# File: analyze-sources/zdkvartira.ru/news/some-article/index.html
+# File: sources/zdkvartira.ru/news/some-article/index.html
 # Constructed URL: https://zdkvartira.ru/news/some-article/
 # If in exclusion set → Skip this file
 ```
@@ -44,8 +44,8 @@ Total URLs to exclude: 46
 
 ### New Function: load_excluded_urls()
 Added a dedicated function to load and merge exclusion lists from YAML files:
-- Reads `analyze-sources/broken-links.yaml`
-- Reads `analyze-sources/redirected-pages.yaml`
+- Reads `sources/broken-links.yaml`
+- Reads `sources/redirected-pages.yaml`
 - Returns a unified set of URLs to exclude
 - Includes error handling with warnings if files can't be loaded
 - Located at lines 1197-1238 in `analyze-pages.py`
@@ -142,8 +142,8 @@ All output files will reflect the filtered page set:
 
 ### For Existing Users
 No migration needed! The script automatically uses the exclusion files if they exist:
-1. Ensure `analyze-sources/broken-links.yaml` is present (from crawl-site output)
-2. Ensure `analyze-sources/redirected-pages.yaml` is present (from crawl-site output)
+1. Ensure `sources/broken-links.yaml` is present (from crawl-site output)
+2. Ensure `sources/redirected-pages.yaml` is present (from crawl-site output)
 3. Run `python analyze-pages.py` as usual
 4. Exclusion happens automatically
 
@@ -155,10 +155,10 @@ pnpm scan --site-url=https://zdkvartira.ru
 pnpm crawl --dest=./crawl-dest
 
 # Copy to site-analysis
-cp -r ../crawl-site/crawl-dest ./analyze-sources/zdkvartira.ru/
+cp -r ../crawl-site/crawl-dest ./sources/zdkvartira.ru/
 # Also copy the YAML reports
-cp ../crawl-site/broken-links.yaml ./analyze-sources/
-cp ../crawl-site/redirected-pages.yaml ./analyze-sources/
+cp ../crawl-site/broken-links.yaml ./sources/
+cp ../crawl-site/redirected-pages.yaml ./sources/
 
 # Run analysis
 python analyze-pages.py

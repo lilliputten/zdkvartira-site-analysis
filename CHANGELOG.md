@@ -19,8 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enhanced progress reporting to show count of excluded files
 
 ### Technical Details
-- Reads `analyze-sources/broken-links.yaml` for broken link URLs
-- Reads `analyze-sources/redirected-pages.yaml` for redirected page URLs
+- Reads `sources/broken-links.yaml` for broken link URLs
+- Reads `sources/redirected-pages.yaml` for redirected page URLs
 - Constructs URLs from file paths and compares against exclusion set
 - Skips matching files during HTML file collection phase
 - Total exclusions: 46 URLs (26 broken + 20 redirected)
@@ -99,7 +99,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Project Structure
 ```
 crawl-site/
-├── analyze-sources/zdkvartira.ru/    # Source HTML files from crawl-site
+├── sources/zdkvartira.ru/    # Source HTML files from crawl-site
 ├── results/                   # Analysis output directory
 │   ├── pages.txt             # All pages (TAB-delimited)
 │   ├── pages.csv             # All pages (CSV with quotes)

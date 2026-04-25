@@ -149,7 +149,7 @@
 **Итоговая структура проекта:**
 ```
 crawl-site/
-├── analyze-sources/zdkvartira.ru/    # Исходные HTML файлы
+├── sources/zdkvartira.ru/    # Исходные HTML файлы
 ├── results/                   # Результаты анализа
 │   ├── pages.txt             # TAB-разделитель: {url}\t{type}\t{title}
 │   ├── pages.csv             # CSV с кавычками: "url","type","title"

@@ -313,7 +313,7 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
     # Calculate relative path from base directory
     if base_dir is None:
         # Fallback to script directory if not provided
-        base_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'analyze-sources', 'zdkvartira.ru')
+        base_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'sources', 'zdkvartira.ru')
 
     rel_path = os.path.relpath(html_path, start=base_dir)
     rel_path = rel_path.replace('\\', '/')
@@ -1206,7 +1206,7 @@ def load_excluded_urls(script_dir):
         Set of URLs to exclude
     """
     excluded_urls = set()
-    analyze_sources_dir = os.path.join(script_dir, 'analyze-sources')
+    analyze_sources_dir = os.path.join(script_dir, 'sources')
     
     # Load broken links
     broken_links_path = os.path.join(analyze_sources_dir, 'broken-links.yaml')
@@ -1249,14 +1249,14 @@ def main():
 
     # Calculate paths relative to script location
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    base_dir = os.path.join(script_dir, 'analyze-sources', 'zdkvartira.ru')
+    base_dir = os.path.join(script_dir, 'sources', 'zdkvartira.ru')
     output_dir = os.path.join(script_dir, 'results')
     page_types_dir = os.path.join(output_dir, 'page-types')
     page_lists_dir = os.path.join(output_dir, 'page-lists')
 
     print(f"Configuration:")
     print(f"  Base URL: {BASE_URL}")
-    print(f"  Source directory: analyze-sources/zdkvartira.ru")
+    print(f"  Source directory: sources/zdkvartira.ru")
     print(f"  Output directory: results")
     sys.stdout.flush()
 
