@@ -1,0 +1,117 @@
+Configuration:
+  Base URL: https://zdkvartira.ru
+  Source directory: D:\Work\Myhoster\260306-zdkvartira\site-analysis\sources\zdkvartira.ru
+  Output directory: D:\Work\Myhoster\260306-zdkvartira\site-analysis\results
+Cleaning results directory: D:\Work\Myhoster\260306-zdkvartira\site-analysis\results
+Warning: Could not remove D:\Work\Myhoster\260306-zdkvartira\site-analysis\results\.ANALYSIS.md.swp: [WinError 32] The process cannot access the file because it is being used by another process: 'D:\\Work\\Myhoster\\260306-zdkvartira\\site-analysis\\results\\.ANALYSIS.md.swp'
+Warning: Could not remove D:\Work\Myhoster\260306-zdkvartira\site-analysis\results\.types.yaml.swp: [WinError 32] The process cannot access the file because it is being used by another process: 'D:\\Work\\Myhoster\\260306-zdkvartira\\site-analysis\\results\\.types.yaml.swp'
+Warning: Could not remove D:\Work\Myhoster\260306-zdkvartira\site-analysis\results\page-types: [WinError 32] The process cannot access the file because it is being used by another process: 'D:\\Work\\Myhoster\\260306-zdkvartira\\site-analysis\\results\\page-types\\.property-catalog.md.swp'
+Results directory cleaned
+
+Loading excluded URLs...
+Loaded 27 broken links to exclude
+Loaded redirected pages to exclude (total excluded: 47)
+Total URLs to exclude: 47
+
+Начинаю анализ страниц...
+Найдено 1359 HTML файлов (0 excluded)
+Обработано 50/1359 страниц...
+Обработано 100/1359 страниц...
+Обработано 150/1359 страниц...
+Обработано 200/1359 страниц...
+Обработано 250/1359 страниц...
+Обработано 300/1359 страниц...
+Обработано 350/1359 страниц...
+Обработано 400/1359 страниц...
+Обработано 450/1359 страниц...
+Обработано 500/1359 страниц...
+Обработано 550/1359 страниц...
+Обработано 600/1359 страниц...
+Обработано 650/1359 страниц...
+Обработано 700/1359 страниц...
+Обработано 750/1359 страниц...
+Обработано 800/1359 страниц...
+Обработано 850/1359 страниц...
+Обработано 900/1359 страниц...
+Обработано 950/1359 страниц...
+Обработано 1000/1359 страниц...
+Обработано 1050/1359 страниц...
+Обработано 1100/1359 страниц...
+Обработано 1150/1359 страниц...
+Обработано 1200/1359 страниц...
+Обработано 1250/1359 страниц...
+Обработано 1300/1359 страниц...
+Обработано 1350/1359 страниц...
+
+Проанализировано 1359 страниц
+
+Создаю pages.txt...
+Сохранено 1359 страниц в pages.txt
+
+Создаю pages.csv...
+Сохранено 1359 страниц в pages.csv
+
+Группирую страницы по типам...
+
+Статистика по типам страниц:
+  Аналитика: 1 страниц, 1 вариантов структуры
+  Вакансии: 1 страниц, 1 вариантов структуры
+  Главная страница: 1 страниц, 1 вариантов структуры
+  Детальная страница акции: 6 страниц, 1 вариантов структуры
+  Детальная страница новостройки: 2 страниц, 2 вариантов структуры
+  Детальная страница объекта: 36 страниц, 2 вариантов структуры
+  Другие страницы: 5 страниц, 4 вариантов структуры
+  Каталог объектов недвижимости: 23 страниц, 2 вариантов структуры
+  Контакты: 1 страниц, 1 вариантов структуры
+  Личный кабинет (избранное/сравнение): 2 страниц, 1 вариантов структуры
+  О компании: 1 страниц, 1 вариантов структуры
+  Профиль сотрудника: 18 страниц, 6 вариантов структуры
+  Результаты поиска: 1 страниц, 1 вариантов структуры
+  Служебная страница: 1 страниц, 1 вариантов структуры
+  Список FAQ: 1 страниц, 1 вариантов структуры
+  Список акций: 1 страниц, 1 вариантов структуры
+  Список новостей: 2 страниц, 1 вариантов структуры
+  Список новостроек: 1 страниц, 1 вариантов структуры
+  Список отзывов: 1 страниц, 1 вариантов структуры
+  Список сотрудников: 1 страниц, 1 вариантов структуры
+  Страница новости: 1246 страниц, 1 вариантов структуры
+  Страница услуги: 7 страниц, 7 вариантов структуры
+
+Создаю types.yaml и файлы типов страниц...
+Сохранено 22 типов страниц в types.yaml
+
+Создаю отдельные Markdown файлы для каждого типа страницы...
+  Созданы 00-main.md и 00-main.txt (1 страниц)
+  Созданы property-catalog.md и property-catalog.txt (23 страниц)
+  Созданы system-page.md и system-page.txt (1 страниц)
+  Созданы user-account.md и user-account.txt (2 страниц)
+  Созданы search-results.md и search-results.txt (1 страниц)
+  Созданы promotions-list.md и promotions-list.txt (1 страниц)
+  Созданы promotion-detail.md и promotion-detail.txt (6 страниц)
+  Созданы analytics.md и analytics.txt (1 страниц)
+  Созданы vacancies.md и vacancies.txt (1 страниц)
+  Созданы other-pages.md и other-pages.txt (5 страниц)
+  Созданы staff-list.md и staff-list.txt (1 страниц)
+  Созданы staff-profile.md и staff-profile.txt (18 страниц)
+  Созданы contacts.md и contacts.txt (1 страниц)
+  Созданы news-list.md и news-list.txt (2 страниц)
+  Созданы news-article.md и news-article.txt (1246 страниц)
+  Созданы new-buildings-list.md и new-buildings-list.txt (1 страниц)
+  Созданы new-building-detail.md и new-building-detail.txt (2 страниц)
+  Созданы about.md и about.txt (1 страниц)
+  Созданы property-single.md и property-single.txt (36 страниц)
+  Созданы reviews-list.md и reviews-list.txt (1 страниц)
+  Созданы service-page.md и service-page.txt (7 страниц)
+  Созданы faq-list.md и faq-list.txt (1 страниц)
+
+Generating page type analysis report...
+Analysis report saved to: D:\Work\Myhoster\260306-zdkvartira\site-analysis\results\ANALYSIS.md
+
+✅ Анализ завершен!
+📁 Результаты сохранены в: results
+   - pages.txt: список всех страниц (TAB-разделитель)
+   - pages.csv: список всех страниц в CSV формате
+   - types.yaml: все типы страниц с описанием блоков
+   - page-types/: описания типов страниц (Markdown)
+   - page-lists/: списки страниц по типам (TAB-разделитель, формат: {type}.txt)
+   - ANALYSIS.md: анализ типов страниц и поиск дубликатов

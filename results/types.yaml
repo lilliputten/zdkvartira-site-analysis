@@ -69,14 +69,14 @@
     description: Обращение руководителя. Фото генерального директора, текст обращения
     snippet: Обращение руководителя Бутыркина Елена Борисовна Генеральный директор Добро пожаловать на официальны...
   - id: last-video-reviews
-    selector: '#last-video-reviews.d-none.gray-block.serial-section'
+    selector: '#last-video-reviews.gray-block.serial-section'
     parent: html > body > noindex
     title: Видеоотзывы
     heading: Видеоотзывы
     description: Видеоотзывы. Видео с Rutube с описанием (имя клиента) и датой. Ссылка перехода в раздел видеоотзывов
     snippet: Видеоотзывы Марина и Елена 14 августа 2024 Виктория Топоногова 26 мая 2021 Наталья 5 февраля 2020 Ко...
   - id: form
-    selector: '#form.blue-block.text-center'
+    selector: '#form.blue-block'
     parent: html > body
     title: Не нашли ответ на свой вопрос?
     heading: Не нашли ответ на свой вопрос?
@@ -164,7 +164,7 @@
     description: Информация о команде сотрудников
     snippet: Истории успеха Назад Вперёд Глушкова Юлия Моя работа - это возможность каждый день узнавать что-то н...
   - id: prefuter
-    selector: '#prefuter.img-block'
+    selector: '#prefuter'
     parent: html > body
     title: Не нашли нужной вакансии, но хотите присоединиться к нам?
     heading: Не нашли нужной вакансии, но хотите присоединиться к нам?
@@ -184,14 +184,14 @@
     title: Навигационная цепочка
     description: Навигационная цепочка (хлебные крошки)
   - id: content
-    selector: '#content.pb-2'
+    selector: '#content'
     parent: html > body
     title: В День Рождения особые условия и скидка -10% на любую услугу
     heading: В День Рождения особые условия и скидка -10% на любую услугу
     description: Акции и специальные предложения
     snippet: В День Рождения особые условия и скидка -10% на любую услугу Акция суммируется с дисконтной программ...
   - id: form
-    selector: '#form.blue-block.text-center'
+    selector: '#form.blue-block'
     parent: html > body
     title: Не нашли ответ на свой вопрос?
     heading: Не нашли ответ на свой вопрос?
@@ -216,7 +216,7 @@
     title: Навигационная цепочка
     description: Навигационная цепочка (хлебные крошки)
   - id: object__about
-    selector: .object__about.pt-0
+    selector: .object__about
     parent: html > body
     title: Каталог объектов недвижимости
     description: Каталог объектов недвижимости
@@ -287,7 +287,7 @@
     description: Галерея карточек с изображениями
     snippet: Фотоотчёты Фотоотчет ноябрь 2019 Фотоотчет август 2019 Фотоотчет июль 2019 Ко всем фотоотчётам
   - id: flat-change
-    selector: '#flat-change.img-block'
+    selector: '#flat-change'
     parent: html > body
     title: Взаимозачёт
     heading: Взаимозачёт
@@ -302,148 +302,98 @@
     snippet: Документация проекта Проектная декларация корпус 607 ЗОСТ корпус 607 Проектная декларация корпус 608...
   pages_count: 2
 Детальная страница объекта:
-  id: property-detail
+  id: property-single
   description: Детальная страница объекта
-  example_url: https://zdkvartira.ru/объекты/городская-недвижимость/
-  example_title: Купить квартиру в Железнодорожном, Балашихе.  1,2,3 и 4-комнатные квартиры
-  total_pages: 39
+  example_url: https://zdkvartira.ru/объекты/городская-недвижимость/1-комнатная-квартира-в-г-балашиха-41/
+  example_title: Купить 2-комнатную квартиру Московская обл, г Балашиха, мкр Саввино, ул 1 Мая, д 8
+  total_pages: 36
   blocks:
-  - id: search-inner
-    selector: '#search-inner.py-4'
-    parent: '#common-search-form'
-    title: Расширенный поиск
-    description: 'Расширенный поиск недвижимости. Фильтры по параметрам: тип сделки, тип объекта, цена, площадь, этаж и другие
-      параметры'
-    snippet: 'Купить Снять Все объекты × Городская недвижимость: Квартиру Студию Комнату Загородная недвижимость Д...'
-  - id: search-more
-    selector: '#search-more.collapse.search-more'
-    parent: '#common-search-form'
-    title: Дополнительные фильтры
-    description: Форма поиска и фильтрации объектов
-    snippet: 'Площадь, м 2 : Общая: Кухня: Жилая: Этаж : Не первый Этажей в доме : Есть балкон / лоджия Тип дома :...'
-  - id: map
-    selector: '#map.object__map.result-map__map.col-12.col-lg-8.p-0'
-    parent: html > body > div.mx-0.result-map
-    title: Карта расположения
-    description: Карта проезда. Интерактивная карта Яндекс с отметкой расположения офиса
-  - id: form
-    selector: '#form.blue-block.text-center'
+  - id: breadcrumbs
+    selector: .breadcrumbs
     parent: html > body
-    title: Не нашли ответ на свой вопрос?
-    heading: Не нашли ответ на свой вопрос?
-    description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
-    snippet: Не нашли ответ на свой вопрос? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. От...
-  - id: special
-    selector: '#special.result-map__list.gray-block.p-4.col-12.col-lg-4'
-    parent: html > body > div.mx-0.result-map
-    title: Специальные предложения
-    description: Секция с объектами недвижимости ("Суперпредложения"). Карточки объектов с превью, кнопками "к сравнению"
-      и "в избранное", адресом, типом объекта и параметрами (площадь, этаж, направление)
-  - id: page-title
-    selector: p.caption
-    parent: '#form > div'
-    title: Не нашли ответ на свой вопрос?
-    description: 'Заголовок страницы: "Не нашли ответ на свой вопрос?"'
-  - id: search-gray
-    selector: '#search-gray'
-    parent: '#common-search-form'
-    title: Квартиры в Железнодорожном, Балашихе
-    heading: Квартиры в Железнодорожном, Балашихе
-    description: Форма обратной связи или заявки; каталог объектов недвижимости
-    snippet: Квартиры в Железнодорожном, Балашихе Искать на карте Сначала новые Сначала дешевле Сначала дороже
-  pages_count: 39
-Другая страница:
-  id: other-page
-  description: Другая страница
-  example_url: https://zdkvartira.ru/arenda-kvartir-balashiha/
-  example_title: Снять квартиру в Балашихе. Аренда недорого. От 3 выгодных вариантов
-  total_pages: 14
-  blocks:
-  - id: search-inner
-    selector: '#search-inner.py-4'
-    parent: '#common-search-form'
-    title: Расширенный поиск
-    description: 'Расширенный поиск недвижимости. Фильтры по параметрам: тип сделки, тип объекта, цена, площадь, этаж и другие
-      параметры'
-    snippet: 'Купить Снять Все объекты × Городская недвижимость: Квартиру Студию Комнату Загородная недвижимость Д...'
-  - id: search-more
-    selector: '#search-more.collapse.search-more'
-    parent: '#common-search-form'
-    title: Дополнительные фильтры
-    description: Форма поиска и фильтрации объектов
-    snippet: 'Площадь, м 2 : Общая: Кухня: Жилая: Этаж : Не первый Этажей в доме : Есть балкон / лоджия Тип дома :...'
-  - id: map
-    selector: '#map.object__map.result-map__map.col-12.col-lg-8.p-0'
-    parent: html > body > div.mx-0.result-map
-    title: Карта расположения
-    description: Карта проезда. Интерактивная карта Яндекс с отметкой расположения офиса
-  - id: form
-    selector: '#form.blue-block.text-center'
+    title: Навигационная цепочка
+    description: Навигационная цепочка (хлебные крошки)
+  - id: object__about
+    selector: section.object__about
     parent: html > body
-    title: Не нашли ответ на свой вопрос?
-    heading: Не нашли ответ на свой вопрос?
-    description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
-    snippet: Не нашли ответ на свой вопрос? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. От...
-  - id: special
-    selector: '#special.result-map__list.gray-block.p-4.col-12.col-lg-4'
-    parent: html > body > div.mx-0.result-map
-    title: Специальные предложения
-    description: Секция с объектами недвижимости ("Суперпредложения"). Карточки объектов с превью, кнопками "к сравнению"
-      и "в избранное", адресом, типом объекта и параметрами (площадь, этаж, направление)
-  - id: seo
-    selector: '#seo'
-    parent: html > body
-    title: Seo
+    title: 2-комнатная квартира в г. Балашиха
+    heading: 2-комнатная квартира в г. Балашиха
     description: Каталог объектов недвижимости
-    snippet: Наше агентство недвижимости поможет найти жилье с подходящим количеством комнат и в хорошем состояни...
+    snippet: 'ID: 4208 314 просмотров, 8 за сегодня 2-комнатная квартира в г. Балашиха Московская обл, г Балашиха,...'
+  - id: serial-section
+    selector: .serial-section
+    parent: html > body
+    title: Информационный блок
+    description: Каталог объектов недвижимости
+    snippet: Объект на карте
+  - id: object__similars
+    selector: .object__similars.serial-section
+    parent: html > body
+    title: Похожие объекты
+    heading: Похожие объекты
+    description: Каталог объектов недвижимости
+    snippet: Похожие объекты Московская обл, г Мытищи, Новомытищинский пр-кт, д 41 к 3 Продажа квартиры 7.40 млн ...
+  pages_count: 36
+Другие страницы:
+  id: other-pages
+  description: Другие страницы
+  example_url: https://zdkvartira.ru/информационная-политика/
+  example_title: Информационная политика, Миэль Офис в Железнодорожном
+  total_pages: 5
+  blocks:
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    parent: html > body
+    title: Навигационная цепочка
+    description: Навигационная цепочка (хлебные крошки)
+  - id: content
+    selector: '#content'
+    parent: html > body
+    title: Информационная политика
+    heading: Информационная политика
+    description: Информация о команде сотрудников
+    snippet: Информационная политика Сайт не является средством массовой информации, предназначен для доведения д...
   - id: page-title
     selector: p.caption
-    parent: '#form > div'
-    title: Не нашли ответ на свой вопрос?
-    description: 'Заголовок страницы: "Не нашли ответ на свой вопрос?"'
-  - id: search-gray
-    selector: '#search-gray'
-    parent: '#common-search-form'
-    title: Аренда квартир в Балашихе
-    heading: Аренда квартир в Балашихе
-    description: Форма обратной связи или заявки; каталог объектов недвижимости
-    snippet: Аренда квартир в Балашихе Искать на карте Сначала новые Сначала дешевле Сначала дороже
-  pages_count: 14
+    parent: '#content > div.sml-max-view-block'
+    title: Информационная политика
+    description: 'Заголовок страницы: "Информационная политика"'
+  pages_count: 5
 Каталог объектов недвижимости:
   id: property-catalog
   description: Каталог объектов недвижимости
   example_url: https://zdkvartira.ru/1k-kvartira-zheleznodorozhnyy/
   example_title: Купить 1-комнатную квартиру в Железнодорожном недорого. Агентство по недвижимости
-  total_pages: 11
+  total_pages: 23
   blocks:
   - id: search-inner
-    selector: '#search-inner.py-4'
+    selector: '#search-inner'
     parent: '#common-search-form'
     title: Расширенный поиск
     description: 'Расширенный поиск недвижимости. Фильтры по параметрам: тип сделки, тип объекта, цена, площадь, этаж и другие
       параметры'
     snippet: 'Купить Снять Все объекты × Городская недвижимость: Квартиру Студию Комнату Загородная недвижимость Д...'
   - id: search-more
-    selector: '#search-more.collapse.search-more'
+    selector: '#search-more.search-more'
     parent: '#common-search-form'
     title: Дополнительные фильтры
     description: Форма поиска и фильтрации объектов
     snippet: 'Площадь, м 2 : Общая: Кухня: Жилая: Этаж : Не первый Этажей в доме : Есть балкон / лоджия Тип дома :...'
   - id: map
-    selector: '#map.object__map.result-map__map.col-12.col-lg-8.p-0'
-    parent: html > body > div.mx-0.result-map
+    selector: '#map.object__map.result-map__map'
+    parent: html > body > div.result-map
     title: Карта расположения
     description: Карта проезда. Интерактивная карта Яндекс с отметкой расположения офиса
   - id: form
-    selector: '#form.blue-block.text-center'
+    selector: '#form.blue-block'
     parent: html > body
     title: Не нашли ответ на свой вопрос?
     heading: Не нашли ответ на свой вопрос?
     description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
     snippet: Не нашли ответ на свой вопрос? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. От...
   - id: special
-    selector: '#special.result-map__list.gray-block.p-4.col-12.col-lg-4'
-    parent: html > body > div.mx-0.result-map
+    selector: '#special.result-map__list.gray-block'
+    parent: html > body > div.result-map
     title: Специальные предложения
     description: Секция с объектами недвижимости ("Суперпредложения"). Карточки объектов с превью, кнопками "к сравнению"
       и "в избранное", адресом, типом объекта и параметрами (площадь, этаж, направление)
@@ -465,7 +415,7 @@
     heading: 1-комнатные квартиры в Железнодорожном
     description: Форма обратной связи или заявки; каталог объектов недвижимости
     snippet: 1-комнатные квартиры в Железнодорожном Искать на карте Сначала новые Сначала дешевле Сначала дороже
-  pages_count: 11
+  pages_count: 23
 Контакты:
   id: contacts
   description: Контакты
@@ -490,7 +440,7 @@
     title: Контакты
     description: 'Заголовок страницы: "Контакты"'
   - id: word
-    selector: '#word.serial-section.pt-2'
+    selector: '#word.serial-section'
     parent: html > body
     title: Контакты офиса
     heading: Контакты офиса
@@ -524,7 +474,7 @@
     title: Нет выбранных объектов для сравнения!
     description: 'Заголовок страницы: "Нет выбранных объектов для сравнения!"'
   - id: form
-    selector: '#form.blue-block.text-center'
+    selector: '#form.blue-block'
     parent: html > body
     title: Не нашли ответ на свой вопрос?
     heading: Не нашли ответ на свой вопрос?
@@ -590,7 +540,7 @@
     description: Фотографии офиса. Галерея фотографий офисных помещений с возможностью просмотра в полном размере
     snippet: Будни и праздники
   - id: last-video-reviews
-    selector: '#last-video-reviews.d-none.gray-block.serial-section'
+    selector: '#last-video-reviews.gray-block.serial-section'
     parent: html > body
     title: Видеоотзывы
     heading: Видеоотзывы
@@ -658,14 +608,14 @@
   total_pages: 1
   blocks:
   - id: search-list
-    selector: '#search-list.gray-block.pt-2'
+    selector: '#search-list.gray-block'
     parent: html > body.template-searchresults
     title: Страница поиска
     heading: Страница поиска
     description: Форма обратной связи или заявки; форма поиска и фильтрации объектов
     snippet: Страница поиска
   - id: form
-    selector: '#form.blue-block.text-center'
+    selector: '#form.blue-block'
     parent: html > body.template-searchresults
     title: Нужна помощь?
     heading: Нужна помощь?
@@ -812,7 +762,7 @@
     description: 'Заголовок страницы: "Новостройки"'
   - id: newhousing-item
     selector: .newhousing-item
-    parent: html > body > div.col-md-4.col-sm-6.col-xs-12
+    parent: html > body > div
     title: Центр на проспекте Героев
     description: 'Карточка объекта недвижимости с названием: "Центр на проспекте Героев"; тип/адрес: Московская область, г.Балашиха,
       мкр. Железнодорожный, Центр-2; цена: Цена от: 3.5 млн руб.'
@@ -882,21 +832,21 @@
     title: Наши Эксперты
     description: 'Заголовок страницы: "Наши Эксперты"'
   - id: team
-    selector: '#team.pb-2'
+    selector: '#team'
     parent: html > body
     title: Команда МИЭЛЬ, Офис в Железнодорожном
     heading: Команда МИЭЛЬ, Офис в Железнодорожном
     description: Информация о команде сотрудников. Карточки специалистов с фото, должностью, контактами
     snippet: Команда МИЭЛЬ, Офис в Железнодорожном Мастер качества Кондауров Андрей Руководитель отдела аренды Жи...
   - id: all-team
-    selector: '#all-team.gray-block.pb-2.all-team'
+    selector: '#all-team.gray-block.all-team'
     parent: html > body
     title: Отдел продаж
     heading: Отдел продаж
     description: Информация о команде сотрудников
     snippet: Отдел продаж Бутыркина Елена Генеральный директор, ведущий эксперт Я считаю, что работа риэлтора сро...
   - id: pb-2
-    selector: section.pb-2.all-team
+    selector: section.all-team
     parent: html > body
     title: Отдел аренды
     heading: Отдел аренды
@@ -910,7 +860,7 @@
     description: Информация о команде сотрудников
     snippet: Менеджмент Бутыркина Елена Генеральный директор, ведущий эксперт Я считаю, что работа риэлтора сродн...
   - id: form
-    selector: '#form.blue-block.text-center'
+    selector: '#form.blue-block'
     parent: html > body
     title: Хотите стать частью нашей команды?
     heading: Хотите стать частью нашей команды?
@@ -986,7 +936,7 @@
     description: Форма обратной связи или заявки; текстовый информационный блок
     snippet: 'Ипотечный Калькулятор По стоимости По сумме кредита Руб % Сумма кредита: 0 Лет Месяцев Рассчитать Еж...'
   - id: bg-white
-    selector: .bg-white.py-2.py-4
+    selector: ''
     parent: html > body
     description: Текстовый информационный блок
     snippet: В 97% случаев, мы подбираем более интересный и выгодный кредит, чем наши клиенты находят сами*. из н...
@@ -998,14 +948,14 @@
     description: Этапы оказания услуги
     snippet: Этапы работы с нами 1 Знакомимся и определяем цель Знакомимся, определяем параметры нужного кредита,...
   - id: facts
-    selector: '#facts.gray-block.pt-2'
+    selector: '#facts.gray-block'
     parent: html > body
     title: Факты о нас
     heading: Факты о нас
     description: Акции и специальные предложения
     snippet: Факты о нас Более 5 000 одобренных заявок Вероятность одобрения выше 97% Рассмотрение заявки 30 мину...
   - id: actions
-    selector: '#actions.serial-section.py-3'
+    selector: '#actions.serial-section'
     parent: html > body
     title: Действующие акции и скидки по услуге
     heading: Действующие акции и скидки по услуге
@@ -1020,7 +970,7 @@
     description: Акции и специальные предложения
     snippet: Хотим Вам рассказать, как мы работаем со своими клиентами Честный и открытый сервис Мы расскажем обо...
   - id: banks
-    selector: '#banks.py-4'
+    selector: '#banks'
     parent: html > body
     title: Наши банки-партнеры
     heading: Наши банки-партнеры
@@ -1034,7 +984,7 @@
     description: Каталог услуг компании
     snippet: Часто задаваемые вопросы Смогу ли я одобрить ипотеку, обратившись в МИЭЛЬ? Мы получаем одобрения бан...
   - id: form
-    selector: '#form.blue-block.text-center'
+    selector: '#form.blue-block'
     parent: html > body
     title: Не нашли ответ на свой вопрос?
     heading: Не нашли ответ на свой вопрос?
