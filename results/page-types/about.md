@@ -1,4 +1,4 @@
-# О компании
+# About
 
 **ID:** `about`
 
@@ -71,7 +71,7 @@ div`
 
 ### 9. Видеоотзывы
 
-- **Selector:** `#last-video-reviews.gray-block.serial-section`
+- **Selector:** `#last-video-reviews.d-none.gray-block.serial-section`
 - **Parent:** `html > body`
 - **Description:** Видеоотзывы. Видео с Rutube с описанием (имя клиента) и
 датой. Ссылка перехода в раздел видеоотзывов

@@ -1,4 +1,4 @@
-# Список отзывов
+# Reviews List
 
 **ID:** `reviews-list`
 

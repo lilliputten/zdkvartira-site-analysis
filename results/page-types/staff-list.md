@@ -1,4 +1,4 @@
-# Список сотрудников
+# Staff List
 
 **ID:** `staff-list`
 
@@ -30,7 +30,7 @@
 
 ### 4. Команда МИЭЛЬ, Офис в Железнодорожном
 
-- **Selector:** `#team`
+- **Selector:** `#team.pb-2`
 - **Parent:** `html > body`
 - **Description:** Информация о команде сотрудников. Карточки специалистов с
 фото, должностью, контактами
@@ -39,7 +39,7 @@
 
 ### 5. Отдел продаж
 
-- **Selector:** `#all-team.gray-block.all-team`
+- **Selector:** `#all-team.gray-block.pb-2.all-team`
 - **Parent:** `html > body`
 - **Description:** Информация о команде сотрудников
 - **Пример содержимого:** Отдел продаж Бутыркина Елена Генеральный директор,
@@ -47,7 +47,7 @@
 
 ### 6. Отдел аренды
 
-- **Selector:** `section.all-team`
+- **Selector:** `section.pb-2.all-team`
 - **Parent:** `html > body`
 - **Description:** Галерея карточек с изображениями
 - **Пример содержимого:** Отдел аренды Ахмадиев Владимир Специалист по аренде
@@ -63,7 +63,7 @@
 
 ### 8. Хотите стать частью нашей команды?
 
-- **Selector:** `#form.blue-block`
+- **Selector:** `#form.blue-block.text-center`
 - **Parent:** `html > body`
 - **Description:** Форма обратной связи ("Не нашли ответ на свой вопрос?").
 Поля: имя, телефон, email, кнопка отправки

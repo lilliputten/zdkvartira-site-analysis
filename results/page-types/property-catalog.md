@@ -1,4 +1,4 @@
-# Каталог объектов недвижимости
+# Property Catalog
 
 **ID:** `property-catalog`
 
@@ -7,13 +7,13 @@
 **Example Title:** Купить 1-комнатную квартиру в Железнодорожном недорого. Агентство по
 недвижимости
 
-**Total Pages:** 23
+**Total Pages:** 11
 
 ## Content Blocks (8)
 
 ### 1. Расширенный поиск
 
-- **Selector:** `#search-inner`
+- **Selector:** `#search-inner.py-4`
 - **Parent:** `#common-search-form`
 - **Description:** Расширенный поиск недвижимости. Фильтры по параметрам: тип
 сделки, тип объекта, цена, площадь, этаж и другие параметры
@@ -22,7 +22,7 @@
 
 ### 2. Дополнительные фильтры
 
-- **Selector:** `#search-more.search-more`
+- **Selector:** `#search-more.collapse.search-more`
 - **Parent:** `#common-search-form`
 - **Description:** Форма поиска и фильтрации объектов
 - **Пример содержимого:** Площадь, м 2 : Общая: Кухня: Жилая: Этаж : Не первый
@@ -30,13 +30,13 @@
 
 ### 3. Карта расположения
 
-- **Selector:** `#map.object__map.result-map__map`
-- **Parent:** `html > body > div.result-map`
+- **Selector:** `#map.object__map.result-map__map.col-12.col-lg-8.p-0`
+- **Parent:** `html > body > div.mx-0.result-map`
 - **Description:** Карта проезда. Интерактивная карта Яндекс с отметкой расположения офиса
 
 ### 4. Не нашли ответ на свой вопрос?
 
-- **Selector:** `#form.blue-block`
+- **Selector:** `#form.blue-block.text-center`
 - **Parent:** `html > body`
 - **Description:** Форма обратной связи ("Не нашли ответ на свой вопрос?").
 Поля: имя, телефон, email, кнопка отправки
@@ -45,8 +45,8 @@
 
 ### 5. Специальные предложения
 
-- **Selector:** `#special.result-map__list.gray-block`
-- **Parent:** `html > body > div.result-map`
+- **Selector:** `#special.result-map__list.gray-block.p-4.col-12.col-lg-4`
+- **Parent:** `html > body > div.mx-0.result-map`
 - **Description:** Секция с объектами недвижимости ("Суперпредложения").
 Карточки объектов с превью, кнопками "к сравнению" и "в избранное", адресом,
 типом объекта и параметрами (площадь, этаж, направление)

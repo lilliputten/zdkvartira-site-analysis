@@ -1,4 +1,4 @@
-# Аналитика
+# Analytics
 
 **ID:** `analytics`
 

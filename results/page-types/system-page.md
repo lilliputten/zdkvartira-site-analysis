@@ -1,4 +1,4 @@
-# Служебная страница
+# System Page
 
 **ID:** `system-page`
 

@@ -1,4 +1,4 @@
-# Список акций
+# Promotions List
 
 **ID:** `promotions-list`
 

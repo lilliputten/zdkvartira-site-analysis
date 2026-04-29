@@ -1,4 +1,4 @@
-# Главная страница
+# Home Page
 
 **ID:** `00-main`
 
@@ -88,7 +88,7 @@
 
 ### 10. Видеоотзывы
 
-- **Selector:** `#last-video-reviews.gray-block.serial-section`
+- **Selector:** `#last-video-reviews.d-none.gray-block.serial-section`
 - **Parent:** `html > body > noindex`
 - **Description:** Видеоотзывы. Видео с Rutube с описанием (имя клиента) и
 датой. Ссылка перехода в раздел видеоотзывов
@@ -97,7 +97,7 @@
 
 ### 11. Не нашли ответ на свой вопрос?
 
-- **Selector:** `#form.blue-block`
+- **Selector:** `#form.blue-block.text-center`
 - **Parent:** `html > body`
 - **Description:** Форма обратной связи ("Не нашли ответ на свой вопрос?").
 Поля: имя, телефон, email, кнопка отправки

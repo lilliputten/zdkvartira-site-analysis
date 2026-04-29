@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# pyright: reportArgumentType=false, reportOptionalIterable=false, reportOperatorIssue=false, reportCallIssue=false
 """
 ZDKvartira.ru Website Crawler and Analyzer
 ===========================================
@@ -13,8 +12,6 @@ Output:
 - results/types.yaml: Complete structured data for all page types
 - results/page-types/*.md: Individual Markdown documentation per page type
 - results/page-lists/*-pages.txt: Page lists organized by type
-- results/ANALYSIS.md: Analysis of page types and potential duplicates
-
 
 Features:
 - Automatic page type classification (23 types identified)
@@ -23,8 +20,6 @@ Features:
 - Main page includes header/footer blocks; other pages exclude common blocks
 - English dash-case IDs for all page types
 - Excludes broken links (404, 500 errors) and redirected pages (301, 302)
-- Cleans utility CSS classes from selectors (Bootstrap/Tailwind classes)
-- Post-analysis duplicate detection
 """
 
 import csv
@@ -32,7 +27,6 @@ import os
 import re
 import shutil
 import sys
-from pathlib import Path
 
 import yaml
 from bs4 import BeautifulSoup
@@ -68,15 +62,16 @@ def clean_text(text):
 
 def page_type_to_id(page_type):
     """
-    Convert Russian page type name to English dash-case ID.
+    Convert page type name to English dash-case ID.
 
     Args:
-        page_type: Russian page type name
+        page_type: Page type name (Russian or English)
 
     Returns:
-        English dash-case ID string (e.g., 'home-page', 'news-article')
+        English dash-case ID string (e.g., '00-main', 'news-article')
     """
     translations = {
+        # Russian names (for backward compatibility)
         'Главная страница': '00-main',
         'Каталог объектов недвижимости': 'property-catalog',
         'Страница новости': 'news-article',
@@ -101,90 +96,36 @@ def page_type_to_id(page_type):
         'Личный кабинет (избранное/сравнение)': 'user-account',
         'Другие страницы': 'other-pages',
         'Служебная страница': 'system-page',
+        # English names (preferred)
+        'Home Page': '00-main',
+        'Property Catalog': 'property-catalog',
+        'News Article': 'news-article',
+        'News List': 'news-list',
+        'Service Page': 'service-page',
+        'Service List': 'service-list',
+        'Property Single': 'property-single',
+        'Contacts': 'contacts',
+        'About': 'about',
+        'Vacancies': 'vacancies',
+        'Staff List': 'staff-list',
+        'Staff Profile': 'staff-profile',
+        'Promotions List': 'promotions-list',
+        'Promotion Detail': 'promotion-detail',
+        'FAQ List': 'faq-list',
+        'FAQ Detail': 'faq-detail',
+        'Reviews List': 'reviews-list',
+        'Analytics': 'analytics',
+        'New Buildings List': 'new-buildings-list',
+        'New Building Detail': 'new-building-detail',
+        'Search Results': 'search-results',
+        'User Account': 'user-account',
+        'Other Pages': 'other-pages',
+        'System Page': 'system-page',
     }
 
     return translations.get(
         page_type, re.sub(r'[^\w\s-]', '', page_type).lower().replace(' ', '-')
     )
-
-
-def clean_selector(selector: str) -> str:
-    """
-    Removes utility CSS classes from a selector string.
-    E.g., '#map.col-12.p-0' -> '#map'
-    E.g., '.object__map.result-map__map.col-lg-8' -> '.object__map.result-map__map'
-
-    Args:
-        selector: Raw CSS selector string
-
-    Returns:
-        Cleaned selector with utility classes removed
-    """
-    if not selector:
-        return selector
-
-    # Pattern to match Bootstrap/Tailwind utility classes
-    # Matches classes like: col-*, p-*, m-*, d-*, text-*, bg-*, border-*, flex-*, etc.
-    # EXCLUDES semantic classes like .top-back, .section-title, etc.
-    utility_pattern = re.compile(
-        r'\b(col|row|container|d-|p-|m-|text-|bg-|border-|flex-|justify-|align-|w-|h-|mx-|my-|px-|py-|mt-|mb-|ml-|mr-|pt-|pb-|pl-|pr-|sm-|md-|lg-|xl-|xxl-|nav-|btn-|form-|input-|label-|card-|list-|table-|img-|figure-|breadcrumb-|pagination-|alert-|badge-|progress-|spinner-|toast-|tooltip-|popover-|modal-|carousel-|accordion-|dropdown-|navbar-|offcanvas-|placeholder-|ratio-|stack-|vr-|stretched-link-|visually-hidden-|position-|overflow-|float-|opacity-|shadow-|focus-|pe-|ps-|me-|ms-|bottom-|start-|end-|translate-|rotate-|scale-|skew-|user-select-|pointer-events-|resize-|cursor-|fill-|stroke-|font-|letter-spacing-|line-height-|vertical-align-|whitespace-|word-break-|z-index-|order-|g-|gap-|aspect-|object-|filter-|backdrop-|mix-blend-|isolation-|grid-|subgrid-|min-|max-|clamp-|safe-|env-|var-|calc-|attr-|counter-|content-|quotes-|orphans-|widows-|hyphens-|tab-size-|text-align-|text-decoration-|text-transform-|text-indent-|text-overflow-|text-shadow-|text-size-adjust-|touch-action-|transform-|transform-origin-|transform-style-|transition-|transition-delay-|transition-duration-|transition-property-|transition-timing-function-|unicode-bidi-|user-modify-|user-select-|vector-effect-|visibility-|white-space-|will-change-|word-spacing-|word-wrap-|writing-mode-)\S*\b',
-        re.IGNORECASE,
-    )
-
-    # Split selector into parts (by space, >, +, ~) but keep structure
-    parts = re.split(r'(\s+[>+~]\s+|\s+)', selector)
-
-    cleaned_parts = []
-    for part in parts:
-        if not part.strip():
-            cleaned_parts.append(part)
-            continue
-
-        # Check if part is a combinator
-        if re.match(r'^\s*[>+~]\s*$', part):
-            cleaned_parts.append(part)
-            continue
-
-        # Process classes and ids in the part
-        def replace_match(match):
-            full_match = match.group(0)
-            prefix = match.group(1)  # . or #
-            name = match.group(2)
-
-            if prefix == '#':
-                return full_match  # Keep IDs
-
-            # It's a class - check if it's a utility class
-            if utility_pattern.match(name):
-                return ''  # Remove utility class
-            else:
-                return full_match  # Keep semantic class
-
-        # Regex to find .classname or #idname
-        cleaned_part = re.sub(r'([.#])([\w-]+)', replace_match, part)
-
-        # Clean up multiple spaces or dangling dots/hashes if removal caused issues
-        cleaned_part = re.sub(r'\s+', ' ', cleaned_part).strip()
-
-        if cleaned_part:
-            cleaned_parts.append(cleaned_part)
-
-    result = ''.join(cleaned_parts)
-
-    # Final cleanup: remove extra spaces around combinators
-    result = re.sub(r'\s*>\s*', ' > ', result)
-    result = re.sub(r'\s*\+\s*', ' + ', result)
-    result = re.sub(r'\s*~\s*', ' ~ ', result)
-    result = re.sub(r'\s+', ' ', result).strip()
-
-    # Remove empty classes/ids artifacts if any (e.g. "..")
-    result = re.sub(r'\.{2,}', '.', result)
-    result = re.sub(r'#{2,}', '#', result)
-
-    # Remove trailing dots
-    result = result.rstrip('.')
-
-    return result
 
 
 def generate_parent_selector(element):
@@ -209,7 +150,9 @@ def generate_parent_selector(element):
 
     while current and current.name != '[document]' and depth < max_depth:
         parent_id = current.get('id')
-        parent_classes = current.get('class', [])
+        parent_classes = (
+            current.get('class') or []
+        )  # pyright: ignore[reportArgumentType]
 
         # Filter utility classes but keep more semantic ones
         utility_classes = {
@@ -289,9 +232,7 @@ def generate_parent_selector(element):
     if not parts:
         return ''
 
-    selector = ' > '.join(parts)
-    # Clean utility classes from parent selector too
-    return clean_selector(selector)
+    return ' > '.join(parts)
 
 
 def generate_specific_selector(soup, element):
@@ -308,7 +249,9 @@ def generate_specific_selector(soup, element):
     # Priority 1: Use ID if present
     elem_id = element.get('id')
     if elem_id:
-        classes = element.get('class', [])
+        classes = (
+            element.get('class') or []
+        )  # pyright: ignore[reportArgumentType]
         # Filter out common utility classes
         meaningful_classes = [
             c
@@ -335,15 +278,11 @@ def generate_specific_selector(soup, element):
         ]
 
         if meaningful_classes:
-            raw_selector = f"#{elem_id}.{'.'.join(meaningful_classes)}"
-        else:
-            raw_selector = f'#{elem_id}'
-
-        # Clean utility classes
-        return clean_selector(raw_selector)
+            return f"#{elem_id}.{'.'.join(meaningful_classes)}"
+        return f'#{elem_id}'
 
     # Priority 2: Use class combination with parent context
-    classes = element.get('class', [])
+    classes = element.get('class') or []  # pyright: ignore[reportArgumentType]
     if classes:
         # Filter common classes
         meaningful_classes = [
@@ -371,8 +310,7 @@ def generate_specific_selector(soup, element):
 
             # Check uniqueness without parent
             if len(soup.select(f'.{class_selector}')) == 1:
-                raw_selector = f'.{class_selector}'
-                return clean_selector(raw_selector)
+                return f'.{class_selector}'
 
             # Try with parent context - build parent chain
             parent_chain = []
@@ -384,7 +322,9 @@ def generate_specific_selector(soup, element):
 
             while parent and depth < max_depth:
                 parent_id = parent.get('id')
-                parent_classes = parent.get('class', [])
+                parent_classes = (
+                    parent.get('class') or []
+                )  # pyright: ignore[reportArgumentType]
 
                 if parent_id:
                     # Found parent with ID - use it
@@ -429,19 +369,17 @@ def generate_specific_selector(soup, element):
                 if len(soup.select(combined)) <= len(
                     soup.select(f'.{class_selector}')
                 ):
-                    return clean_selector(combined)
+                    return combined
 
             # Fallback: use tag with classes
-            raw_selector = f'{element.name}.{class_selector}'
-            return clean_selector(raw_selector)
+            return f'{element.name}.{class_selector}'
 
     # Priority 3: For elements without classes, try to use parent context
     parent = element.parent
     if parent:
         parent_id = parent.get('id')
         if parent_id:
-            raw_selector = f'#{parent_id} > {element.name}'
-            return clean_selector(raw_selector)
+            return f'#{parent_id} > {element.name}'
 
         parent_classes = parent.get('class', [])
         if parent_classes:
@@ -466,8 +404,7 @@ def generate_specific_selector(soup, element):
             ]
             if parent_meaningful:
                 parent_selector = '.'.join(parent_meaningful)
-                raw_selector = f'.{parent_selector} > {element.name}'
-                return clean_selector(raw_selector)
+                return f'.{parent_selector} > {element.name}'
 
     # Last resort: just tag name
     return element.name
@@ -541,7 +478,6 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
     else:
         # Remove index.html from path if present
         path_part = rel_path.replace('/index.html', '')
-
         url = f'{base_url}/{path_part}/'
 
     # Extract all blocks in document order
@@ -565,7 +501,9 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
 
         # If no ID, check if section has meaningful classes that can serve as identifier
         if not block_id:
-            classes = section.get('class', [])
+            classes = (
+                section.get('class') or []
+            )  # pyright: ignore[reportArgumentType]
             # Filter out utility classes to see if there are meaningful ones
             meaningful_classes = [
                 c
@@ -657,7 +595,9 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
     # Check divs, uls, navs, ps, and other elements
     for element in soup.find_all(['div', 'ul', 'nav', 'aside', 'p']):
         elem_id = element.get('id')
-        elem_classes = element.get('class', [])
+        elem_classes = (
+            element.get('class') or []
+        )  # pyright: ignore[reportArgumentType]
         elem_name = element.name
 
         # Skip if already processed
@@ -888,7 +828,11 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
             content_items = [
                 c
                 for c in content_children
-                if not c.parent or 'nav' not in str(c.parent.get('class', []))
+                if not c.parent
+                or 'nav'
+                not in str(
+                    c.parent.get('class') or []
+                )  # pyright: ignore[reportArgumentType]
             ]
 
             # Only mark as content-list if we have substantial content AND no better ID exists
@@ -926,7 +870,9 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
                 continue
 
         # Pagination navigation (nav element or .pagination)
-        if elem_name == 'nav' or 'pagination' in ' '.join(elem_classes):
+        if elem_name == 'nav' or 'pagination' in ' '.join(
+            elem_classes or []
+        ):  # pyright: ignore[reportArgumentType]
             # Check if it contains pagination-like content
             has_page_links = bool(
                 element.find_all(
@@ -944,7 +890,10 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
                 has_page_links
                 or has_numbers
                 or has_next_prev
-                or 'pagination' in ' '.join(elem_classes)
+                or 'pagination'
+                in ' '.join(
+                    elem_classes or []
+                )  # pyright: ignore[reportArgumentType]
             ):
                 desc = 'Навигация по страницам (пагинация). Ссылки на предыдущую/следующую страницу, номера страниц'
                 human_title = generate_human_readable_title(
@@ -959,7 +908,7 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
                             'id': 'pagination',
                             'selector': 'nav'
                             if elem_name == 'nav'
-                            else f".{'.'.join(elem_classes)}",
+                            else f".{'.'.join(elem_classes or [])}",  # pyright: ignore[reportArgumentType]
                             'parent': parent_selector,
                             'heading': '',
                             'title': clean_text(human_title),
@@ -1332,186 +1281,106 @@ def classify_page_type(page_info):
         page_info: Dictionary with url, rel_path, and other page data
 
     Returns:
-        Russian page type name string
+        English page type name string
     """
     url = page_info['url']
     path = page_info['rel_path']
-    blocks = page_info.get('blocks', [])
-
-    # Extract block IDs for analysis
-    block_ids = [b['id'] for b in blocks]
-    block_text = ' '.join(block_ids).lower()
 
     # Main page
     if path == 'index.html':
-        return 'Главная страница'
+        return 'Home Page'
 
     # News pages
     if 'новости/' in path or 'новости-офиса/' in path:
         if path.endswith('/index.html') and path.count('/') == 1:
-            return 'Список новостей'
+            return 'News List'
         else:
-            return 'Страница новости'
+            return 'News Article'
 
     # Promotions pages
     if 'акции-и-скидки/' in path:
         if path.endswith('акции-и-скидки/index.html'):
-            return 'Список акций'
+            return 'Promotions List'
         else:
-            return 'Детальная страница акции'
+            return 'Promotion Detail'
 
     # Service pages
     if 'услуги/' in path:
         if path.endswith('услуги/index.html'):
-            return 'Список услуг'
+            return 'Service List'
         else:
-            return 'Страница услуги'
+            return 'Service Page'
 
-    # Property detail pages (single object) - MUST check before catalog
-    # Pattern: /объекты/.../конкретный-объект/ (not ending in index.html at category level)
+    # Property catalog pages
+    if any(x in path for x in ['1k-', '2k-', '3k-', 'студии', 'аренда']):
+        return 'Property Catalog'
+
+    # Property detail pages
     if 'объекты/' in path:
-        # Check if it's a category listing or a single property
-        # Category listings: объекты/городская-недвижимость/index.html
-        # Single properties: объекты/городская-недвижимость/2-комнатная-квартира-.../index.html
-
-        # Count path segments after объекты
-        path_parts = path.split('/')
-        objects_index = (
-            path_parts.index('объекты') if 'объекты' in path_parts else -1
-        )
-
-        if objects_index >= 0:
-            # Get parts after 'объекты'
-            remaining_parts = path_parts[objects_index + 1 :]
-
-            # If we have more than 2 parts (category + item), it's a single property
-            # e.g., ['объекты', 'городская-недвижимость', '2-комнатная-квартира-...', 'index.html']
-            if len(remaining_parts) > 2:
-                return 'Детальная страница объекта'
-            else:
-                # This is a category listing (property list by type)
-                return 'Каталог объектов недвижимости'
-
-    # Property catalog/listing pages (with map and filters)
-    # Patterns: /arenda-kvartir-balashiha/, /1k-kvartira-..., /kvartiri-v-..., etc.
-    if any(
-        x in path
-        for x in [
-            '1k-',
-            '2k-',
-            '3k-',
-            'студии',
-            'аренда',
-            'kvartiri-',
-            'kupit-dom-',
-            'studii-',
-            'arenda-kvartir-',
-            'arenda-studiy-',
-            'arenda-ofisa-',
-            'studiya-',
-        ]
-    ):
-        # All property listing pages with maps are now unified as property-catalog
-        return 'Каталог объектов недвижимости'
+        return 'Property Single'
 
     # Team pages
     if 'команда-миэль/' in path:
         if path == 'команда-миэль/index.html':
-            return 'Список сотрудников'
+            return 'Staff List'
         else:
-            return 'Профиль сотрудника'
+            return 'Staff Profile'
 
-    # Static service pages
+    # Service pages
     if path in [
         'контакты/index.html',
         'о-компании/index.html',
         'вакансии/index.html',
     ]:
         page_names = {
-            'контакты/index.html': 'Контакты',
-            'о-компании/index.html': 'О компании',
-            'вакансии/index.html': 'Вакансии',
+            'контакты/index.html': 'Contacts',
+            'о-компании/index.html': 'About',
+            'вакансии/index.html': 'Vacancies',
         }
-        return page_names.get(path, 'Служебная страница')
+        return page_names.get(path, 'System Page')
 
     # FAQ pages
     if 'часто-задаваемы-вопросы/' in path:
         if path == 'часто-задаваемы-вопросы/index.html':
-            return 'Список FAQ'
+            return 'FAQ List'
         else:
-            return 'Детальная страница FAQ'
-
-    # Other pages - fallback for everything else
-    if any(
-        x in path for x in ['/contacts/', '/about/', '/company/', '/uslugi/']
-    ):
-        return 'Контакты' if 'contacts' in path else 'О компании'
+            return 'FAQ Detail'
 
     # Reviews pages
     if 'список-отзывов/' in path:
-        return 'Список отзывов'
+        return 'Reviews List'
 
     # Analytics pages
     if 'аналитика/' in path:
-        return 'Аналитика'
+        return 'Analytics'
 
     # Search results pages
     if 'search/' in path:
-        return 'Результаты поиска'
+        return 'Search Results'
 
     # New buildings pages
     if 'новостройки/' in path:
         if path.endswith('новостройки/index.html'):
-            return 'Список новостроек'
+            return 'New Buildings List'
         else:
-            return 'Детальная страница новостройки'
+            return 'New Building Detail'
 
     # Realty (favorites, comparisons)
     if 'realty/' in path:
-        return 'Личный кабинет (избранное/сравнение)'
+        return 'User Account'
 
     # Pages (sitemap and others)
     if 'pages/' in path:
-        return 'Служебная страница'
-
-    # Check if it's a property listing page that we missed
-    # This catches patterns like /arenda-kvartir-balashiha/, /studiya-zheleznodorozhnyy/, etc.
-    if any(
-        x in path
-        for x in [
-            '1k-',
-            '2k-',
-            '3k-',
-            'студии',
-            'аренда',
-            'kvartiri-',
-            'kupit-dom-',
-            'studii-',
-            'arenda-kvartir-',
-            'arenda-studiy-',
-            'arenda-ofisa-',
-            'studiya-',
-        ]
-    ):
-        # All property listing pages with maps are now unified as property-catalog
-        return 'Каталог объектов недвижимости'
-
-    # Team pages
-    if 'команда-миэль/' in path:
-        if path == 'команда-миэль/index.html':
-            return 'Список сотрудников'
-        else:
-            return 'Профиль сотрудника'
+        return 'System Page'
 
     # Default - determine by URL pattern
     if any(x in url for x in ['/1k-', '/2k-', '/3k-', '/студии', '/аренда']):
-        return 'Каталог недвижимости'
+        return 'Property Catalog'
 
-    return 'Другие страницы'  # Will be converted to "other-pages" by page_type_to_id
+    return 'Other Pages'
 
 
 def wrap_text(text, title_len=0, width=80):
-
     """
     Wrap long text lines to specified width (default 70 characters).
     Preserves existing line breaks and wraps only long lines.
@@ -1599,27 +1468,124 @@ def format_block_for_yaml(block, is_example=True):
     return '\n'.join(lines)
 
 
-def clean_results_directory(output_dir):
-    """
-    Clean up the results directory before generating new results.
-    Removes all existing files and subdirectories in results/.
+def generate_analysis_report(yaml_data, output_dir):
+    """Generate ANALYSIS.md report with duplicate detection."""
+    analysis_path = os.path.join(output_dir, 'ANALYSIS.md')
+    total_types = len(yaml_data)
+    total_pages = sum(
+        info.get('pages_count', 0) for info in yaml_data.values()
+    )
 
-    Args:
-        output_dir: Path to the results directory
-    """
-    if os.path.exists(output_dir):
-        print(f'Cleaning results directory: {output_dir}')
-        # Remove all contents but keep the directory itself
-        for item in os.listdir(output_dir):
-            item_path = os.path.join(output_dir, item)
-            try:
-                if os.path.isfile(item_path) or os.path.islink(item_path):
-                    os.unlink(item_path)
-                elif os.path.isdir(item_path):
-                    shutil.rmtree(item_path)
-            except Exception as e:
-                print(f'Warning: Could not remove {format_path(item_path, output_dir)}: {e}')
-        print('Results directory cleaned')
+    # Build table
+    table_rows = []
+    for page_type, info in sorted(yaml_data.items()):
+        type_id = info.get('id', 'unknown')
+        pages_count = info.get('pages_count', 0)
+        table_rows.append(f'| {page_type} | `{type_id}` | {pages_count} | 1 |')
+
+    # Detect duplicates by comparing selectors
+    potential_duplicates = detect_duplicate_types(yaml_data)
+
+    # Generate report content
+    lines = ['# Page Type Analysis Report\n']
+    lines.append(
+        'This report analyzes page types to identify potential duplicates.\n'
+    )
+    lines.append('## Summary Statistics\n')
+    lines.append(f'**Total Page Types:** {total_types}\n')
+    lines.append(f'**Total Pages Analyzed:** {total_pages}\n')
+    lines.append('| Page Type | ID | Pages | Variants |')
+    lines.append('|---|---|---|---|')
+    lines.extend(table_rows)
+    lines.append('')
+    lines.append('## Potential Duplicates\n')
+    lines.append('Page types with similar block structures:\n')
+
+    if potential_duplicates:
+        for dup in potential_duplicates:
+            lines.append(f'### {dup["type1"]} vs {dup["type2"]}\n')
+            lines.append(f'- **Similarity:** {dup["similarity"]:.1%}')
+            lines.append(
+                f'- **Common Blocks:** {dup["common_blocks"]}/{dup["total_blocks"]}'
+            )
+            lines.append(f'- **Pages:** {dup["pages1"]} vs {dup["pages2"]}')
+            lines.append(
+                f'- **IDs:** `{dup["type1_id"]}` vs `{dup["type2_id"]}`\n'
+            )
+            if dup['similarity'] > 0.9:
+                lines.append(
+                    '**Recommendation:** HIGH - Consider merging these types.\n'
+                )
+            elif dup['similarity'] > 0.7:
+                lines.append(
+                    '**Recommendation:** MEDIUM - Review for possible merge.\n'
+                )
+            lines.append('')
+    else:
+        lines.append('No significant duplicates found.\n')
+
+    lines.append('## Recommendations\n')
+    if potential_duplicates:
+        high = [d for d in potential_duplicates if d['similarity'] > 0.9]
+        med = [d for d in potential_duplicates if 0.7 < d['similarity'] <= 0.9]
+        if high:
+            lines.append(
+                f'**High Priority:** {len(high)} pair(s) need review.\n'
+            )
+        if med:
+            lines.append(
+                f'**Medium Priority:** {len(med)} pair(s) may need review.\n'
+            )
+    else:
+        lines.append('All page types appear distinct. No action required.\n')
+
+    with open(analysis_path, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(lines))
+
+    print(f'Analysis report saved to: ANALYSIS.md')
+
+
+def detect_duplicate_types(yaml_data):
+    """Detect potential duplicate page types by comparing block selectors."""
+    potential_duplicates = []
+    page_types_list = list(yaml_data.items())
+
+    for i in range(len(page_types_list)):
+        for j in range(i + 1, len(page_types_list)):
+            type1_name, type1_info = page_types_list[i]
+            type2_name, type2_info = page_types_list[j]
+
+            blocks1 = type1_info.get('blocks', [])
+            blocks2 = type2_info.get('blocks', [])
+
+            if not blocks1 or not blocks2:
+                continue
+
+            selectors1 = set(b.get('selector', '') for b in blocks1)
+            selectors2 = set(b.get('selector', '') for b in blocks2)
+
+            if selectors1 and selectors2:
+                common = selectors1 & selectors2
+                all_sel = selectors1 | selectors2
+                similarity = len(common) / len(all_sel)
+
+                if similarity > 0.7:
+                    potential_duplicates.append(
+                        {
+                            'type1': type1_name,
+                            'type1_id': type1_info.get('id', ''),
+                            'type2': type2_name,
+                            'type2_id': type2_info.get('id', ''),
+                            'similarity': similarity,
+                            'common_blocks': len(common),
+                            'total_blocks': len(all_sel),
+                            'pages1': type1_info.get('pages_count', 0),
+                            'pages2': type2_info.get('pages_count', 0),
+                        }
+                    )
+
+    potential_duplicates.sort(key=lambda x: x['similarity'], reverse=True)
+    return potential_duplicates
 
 
 def load_excluded_urls(script_dir):
@@ -1664,45 +1630,6 @@ def load_excluded_urls(script_dir):
                         if 'url' in item:
                             excluded_urls.add(item['url'])
             print(
-                f'Loaded {len([u for u in excluded_urls])} redirected pages to exclude'
-            )
-        except Exception as e:
-            print(f'Warning: Could not load redirected-pages.yaml: {e}')
-
-    return excluded_urls
-
-
-def format_path(path, base_dir=None):
-    """
-    Convert absolute path to relative path with forward slashes.
-
-    Args:
-        path: Absolute or relative path
-        base_dir: Base directory to make path relative to (defaults to script directory)
-
-    Returns:
-        Relative path with forward slashes
-    """
-    if base_dir is None:
-        # Get script directory as default base
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-
-    # Make path relative to base_dir
-    try:
-        rel_path = os.path.relpath(path, base_dir)
-    except ValueError:
-        # If paths are on different drives on Windows, just use the path as-is
-        rel_path = path
-
-    # Convert backslashes to forward slashes
-    return rel_path.replace('\\', '/')
-
-
-def main():
-
-                        if 'url' in item:
-                            excluded_urls.add(item['url'])
-            print(
                 f'Loaded redirected pages to exclude (total excluded: {len(excluded_urls)})'
             )
         except Exception as e:
@@ -1711,22 +1638,57 @@ def main():
     return excluded_urls
 
 
+def clean_results_directory(output_dir):
+    """
+    Clean up the results directory before generating new results.
+    Removes all existing files and subdirectories in results/.
+
+    Args:
+        output_dir: Path to the results directory
+    """
+    if os.path.exists(output_dir):
+        print(f'Cleaning results directory: {output_dir}')
+        # Remove all contents but keep the directory itself
+        for item in os.listdir(output_dir):
+            item_path = os.path.join(output_dir, item)
+            try:
+                if os.path.isfile(item_path) or os.path.islink(item_path):
+                    os.unlink(item_path)
+                elif os.path.isdir(item_path):
+                    shutil.rmtree(item_path)
+            except Exception as e:
+                print(f'Warning: Could not remove {item_path}: {e}')
+        print('Results directory cleaned')
+
+
 def main():
-    # Initialize paths
+    """
+    Main function to analyze all HTML pages.
+
+    Environment Variables:
+        ZDKVARTIRA_BASE_URL: Base URL for the website (default: https://zdkvartira.ru)
+    """
+
+    # Calculate paths relative to script location
     script_dir = os.path.dirname(os.path.abspath(__file__))
     base_dir = os.path.join(script_dir, 'sources', 'zdkvartira.ru')
     output_dir = os.path.join(script_dir, 'results')
     page_types_dir = os.path.join(output_dir, 'page-types')
     page_lists_dir = os.path.join(output_dir, 'page-lists')
 
-    print('Configuration:')
+    print(f'Configuration:')
     print(f'  Base URL: {BASE_URL}')
-    print(f'  Source directory: {format_path(base_dir, script_dir)}')
-    print(f'  Output directory: {format_path(output_dir, script_dir)}')
+    print(f'  Source directory: sources/zdkvartira.ru')
+    print(f'  Output directory: results')
     sys.stdout.flush()
 
-    # Clean results directory before starting
+    # Clean results directory before generating new results
     clean_results_directory(output_dir)
+
+    # Create output directories if they don't exist
+    os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(page_types_dir, exist_ok=True)
+    os.makedirs(page_lists_dir, exist_ok=True)
 
     # Load excluded URLs (broken links and redirects)
     print('\nLoading excluded URLs...')
@@ -1735,12 +1697,8 @@ def main():
     print(f'Total URLs to exclude: {len(excluded_urls)}')
     sys.stdout.flush()
 
-    # Создаем директории вывода если не существуют
-    os.makedirs(output_dir, exist_ok=True)
-    os.makedirs(page_types_dir, exist_ok=True)
-    os.makedirs(page_lists_dir, exist_ok=True)
-
-    print('\nНачинаю анализ страниц...')
+    print('\nStarting page analysis...')
+    sys.stdout.flush()
 
     # Собираем все HTML файлы
     pages = []
@@ -1773,44 +1731,44 @@ def main():
     print(f'Найдено {len(html_files)} HTML файлов ({skipped_count} excluded)')
     sys.stdout.flush()
 
-    # Анализируем каждую страницу
+    # Analyze each page
     for i, html_file in enumerate(html_files, 1):
         if i % 50 == 0:
-            print(f'Обработано {i}/{len(html_files)} страниц...')
+            print(f'Processed {i}/{len(html_files)} pages...')
             sys.stdout.flush()
 
         try:
             page_info = extract_page_info(
                 html_file, base_url=BASE_URL, base_dir=base_dir
             )
-            # Classify the page type
             page_info['type'] = classify_page_type(page_info)
             pages.append(page_info)
         except Exception as e:
-            print(f'Ошибка при обработке {format_path(html_file, base_dir)}: {e}')
-            sys.stdout.flush()
+            # Use relative path in error message
+            rel_error_path = os.path.relpath(html_file, start=script_dir)
+            print(f'Error processing {rel_error_path}: {e}')
+            import traceback
 
-    print(f'\nПроанализировано {len(pages)} страниц')
+            traceback.print_exc()
+
+    print(f'\nAnalyzed {len(pages)} pages')
     sys.stdout.flush()
 
-    # Шаг 1: Создаем pages.txt с табуляцией в качестве разделителя
-    print('\nСоздаю pages.txt...')
+    # Step 1: Create pages.txt with tab delimiter
+    print('\nCreating pages.txt...')
     sys.stdout.flush()
     with open(
         os.path.join(output_dir, 'pages.txt'), 'w', encoding='utf-8'
     ) as f:
-        for page in sorted(pages, key=lambda x: x.get('url', '')):
-            page_type = page.get(
-                'type', 'Другие страницы'
-            )  # Default to "Other pages" if type is missing
-            type_id = page_type_to_id(page_type)
+        for page in sorted(pages, key=lambda x: x['url']):
+            type_id = page_type_to_id(page['type'])
             f.write(f"{page['url']}\t{type_id}\t{page['title']}\n")
 
-    print(f'Сохранено {len(pages)} страниц в pages.txt')
+    print(f'Saved {len(pages)} pages to pages.txt')
     sys.stdout.flush()
 
-    # Шаг 1.5: Создаем pages.csv с обязательным квотированием всех текстовых полей
-    print('\nСоздаю pages.csv...')
+    # Step 1.5: Create pages.csv with mandatory quoting of all text fields
+    print('\nCreating pages.csv...')
     sys.stdout.flush()
     with open(
         os.path.join(output_dir, 'pages.csv'),
@@ -1820,56 +1778,62 @@ def main():
     ) as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         writer.writerow(['url', 'type', 'title'])
-        for page in sorted(pages, key=lambda x: x.get('url', '')):
-            page_type = page.get(
-                'type', 'Другие страницы'
-            )  # Default to "Other pages" if type is missing
-            type_id = page_type_to_id(page_type)
+        for page in sorted(pages, key=lambda x: x['url']):
+            type_id = page_type_to_id(page['type'])
             writer.writerow([page['url'], type_id, page['title']])
 
-    print(f'Сохранено {len(pages)} страниц в pages.csv')
+    print(f'Saved {len(pages)} pages in pages.csv')
     sys.stdout.flush()
 
-    # Шаг 2: Группируем страницы по типам
-    print('\nГруппирую страницы по типам...')
+    # Step 2: Group pages by type
+    print('\nGrouping pages by type...')
     sys.stdout.flush()
     type_groups = {}
 
     for page in pages:
-        page_type = page.get(
-            'type', 'Другие страницы'
-        )  # Default to "Other pages" if type is missing
+        page_type = page['type']
         if page_type not in type_groups:
             type_groups[page_type] = {'pages': [], 'block_signatures': {}}
 
         type_groups[page_type]['pages'].append(page)
 
-        # Группируем по сигнатуре блоков (для выявления подтипов)
+        # Group by block signature (for identifying subtypes)
         sig = get_block_signature(page['blocks'])
         if sig not in type_groups[page_type]['block_signatures']:
             type_groups[page_type]['block_signatures'][sig] = []
         type_groups[page_type]['block_signatures'][sig].append(page)
 
-    # Выводим статистику по типам
-    print('\nСтатистика по типам страниц:')
+    # Output type statistics
+    print('\nType statistics:')
     sys.stdout.flush()
     for page_type, group_data in sorted(type_groups.items()):
         num_pages = len(group_data['pages'])
         num_subtypes = len(group_data['block_signatures'])
         print(
-            f'  {page_type}: {num_pages} страниц, {num_subtypes} вариантов структуры'
+            f'  {page_type}: {num_pages} pages, {num_subtypes} structure variants'
         )
         sys.stdout.flush()
 
-    # Шаг 3: Создаем types.yaml и отдельные файлы для каждого типа
-    print('\nСоздаю types.yaml и файлы типов страниц...')
+    # Output statistics by type
+    print('\nPage type statistics:')
+    sys.stdout.flush()
+    for page_type, group_data in sorted(type_groups.items()):
+        num_pages = len(group_data['pages'])
+        num_subtypes = len(group_data['block_signatures'])
+        print(
+            f'  {page_type}: {num_pages} pages, {num_subtypes} structure variants'
+        )
+        sys.stdout.flush()
+
+    # Step 3: Create types.yaml and individual files for each page type
+    print('\nCreating types.yaml and page type files...')
     sys.stdout.flush()
 
     yaml_data = {}
 
-    # Сначала добавляем Главную страницу (с mainheader и footer)
-    if 'Главная страница' in type_groups:
-        page_type = 'Главная страница'
+    # First add Home Page (with mainheader and footer)
+    if 'Home Page' in type_groups:
+        page_type = 'Home Page'
         group_data = type_groups[page_type]
         pages_list = group_data['pages']
 
@@ -1885,7 +1849,7 @@ def main():
             'pages_count': len(pages_list),
         }
 
-        # Для главной страницы включаем ВСЕ блоки (включая mainheader и footer)
+        # For Home Page include ALL blocks (including mainheader and footer)
         for block in example_page['blocks']:
             block_info = {
                 'id': block['id'],
@@ -1917,9 +1881,9 @@ def main():
 
         yaml_data[page_type] = type_info
 
-    # Затем добавляем остальные типы (без mainheader и footer)
+    # Then add other types (without mainheader and footer)
     for page_type, group_data in sorted(type_groups.items()):
-        if page_type == 'Главная страница':
+        if page_type == 'Home Page':
             continue
 
         pages_list = group_data['pages']
@@ -1936,7 +1900,7 @@ def main():
             'pages_count': len(pages_list),
         }
 
-        # Добавляем только контентные блоки (исключаем mainheader и footer)
+        # Add only content blocks (exclude mainheader and footer)
         for block in example_page['blocks']:
             if block.get('is_common'):
                 continue
@@ -1968,8 +1932,8 @@ def main():
 
         yaml_data[page_type] = type_info
 
-    # Сохраняем общий types.yaml
-    print(f'Сохранено {len(yaml_data)} типов страниц в types.yaml')
+    # Save the combined types.yaml
+    print(f'Saved {len(yaml_data)} page types to types.yaml')
     sys.stdout.flush()
     with open(
         os.path.join(output_dir, 'types.yaml'), 'w', encoding='utf-8'
@@ -1983,23 +1947,28 @@ def main():
             width=120,
         )
 
-    # Шаг 4: Создаем отдельные Markdown файлы для каждого типа страницы
-    print('\nСоздаю отдельные Markdown файлы для каждого типа страницы...')
+    # Generate ANALYSIS.md report with duplicate detection
+    print('\nGenerating page type analysis report...')
+    sys.stdout.flush()
+    generate_analysis_report(yaml_data, output_dir)
+
+    # Step 4: Create individual Markdown files for each page type
+    print('\nCreating individual Markdown files for each page type...')
     sys.stdout.flush()
     for page_type, group_data in type_groups.items():
         pages_list = group_data['pages']
         type_id = page_type_to_id(page_type)
         type_info = yaml_data[page_type]
 
-        # Создаем Markdown файл с описанием типа
+        # Create file with type description
         md_filename = f'{type_id}.md'
         with open(
             os.path.join(page_types_dir, md_filename), 'w', encoding='utf-8'
         ) as f:
-            # Заголовок
+            # Title
             f.write(f'# {page_type}\n\n')
 
-            # Метаинформация
+            # Meta information
             f.write(f"**ID:** `{type_info['id']}`\n\n")
             f.write(f"**Example URL:** {type_info['example_url']}\n\n")
 
@@ -2009,7 +1978,7 @@ def main():
 
             f.write(f"**Total Pages:** {type_info['total_pages']}\n\n")
 
-            # Блоки
+            # Blocks
             f.write(f"## Content Blocks ({len(type_info['blocks'])})\n\n")
 
             for i, block in enumerate(type_info['blocks'], 1):
@@ -2075,8 +2044,8 @@ def main():
 
                 f.write('\n')
 
-        # Создаем TXT файл со списком страниц в отдельной папке page-lists
-        # Используем табуляцию как разделитель: {url}\t{title}
+        # Create TXT file with page list in separate page-lists folder
+        # Using tab as delimiter: {url}\t{title}
         txt_filename = f'{type_id}.txt'
         with open(
             os.path.join(page_lists_dir, txt_filename), 'w', encoding='utf-8'
@@ -2085,222 +2054,27 @@ def main():
                 f.write(f"{page['url']}\t{page['title']}\n")
 
         print(
-            f'  Созданы {md_filename} и {txt_filename} ({len(pages_list)} страниц)'
+            f'  Created {md_filename} and {txt_filename} ({len(pages_list)} pages)'
         )
         sys.stdout.flush()
 
-    # Generate analysis report
-    print('\nGenerating page type analysis report...')
+    print(f'\n[SUCCESS] Analysis completed!')
     sys.stdout.flush()
-    generate_analysis_report(type_groups, output_dir)
-
-    print(f'\n✅ Анализ завершен!')
+    print(f'[INFO] Results saved to: results')
     sys.stdout.flush()
-    print(f'📁 Результаты сохранены в: results')
+    print(f'   - pages.txt: list of all pages (TAB-separated)')
     sys.stdout.flush()
-    print(f'   - pages.txt: список всех страниц (TAB-разделитель)')
+    print(f'   - pages.csv: list of all pages in CSV format')
     sys.stdout.flush()
-    print(f'   - pages.csv: список всех страниц в CSV формате')
+    print(f'   - types.yaml: all page types with block descriptions')
     sys.stdout.flush()
-    print(f'   - types.yaml: все типы страниц с описанием блоков')
-    sys.stdout.flush()
-    print(f'   - page-types/: описания типов страниц (Markdown)')
+    print(f'   - page-types/: page type descriptions (Markdown)')
     sys.stdout.flush()
     print(
-        f'   - page-lists/: списки страниц по типам (TAB-разделитель, формат: {{type}}.txt)'
+        f'   - page-lists/: page lists by type (TAB-separated, format: {{type}}.txt)'
     )
     sys.stdout.flush()
-    print(f'   - ANALYSIS.md: анализ типов страниц и поиск дубликатов')
-    sys.stdout.flush()
-
-
-def generate_analysis_report(type_groups, output_dir):
-    """
-    Generate an analysis report identifying similar page types and potential duplicates.
-
-    Args:
-        type_groups: Dictionary of page type groups
-        output_dir: Output directory path
-    """
-    analysis_path = os.path.join(output_dir, 'ANALYSIS.md')
-
-    with open(analysis_path, 'w', encoding='utf-8') as f:
-        f.write('# Page Type Analysis Report\n\n')
-        f.write(
-            'This report analyzes the generated page types to identify potential duplicates and similar structures.\n\n'
-        )
-
-        # Summary statistics
-        f.write('## Summary Statistics\n\n')
-        f.write(f'**Total Page Types:** {len(type_groups)}\n')
-        f.write(
-            f"**Total Pages Analyzed:** {sum(len(g['pages']) for g in type_groups.values())}\n\n"
-        )
-
-        f.write('| Page Type | ID | Pages | Variants |\n')
-        f.write('|---|---|---|---|\n')
-        for page_type, group_data in sorted(type_groups.items()):
-            type_id = page_type_to_id(page_type)
-            num_pages = len(group_data['pages'])
-            num_variants = len(group_data['block_signatures'])
-            f.write(
-                f'| {page_type} | `{type_id}` | {num_pages} | {num_variants} |\n'
-            )
-
-        f.write('\n')
-
-        # Analyze block signatures for similarity
-        f.write('## Potential Duplicates\n\n')
-        f.write(
-            'Page types with identical or highly similar block structures:\n\n'
-        )
-
-        # Collect all type signatures
-        type_signatures = {}
-        for page_type, group_data in type_groups.items():
-            if not group_data['pages']:
-                continue
-
-            # Get most common block signature
-            most_common_sig = max(
-                group_data['block_signatures'].items(), key=lambda x: len(x[1])
-            )[0]
-            type_signatures[page_type] = most_common_sig
-
-        # Compare each pair
-        analyzed_pairs = set()
-        duplicates_found = []
-
-        type_list = list(type_signatures.keys())
-        for i in range(len(type_list)):
-            for j in range(i + 1, len(type_list)):
-                type1 = type_list[i]
-                type2 = type_list[j]
-
-                # Skip if already analyzed
-                pair_key = tuple(sorted([type1, type2]))
-                if pair_key in analyzed_pairs:
-                    continue
-                analyzed_pairs.add(pair_key)
-
-                sig1 = type_signatures[type1]
-                sig2 = type_signatures[type2]
-
-                # Calculate similarity
-                if not sig1 or not sig2:
-                    continue
-
-                set1 = set(sig1)
-                set2 = set(sig2)
-
-                if not set1 and not set2:
-                    continue
-
-                # Jaccard similarity
-                intersection = set1.intersection(set2)
-                union = set1.union(set2)
-
-                if not union:
-                    continue
-
-                similarity = len(intersection) / len(union)
-
-                # High similarity threshold
-                if similarity >= 0.8:
-                    duplicates_found.append(
-                        {
-                            'type1': type1,
-                            'type2': type2,
-                            'similarity': similarity,
-                            'common_blocks': intersection,
-                            'only_in_1': set1 - set2,
-                            'only_in_2': set2 - set1,
-                        }
-                    )
-
-        if duplicates_found:
-            # Sort by similarity (highest first)
-            duplicates_found.sort(key=lambda x: x['similarity'], reverse=True)
-
-            for dup in duplicates_found:
-                type_id1 = page_type_to_id(dup['type1'])
-                type_id2 = page_type_to_id(dup['type2'])
-
-                f.write(f"### {dup['type1']} vs {dup['type2']}\n\n")
-                f.write(f"- **Similarity:** {dup['similarity']:.0%}\n")
-                f.write(f'- **Type IDs:** `{type_id1}` vs `{type_id2}`\n')
-                f.write(
-                    f"- **Pages:** {len(type_groups[dup['type1']]['pages'])} vs {len(type_groups[dup['type2']]['pages'])}\n\n"
-                )
-
-                if dup['similarity'] == 1.0:
-                    f.write(
-                        '**⚠️ IDENTICAL STRUCTURE** - These types have exactly the same blocks and should likely be merged.\n\n'
-                    )
-                elif dup['similarity'] >= 0.9:
-                    f.write(
-                        '**⚠️ NEARLY IDENTICAL** - Very high similarity, consider merging.\n\n'
-                    )
-                else:
-                    f.write(
-                        '**⚡ HIGH SIMILARITY** - Review for potential consolidation.\n\n'
-                    )
-
-                f.write(f"**Common Blocks ({len(dup['common_blocks'])}):**\n")
-                for block in sorted(dup['common_blocks']):
-                    f.write(f'- `{block}`\n')
-
-                if dup['only_in_1']:
-                    f.write(f"\n**Only in {dup['type1']}:**\n")
-                    for block in sorted(dup['only_in_1']):
-                        f.write(f'- `{block}`\n')
-
-                if dup['only_in_2']:
-                    f.write(f"\n**Only in {dup['type2']}:**\n")
-                    for block in sorted(dup['only_in_2']):
-                        f.write(f'- `{block}`\n')
-
-                f.write('\n---\n\n')
-        else:
-            f.write('No significant duplicates found.\n\n')
-
-        # Recommendations
-        f.write('## Recommendations\n\n')
-
-        if duplicates_found:
-            f.write(
-                'Based on the analysis, consider the following actions:\n\n'
-            )
-
-            perfect_matches = [
-                d for d in duplicates_found if d['similarity'] == 1.0
-            ]
-            if perfect_matches:
-                f.write('### Immediate Merges (100% Similar)\n\n')
-                for dup in perfect_matches:
-                    f.write(
-                        f"- Merge `{page_type_to_id(dup['type1'])}` and `{page_type_to_id(dup['type2'])}`\n"
-                    )
-                f.write('\n')
-
-            high_similar = [
-                d for d in duplicates_found if 0.9 <= d['similarity'] < 1.0
-            ]
-            if high_similar:
-                f.write('### Review for Merging (90-99% Similar)\n\n')
-                for dup in high_similar:
-                    f.write(
-                        f"- Review `{page_type_to_id(dup['type1'])}` and `{page_type_to_id(dup['type2'])}`\n"
-                    )
-                f.write('\n')
-        else:
-            f.write(
-                'All page types appear to be distinct. No immediate action required.\n\n'
-            )
-
-    print(f'Analysis report saved to: {format_path(analysis_path, script_dir)}')
 
 
 if __name__ == '__main__':
     main()
-

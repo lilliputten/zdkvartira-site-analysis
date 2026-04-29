@@ -1,4 +1,4 @@
-# Список FAQ
+# FAQ List
 
 **ID:** `faq-list`
 

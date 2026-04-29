@@ -1,4 +1,4 @@
-# Список новостей
+# News List
 
 **ID:** `news-list`
 

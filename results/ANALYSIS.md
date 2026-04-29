@@ -1,44 +1,84 @@
 # Page Type Analysis Report
 
-This report analyzes the generated page types to identify potential duplicates and similar structures.
+This report analyzes page types to identify potential duplicates.
 
 ## Summary Statistics
 
 **Total Page Types:** 22
+
 **Total Pages Analyzed:** 1359
 
 | Page Type | ID | Pages | Variants |
 |---|---|---|---|
-| Аналитика | `analytics` | 1 | 1 |
-| Вакансии | `vacancies` | 1 | 1 |
-| Главная страница | `00-main` | 1 | 1 |
-| Детальная страница акции | `promotion-detail` | 6 | 1 |
-| Детальная страница новостройки | `new-building-detail` | 2 | 2 |
-| Детальная страница объекта | `property-single` | 36 | 2 |
-| Другие страницы | `other-pages` | 5 | 4 |
-| Каталог объектов недвижимости | `property-catalog` | 23 | 2 |
-| Контакты | `contacts` | 1 | 1 |
-| Личный кабинет (избранное/сравнение) | `user-account` | 2 | 1 |
-| О компании | `about` | 1 | 1 |
-| Профиль сотрудника | `staff-profile` | 18 | 6 |
-| Результаты поиска | `search-results` | 1 | 1 |
-| Служебная страница | `system-page` | 1 | 1 |
-| Список FAQ | `faq-list` | 1 | 1 |
-| Список акций | `promotions-list` | 1 | 1 |
-| Список новостей | `news-list` | 2 | 1 |
-| Список новостроек | `new-buildings-list` | 1 | 1 |
-| Список отзывов | `reviews-list` | 1 | 1 |
-| Список сотрудников | `staff-list` | 1 | 1 |
-| Страница новости | `news-article` | 1246 | 1 |
-| Страница услуги | `service-page` | 7 | 7 |
+| About | `about` | 1 | 1 |
+| Analytics | `analytics` | 1 | 1 |
+| Contacts | `contacts` | 1 | 1 |
+| FAQ List | `faq-list` | 1 | 1 |
+| Home Page | `00-main` | 1 | 1 |
+| New Building Detail | `new-building-detail` | 2 | 1 |
+| New Buildings List | `new-buildings-list` | 1 | 1 |
+| News Article | `news-article` | 1246 | 1 |
+| News List | `news-list` | 2 | 1 |
+| Other Pages | `other-pages` | 14 | 1 |
+| Promotion Detail | `promotion-detail` | 6 | 1 |
+| Promotions List | `promotions-list` | 1 | 1 |
+| Property Catalog | `property-catalog` | 11 | 1 |
+| Property Single | `property-single` | 39 | 1 |
+| Reviews List | `reviews-list` | 1 | 1 |
+| Search Results | `search-results` | 1 | 1 |
+| Service Page | `service-page` | 7 | 1 |
+| Staff List | `staff-list` | 1 | 1 |
+| Staff Profile | `staff-profile` | 18 | 1 |
+| System Page | `system-page` | 1 | 1 |
+| User Account | `user-account` | 2 | 1 |
+| Vacancies | `vacancies` | 1 | 1 |
 
 ## Potential Duplicates
 
-Page types with identical or highly similar block structures:
+Page types with similar block structures:
 
-No significant duplicates found.
+### Other Pages vs Property Catalog
+
+- **Similarity:** 100.0%
+- **Common Blocks:** 8/8
+- **Pages:** 14 vs 11
+- **IDs:** `other-pages` vs `property-catalog`
+
+**Recommendation:** HIGH - Consider merging these types.
+
+
+### Other Pages vs Property Single
+
+- **Similarity:** 87.5%
+- **Common Blocks:** 7/8
+- **Pages:** 14 vs 39
+- **IDs:** `other-pages` vs `property-single`
+
+**Recommendation:** MEDIUM - Review for possible merge.
+
+
+### Property Catalog vs Property Single
+
+- **Similarity:** 87.5%
+- **Common Blocks:** 7/8
+- **Pages:** 11 vs 39
+- **IDs:** `property-catalog` vs `property-single`
+
+**Recommendation:** MEDIUM - Review for possible merge.
+
+
+### News List vs Reviews List
+
+- **Similarity:** 71.4%
+- **Common Blocks:** 5/7
+- **Pages:** 2 vs 1
+- **IDs:** `news-list` vs `reviews-list`
+
+**Recommendation:** MEDIUM - Review for possible merge.
+
 
 ## Recommendations
 
-All page types appear to be distinct. No immediate action required.
+**High Priority:** 1 pair(s) need review.
 
+**Medium Priority:** 3 pair(s) may need review.

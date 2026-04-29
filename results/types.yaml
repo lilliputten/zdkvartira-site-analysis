@@ -1,6 +1,6 @@
-Главная страница:
+Home Page:
   id: 00-main
-  description: Главная страница
+  description: Home Page
   example_url: https://zdkvartira.ru/
   example_title: Агентство недвижимости в Железнодорожном, Балашихе | Купить квартиру от «МИЭЛЬ»
   total_pages: 1
@@ -69,14 +69,14 @@
     description: Обращение руководителя. Фото генерального директора, текст обращения
     snippet: Обращение руководителя Бутыркина Елена Борисовна Генеральный директор Добро пожаловать на официальны...
   - id: last-video-reviews
-    selector: '#last-video-reviews.gray-block.serial-section'
+    selector: '#last-video-reviews.d-none.gray-block.serial-section'
     parent: html > body > noindex
     title: Видеоотзывы
     heading: Видеоотзывы
     description: Видеоотзывы. Видео с Rutube с описанием (имя клиента) и датой. Ссылка перехода в раздел видеоотзывов
     snippet: Видеоотзывы Марина и Елена 14 августа 2024 Виктория Топоногова 26 мая 2021 Наталья 5 февраля 2020 Ко...
   - id: form
-    selector: '#form.blue-block'
+    selector: '#form.blue-block.text-center'
     parent: html > body
     title: Не нашли ответ на свой вопрос?
     heading: Не нашли ответ на свой вопрос?
@@ -90,9 +90,90 @@
       при определении типа страницы'
     common_block: true
   pages_count: 1
-Аналитика:
+About:
+  id: about
+  description: About
+  example_url: https://zdkvartira.ru/о-компании/
+  example_title: Агентство недвижимости «МИЭЛЬ». Лидер рынка в Железнодорожном
+  total_pages: 1
+  blocks:
+  - id: top-back
+    selector: .top-back
+    parent: html > body
+    title: МИЭЛЬ в Железнодорожном
+    heading: МИЭЛЬ в Железнодорожном
+    description: 'Hero блок с заголовком раздела (заголовок: "МИЭЛЬ в Железнодорожном")'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    parent: html > body
+    title: Навигационная цепочка
+    description: Навигационная цепочка (хлебные крошки)
+  - id: page-title
+    selector: p.caption
+    parent: html > body > div.top-back > div.top-back__bg.inner-top.top-back__fixed-height > div
+    title: МИЭЛЬ в Железнодорожном
+    description: 'Заголовок страницы: "МИЭЛЬ в Железнодорожном"'
+  - id: word
+    selector: '#word'
+    parent: html > body
+    title: Об офисе
+    heading: Об офисе
+    description: Обращение руководителя. Фото генерального директора, текст обращения
+    snippet: Об офисе На сегодняшний день, «МИЭЛЬ» – сеть офисов недвижимости, крупнейшая брокерская сеть России,...
+  - id: services
+    selector: '#services.gray-block.serial-section'
+    parent: html > body
+    title: Факты о МИЭЛЬ, Офис в Железнодорожном
+    heading: Факты о МИЭЛЬ, Офис в Железнодорожном
+    description: Быстрые ссылки на разделы услуг ("Услуги"). Иконки с названием услуги со ссылками на страницы услуг
+    snippet: Факты о МИЭЛЬ, Офис в Железнодорожном Лидер рынка в Железнодорожном Более 12 000 сделок в городе Клю...
+  - id: trust
+    selector: '#trust.serial-section'
+    parent: html > body
+    title: Не знаете кому довериться?
+    heading: Не знаете кому довериться?
+    description: Каталог объектов недвижимости
+    snippet: Не знаете кому довериться? Общее количество действующих риэлторских агентств в городе Железнодорожно...
+  - id: sertificats
+    selector: '#sertificats.gray-block.serial-section'
+    parent: html > body
+    title: Наши награды
+    heading: Наши награды
+    description: Изображения и фотографии
+    snippet: Наши награды
+  - id: office
+    selector: '#office.serial-section'
+    parent: html > body
+    title: Будни и праздники
+    heading: Будни и праздники
+    description: Фотографии офиса. Галерея фотографий офисных помещений с возможностью просмотра в полном размере
+    snippet: Будни и праздники
+  - id: last-video-reviews
+    selector: '#last-video-reviews.d-none.gray-block.serial-section'
+    parent: html > body
+    title: Видеоотзывы
+    heading: Видеоотзывы
+    description: Видеоотзывы. Видео с Rutube с описанием (имя клиента) и датой. Ссылка перехода в раздел видеоотзывов
+    snippet: Видеоотзывы Марина и Елена 14 августа 2024 Виктория Топоногова 26 мая 2021 Наталья 5 февраля 2020 Ко...
+  - id: actions
+    selector: '#actions.serial-section'
+    parent: html > body
+    title: Отзывы
+    heading: Отзывы
+    description: 'Анонсы акций ("Самое интересное"). Карточки с баннерами для акций: графическая подложка, аудитория, текст
+      предложения, датой проведения'
+    snippet: Отзывы Назад Вперёд Работали с Наталией с 28 февраля по 28 марта. Сделка была сложная, продажа кварт...
+  - id: news
+    selector: '#news.serial-section.gray-block'
+    parent: html > body
+    title: Новости
+    heading: Новости
+    description: Новости сайта. Карточки новостей с превью, тегом, датой и кратким анонсом
+    snippet: Новости Уважаемые клиеты! Новости офиса 12 апреля 2026 12 апреля офис не работает. Подробнее Капитал...
+  pages_count: 1
+Analytics:
   id: analytics
-  description: Аналитика
+  description: Analytics
   example_url: https://zdkvartira.ru/аналитика/
   example_title: Новости офиса, Миэль Офис в Железнодорожном
   total_pages: 1
@@ -119,19 +200,64 @@
     title: Фильтр поиска
     description: Форма фильтрации и поиска. Поля для выбора параметров фильтрации, кнопки применения фильтров
   pages_count: 1
-Вакансии:
-  id: vacancies
-  description: Вакансии
-  example_url: https://zdkvartira.ru/вакансии/
-  example_title: Работа в «МИЭЛЬ - Железнодорожный». Привлекательные условия оплаты.
+Contacts:
+  id: contacts
+  description: Contacts
+  example_url: https://zdkvartira.ru/контакты/
+  example_title: Агентство недвижимости «МИЭЛЬ». Более 7 000 сделок в городе.
   total_pages: 1
   blocks:
   - id: top-back
     selector: .top-back
     parent: html > body
-    title: Работа в «МИЭЛЬ - Железнодорожный»
-    heading: Работа в «МИЭЛЬ - Железнодорожный»
-    description: 'Hero блок с заголовком раздела (заголовок: "Работа в «МИЭЛЬ - Железнодорожный»")'
+    title: Контакты
+    heading: Контакты
+    description: 'Hero блок с заголовком раздела (заголовок: "Контакты")'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    parent: html > body
+    title: Навигационная цепочка
+    description: Навигационная цепочка (хлебные крошки)
+  - id: page-title
+    selector: p.caption
+    parent: html > body > div.top-back > div.top-back__bg.inner-top.top-back__fixed-height > div
+    title: Контакты
+    description: 'Заголовок страницы: "Контакты"'
+  - id: word
+    selector: '#word.serial-section.pt-2'
+    parent: html > body
+    title: Контакты офиса
+    heading: Контакты офиса
+    description: Обращение руководителя. Фото генерального директора, текст обращения
+    snippet: 'Контакты офиса Наш офис находится в Московской области по адресу: 143980, г.Балашиха мкр. Железнодор...'
+  - id: gray-block
+    selector: .gray-block.serial-section
+    parent: html > body
+    title: Как до нас добраться Построить маршрут
+    heading: Как до нас добраться Построить маршрут
+    description: Текстовый информационный блок
+    snippet: Как до нас добраться Построить маршрут
+  - id: office
+    selector: '#office.serial-section'
+    parent: html > body
+    title: Фотографии офиса
+    heading: Фотографии офиса
+    description: Фотографии офиса. Галерея фотографий офисных помещений с возможностью просмотра в полном размере
+    snippet: Фотографии офиса
+  pages_count: 1
+FAQ List:
+  id: faq-list
+  description: FAQ List
+  example_url: https://zdkvartira.ru/часто-задаваемы-вопросы/
+  example_title: Часто задаваемые вопросы - Миэль Офис в Железнодорожном.
+  total_pages: 1
+  blocks:
+  - id: top-back
+    selector: .top-back
+    parent: html > body
+    title: Часто задаваемые вопросы
+    heading: Часто задаваемые вопросы
+    description: 'Hero блок с заголовком раздела (заголовок: "Часто задаваемые вопросы")'
   - id: breadcrumbs
     selector: .breadcrumbs
     parent: html > body
@@ -140,72 +266,19 @@
   - id: page-title
     selector: p.caption
     parent: html > body > div.top-back > div.top-back__bg.inner-top > div
-    title: Работа в «МИЭЛЬ - Железнодорожный»
-    description: 'Заголовок страницы: "Работа в «МИЭЛЬ - Железнодорожный»"'
-  - id: word
-    selector: '#word'
+    title: Часто задаваемые вопросы
+    description: 'Заголовок страницы: "Часто задаваемые вопросы"'
+  - id: faq-list
+    selector: '#faq-list'
     parent: html > body
-    title: Почему мы?
-    heading: Почему мы?
-    description: Обращение руководителя. Фото генерального директора, текст обращения
-    snippet: Почему мы? Наша компания более 20 лет занимает лидирующую позицию на рынке недвижимости Железнодорож...
-  - id: vacancy
-    selector: '#vacancy'
-    parent: html > body
-    title: Открытые вакансии
-    heading: Открытые вакансии
-    description: Блок новостей
-    snippet: Открытые вакансии Будем рады увидеть вас в нашей команде! Эксперт в отдел продаж городской недвижимо...
-  - id: story
-    selector: '#story.gray-block'
-    parent: html > body
-    title: Истории успеха
-    heading: Истории успеха
-    description: Информация о команде сотрудников
-    snippet: Истории успеха Назад Вперёд Глушкова Юлия Моя работа - это возможность каждый день узнавать что-то н...
-  - id: prefuter
-    selector: '#prefuter'
-    parent: html > body
-    title: Не нашли нужной вакансии, но хотите присоединиться к нам?
-    heading: Не нашли нужной вакансии, но хотите присоединиться к нам?
-    description: Текстовый информационный блок
-    snippet: Не нашли нужной вакансии, но хотите присоединиться к нам? Отправить резюме
+    title: Часто задаваемые вопросы
+    heading: Часто задаваемые вопросы
+    description: Список часто задаваемых вопросов. Категории вопросов с раскрывающимися ответами
+    snippet: Часто задаваемые вопросы Продажа квартиры Сколько стоят услуги по продаже квартиры? Ответ С ценами н...
   pages_count: 1
-Детальная страница акции:
-  id: promotion-detail
-  description: Детальная страница акции
-  example_url: https://zdkvartira.ru/акции-и-скидки/в-день-рождения-особые-условия-и-скидка-10-на-любую-услугу/
-  example_title: В День Рождения особые условия и скидка -10% на любую услугу. Миэль офис в Железнодорожном. 2542
-  total_pages: 6
-  blocks:
-  - id: breadcrumbs
-    selector: .breadcrumbs
-    parent: html > body
-    title: Навигационная цепочка
-    description: Навигационная цепочка (хлебные крошки)
-  - id: content
-    selector: '#content'
-    parent: html > body
-    title: В День Рождения особые условия и скидка -10% на любую услугу
-    heading: В День Рождения особые условия и скидка -10% на любую услугу
-    description: Акции и специальные предложения
-    snippet: В День Рождения особые условия и скидка -10% на любую услугу Акция суммируется с дисконтной программ...
-  - id: form
-    selector: '#form.blue-block'
-    parent: html > body
-    title: Не нашли ответ на свой вопрос?
-    heading: Не нашли ответ на свой вопрос?
-    description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
-    snippet: Не нашли ответ на свой вопрос? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. От...
-  - id: page-title
-    selector: p.caption
-    parent: '#content > div.sml-max-view-block'
-    title: В День Рождения особые условия и скидка -10% на любую услугу
-    description: 'Заголовок страницы: "В День Рождения особые условия и скидка -10% на любую услугу"'
-  pages_count: 6
-Детальная страница новостройки:
+New Building Detail:
   id: new-building-detail
-  description: Детальная страница новостройки
+  description: New Building Detail
   example_url: https://zdkvartira.ru/новостройки/центр-на-проспекте-героев/
   example_title: Купить новостройку Центр на проспекте Героев в Железнодорожном, Балашихе. 1, 2-комнатные квартиры, студии.
   total_pages: 2
@@ -216,7 +289,7 @@
     title: Навигационная цепочка
     description: Навигационная цепочка (хлебные крошки)
   - id: object__about
-    selector: .object__about
+    selector: .object__about.pt-0
     parent: html > body
     title: Каталог объектов недвижимости
     description: Каталог объектов недвижимости
@@ -287,7 +360,7 @@
     description: Галерея карточек с изображениями
     snippet: Фотоотчёты Фотоотчет ноябрь 2019 Фотоотчет август 2019 Фотоотчет июль 2019 Ко всем фотоотчётам
   - id: flat-change
-    selector: '#flat-change'
+    selector: '#flat-change.img-block'
     parent: html > body
     title: Взаимозачёт
     heading: Взаимозачёт
@@ -301,134 +374,13 @@
     description: Галерея карточек с изображениями
     snippet: Документация проекта Проектная декларация корпус 607 ЗОСТ корпус 607 Проектная декларация корпус 608...
   pages_count: 2
-Детальная страница объекта:
-  id: property-single
-  description: Детальная страница объекта
-  example_url: https://zdkvartira.ru/объекты/городская-недвижимость/1-комнатная-квартира-в-г-балашиха-41/
-  example_title: Купить 2-комнатную квартиру Московская обл, г Балашиха, мкр Саввино, ул 1 Мая, д 8
-  total_pages: 36
-  blocks:
-  - id: breadcrumbs
-    selector: .breadcrumbs
-    parent: html > body
-    title: Навигационная цепочка
-    description: Навигационная цепочка (хлебные крошки)
-  - id: object__about
-    selector: section.object__about
-    parent: html > body
-    title: 2-комнатная квартира в г. Балашиха
-    heading: 2-комнатная квартира в г. Балашиха
-    description: Каталог объектов недвижимости
-    snippet: 'ID: 4208 314 просмотров, 8 за сегодня 2-комнатная квартира в г. Балашиха Московская обл, г Балашиха,...'
-  - id: serial-section
-    selector: .serial-section
-    parent: html > body
-    title: Информационный блок
-    description: Каталог объектов недвижимости
-    snippet: Объект на карте
-  - id: object__similars
-    selector: .object__similars.serial-section
-    parent: html > body
-    title: Похожие объекты
-    heading: Похожие объекты
-    description: Каталог объектов недвижимости
-    snippet: Похожие объекты Московская обл, г Мытищи, Новомытищинский пр-кт, д 41 к 3 Продажа квартиры 7.40 млн ...
-  pages_count: 36
-Другие страницы:
-  id: other-pages
-  description: Другие страницы
-  example_url: https://zdkvartira.ru/информационная-политика/
-  example_title: Информационная политика, Миэль Офис в Железнодорожном
-  total_pages: 5
-  blocks:
-  - id: breadcrumbs
-    selector: .breadcrumbs
-    parent: html > body
-    title: Навигационная цепочка
-    description: Навигационная цепочка (хлебные крошки)
-  - id: content
-    selector: '#content'
-    parent: html > body
-    title: Информационная политика
-    heading: Информационная политика
-    description: Информация о команде сотрудников
-    snippet: Информационная политика Сайт не является средством массовой информации, предназначен для доведения д...
-  - id: page-title
-    selector: p.caption
-    parent: '#content > div.sml-max-view-block'
-    title: Информационная политика
-    description: 'Заголовок страницы: "Информационная политика"'
-  pages_count: 5
-Каталог объектов недвижимости:
-  id: property-catalog
-  description: Каталог объектов недвижимости
-  example_url: https://zdkvartira.ru/1k-kvartira-zheleznodorozhnyy/
-  example_title: Купить 1-комнатную квартиру в Железнодорожном недорого. Агентство по недвижимости
-  total_pages: 23
-  blocks:
-  - id: search-inner
-    selector: '#search-inner'
-    parent: '#common-search-form'
-    title: Расширенный поиск
-    description: 'Расширенный поиск недвижимости. Фильтры по параметрам: тип сделки, тип объекта, цена, площадь, этаж и другие
-      параметры'
-    snippet: 'Купить Снять Все объекты × Городская недвижимость: Квартиру Студию Комнату Загородная недвижимость Д...'
-  - id: search-more
-    selector: '#search-more.search-more'
-    parent: '#common-search-form'
-    title: Дополнительные фильтры
-    description: Форма поиска и фильтрации объектов
-    snippet: 'Площадь, м 2 : Общая: Кухня: Жилая: Этаж : Не первый Этажей в доме : Есть балкон / лоджия Тип дома :...'
-  - id: map
-    selector: '#map.object__map.result-map__map'
-    parent: html > body > div.result-map
-    title: Карта расположения
-    description: Карта проезда. Интерактивная карта Яндекс с отметкой расположения офиса
-  - id: form
-    selector: '#form.blue-block'
-    parent: html > body
-    title: Не нашли ответ на свой вопрос?
-    heading: Не нашли ответ на свой вопрос?
-    description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
-    snippet: Не нашли ответ на свой вопрос? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. От...
-  - id: special
-    selector: '#special.result-map__list.gray-block'
-    parent: html > body > div.result-map
-    title: Специальные предложения
-    description: Секция с объектами недвижимости ("Суперпредложения"). Карточки объектов с превью, кнопками "к сравнению"
-      и "в избранное", адресом, типом объекта и параметрами (площадь, этаж, направление)
-  - id: seo
-    selector: '#seo'
-    parent: html > body
-    title: Seo
-    description: Блок новостей
-    snippet: У нас всегда огромный выбор однокомнатных квартир в Железнодорожном. Благодаря нашим экспертам вы см...
-  - id: page-title
-    selector: p.caption
-    parent: '#form > div'
-    title: Не нашли ответ на свой вопрос?
-    description: 'Заголовок страницы: "Не нашли ответ на свой вопрос?"'
-  - id: search-gray
-    selector: '#search-gray'
-    parent: '#common-search-form'
-    title: 1-комнатные квартиры в Железнодорожном
-    heading: 1-комнатные квартиры в Железнодорожном
-    description: Форма обратной связи или заявки; каталог объектов недвижимости
-    snippet: 1-комнатные квартиры в Железнодорожном Искать на карте Сначала новые Сначала дешевле Сначала дороже
-  pages_count: 23
-Контакты:
-  id: contacts
-  description: Контакты
-  example_url: https://zdkvartira.ru/контакты/
-  example_title: Агентство недвижимости «МИЭЛЬ». Более 7 000 сделок в городе.
+New Buildings List:
+  id: new-buildings-list
+  description: New Buildings List
+  example_url: https://zdkvartira.ru/новостройки/
+  example_title: Купить новостройку в Железнодорожном, Балашихе. 1, 2, 3 и 4-комнатные квартиры, студии.
   total_pages: 1
   blocks:
-  - id: top-back
-    selector: .top-back
-    parent: html > body
-    title: Контакты
-    heading: Контакты
-    description: 'Hero блок с заголовком раздела (заголовок: "Контакты")'
   - id: breadcrumbs
     selector: .breadcrumbs
     parent: html > body
@@ -436,145 +388,29 @@
     description: Навигационная цепочка (хлебные крошки)
   - id: page-title
     selector: p.caption
-    parent: html > body > div.top-back > div.top-back__bg.inner-top.top-back__fixed-height > div
-    title: Контакты
-    description: 'Заголовок страницы: "Контакты"'
-  - id: word
-    selector: '#word.serial-section'
     parent: html > body
-    title: Контакты офиса
-    heading: Контакты офиса
-    description: Обращение руководителя. Фото генерального директора, текст обращения
-    snippet: 'Контакты офиса Наш офис находится в Московской области по адресу: 143980, г.Балашиха мкр. Железнодор...'
-  - id: gray-block
-    selector: .gray-block.serial-section
-    parent: html > body
-    title: Как до нас добраться Построить маршрут
-    heading: Как до нас добраться Построить маршрут
-    description: Текстовый информационный блок
-    snippet: Как до нас добраться Построить маршрут
-  - id: office
-    selector: '#office.serial-section'
-    parent: html > body
-    title: Фотографии офиса
-    heading: Фотографии офиса
-    description: Фотографии офиса. Галерея фотографий офисных помещений с возможностью просмотра в полном размере
-    snippet: Фотографии офиса
+    title: Новостройки
+    description: 'Заголовок страницы: "Новостройки"'
+  - id: newhousing-item
+    selector: .newhousing-item
+    parent: html > body > div.col-md-4.col-sm-6.col-xs-12
+    title: Центр на проспекте Героев
+    description: 'Карточка объекта недвижимости с названием: "Центр на проспекте Героев"; тип/адрес: Московская область, г.Балашиха,
+      мкр. Железнодорожный, Центр-2; цена: Цена от: 3.5 млн руб.'
   pages_count: 1
-Личный кабинет (избранное/сравнение):
-  id: user-account
-  description: Личный кабинет (избранное/сравнение)
-  example_url: https://zdkvartira.ru/realty/compares.html/
-  example_title: Сравнение.
-  total_pages: 2
-  blocks:
-  - id: page-title
-    selector: p.caption
-    parent: html > body
-    title: Нет выбранных объектов для сравнения!
-    description: 'Заголовок страницы: "Нет выбранных объектов для сравнения!"'
-  - id: form
-    selector: '#form.blue-block'
-    parent: html > body
-    title: Не нашли ответ на свой вопрос?
-    heading: Не нашли ответ на свой вопрос?
-    description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
-    snippet: Не нашли ответ на свой вопрос? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. От...
-  pages_count: 2
-О компании:
-  id: about
-  description: О компании
-  example_url: https://zdkvartira.ru/о-компании/
-  example_title: Агентство недвижимости «МИЭЛЬ». Лидер рынка в Железнодорожном
-  total_pages: 1
+News Article:
+  id: news-article
+  description: News Article
+  example_url: https://zdkvartira.ru/новости/1-марта-офису-в-тюмени-год/
+  example_title: 1 марта офису «В ТЮМЕНИ» – год! Миэль офис в Железнодорожном. 260
+  total_pages: 1246
   blocks:
   - id: top-back
     selector: .top-back
-    parent: html > body
-    title: МИЭЛЬ в Железнодорожном
-    heading: МИЭЛЬ в Железнодорожном
-    description: 'Hero блок с заголовком раздела (заголовок: "МИЭЛЬ в Железнодорожном")'
-  - id: breadcrumbs
-    selector: .breadcrumbs
-    parent: html > body
-    title: Навигационная цепочка
-    description: Навигационная цепочка (хлебные крошки)
-  - id: page-title
-    selector: p.caption
-    parent: html > body > div.top-back > div.top-back__bg.inner-top.top-back__fixed-height > div
-    title: МИЭЛЬ в Железнодорожном
-    description: 'Заголовок страницы: "МИЭЛЬ в Железнодорожном"'
-  - id: word
-    selector: '#word'
-    parent: html > body
-    title: Об офисе
-    heading: Об офисе
-    description: Обращение руководителя. Фото генерального директора, текст обращения
-    snippet: Об офисе На сегодняшний день, «МИЭЛЬ» – сеть офисов недвижимости, крупнейшая брокерская сеть России,...
-  - id: services
-    selector: '#services.gray-block.serial-section'
-    parent: html > body
-    title: Факты о МИЭЛЬ, Офис в Железнодорожном
-    heading: Факты о МИЭЛЬ, Офис в Железнодорожном
-    description: Быстрые ссылки на разделы услуг ("Услуги"). Иконки с названием услуги со ссылками на страницы услуг
-    snippet: Факты о МИЭЛЬ, Офис в Железнодорожном Лидер рынка в Железнодорожном Более 12 000 сделок в городе Клю...
-  - id: trust
-    selector: '#trust.serial-section'
-    parent: html > body
-    title: Не знаете кому довериться?
-    heading: Не знаете кому довериться?
-    description: Каталог объектов недвижимости
-    snippet: Не знаете кому довериться? Общее количество действующих риэлторских агентств в городе Железнодорожно...
-  - id: sertificats
-    selector: '#sertificats.gray-block.serial-section'
-    parent: html > body
-    title: Наши награды
-    heading: Наши награды
-    description: Изображения и фотографии
-    snippet: Наши награды
-  - id: office
-    selector: '#office.serial-section'
-    parent: html > body
-    title: Будни и праздники
-    heading: Будни и праздники
-    description: Фотографии офиса. Галерея фотографий офисных помещений с возможностью просмотра в полном размере
-    snippet: Будни и праздники
-  - id: last-video-reviews
-    selector: '#last-video-reviews.gray-block.serial-section'
-    parent: html > body
-    title: Видеоотзывы
-    heading: Видеоотзывы
-    description: Видеоотзывы. Видео с Rutube с описанием (имя клиента) и датой. Ссылка перехода в раздел видеоотзывов
-    snippet: Видеоотзывы Марина и Елена 14 августа 2024 Виктория Топоногова 26 мая 2021 Наталья 5 февраля 2020 Ко...
-  - id: actions
-    selector: '#actions.serial-section'
-    parent: html > body
-    title: Отзывы
-    heading: Отзывы
-    description: 'Анонсы акций ("Самое интересное"). Карточки с баннерами для акций: графическая подложка, аудитория, текст
-      предложения, датой проведения'
-    snippet: Отзывы Назад Вперёд Работали с Наталией с 28 февраля по 28 марта. Сделка была сложная, продажа кварт...
-  - id: news
-    selector: '#news.serial-section.gray-block'
     parent: html > body
     title: Новости
     heading: Новости
-    description: Новости сайта. Карточки новостей с превью, тегом, датой и кратким анонсом
-    snippet: Новости Уважаемые клиеты! Новости офиса 12 апреля 2026 12 апреля офис не работает. Подробнее Капитал...
-  pages_count: 1
-Профиль сотрудника:
-  id: staff-profile
-  description: Профиль сотрудника
-  example_url: https://zdkvartira.ru/команда-миэль/ahmadiev-vladimir-vladimirovich/
-  example_title: Ахмадиев Владимир Владимирович. Специалист по аренде. Миэль офис в Железнодорожном
-  total_pages: 18
-  blocks:
-  - id: top-back
-    selector: .top-back
-    parent: html > body
-    title: Наши Эксперты
-    heading: Наши Эксперты
-    description: 'Hero блок с заголовком раздела (заголовок: "Наши Эксперты")'
+    description: 'Hero блок с заголовком раздела (заголовок: "Новости")'
   - id: breadcrumbs
     selector: .breadcrumbs
     parent: html > body
@@ -582,130 +418,25 @@
     description: Навигационная цепочка (хлебные крошки)
   - id: page-title
     selector: p.caption
-    parent: html > body > div.top-back > div.top-back__bg.inner-top > div
-    title: Наши Эксперты
-    description: 'Заголовок страницы: "Наши Эксперты"'
-  - id: word
-    selector: '#word'
+    parent: html > body > div.top-back > div.top-back__bg.inner-top.top-back__fixed-height > div
+    title: Новости
+    description: 'Заголовок страницы: "Новости"'
+  - id: news-detail
+    selector: '#news-detail'
     parent: html > body
-    title: Ахмадиев Владимир
-    heading: Ахмадиев Владимир
-    description: Обращение руководителя. Фото генерального директора, текст обращения
-    snippet: Ахмадиев Владимир Специалист по аренде +7 (495) 505-505-1 18@zdkvartira.ru 8(915)205-35-55 Переехал ...
-  - id: my-obj
-    selector: '#my-obj.gray-block'
+    title: Содержание новости
+    description: Детальное содержание новости. Заголовок, дата публикации, автор, полный текст новости с изображениями
+    snippet: Новости компании 1 марта офису «В ТЮМЕНИ» – год! 1 марта 2019 Ровно год назад на улице Максима Горьк...
+  - id: other-news
+    selector: '#other-news.gray-block.other-news'
     parent: html > body
-    title: Мои объекты
-    heading: Мои объекты
-    description: Каталог объектов недвижимости
-    snippet: Мои объекты Городские Московская обл, г Балашиха, мкр Железнодорожный, пр-кт Героев, д 20 Аренда ква...
-  pages_count: 18
-Результаты поиска:
-  id: search-results
-  description: Результаты поиска
-  example_url: https://zdkvartira.ru/search/
-  example_title: ''
-  total_pages: 1
-  blocks:
-  - id: search-list
-    selector: '#search-list.gray-block'
-    parent: html > body.template-searchresults
-    title: Страница поиска
-    heading: Страница поиска
-    description: Форма обратной связи или заявки; форма поиска и фильтрации объектов
-    snippet: Страница поиска
-  - id: form
-    selector: '#form.blue-block'
-    parent: html > body.template-searchresults
-    title: Нужна помощь?
-    heading: Нужна помощь?
-    description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
-    snippet: Нужна помощь? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. Отправить заявку Та...
-  - id: page-title
-    selector: p.caption
-    parent: '#search-list > div.sml-max-view-block'
-    title: Страница поиска
-    description: 'Заголовок страницы: "Страница поиска"'
-  pages_count: 1
-Служебная страница:
-  id: system-page
-  description: Служебная страница
-  example_url: https://zdkvartira.ru/pages/sitemap.html/
-  example_title: Карта сайта - Миэль Офис в Железнодорожном.
-  total_pages: 1
-  blocks:
-  - id: top-back
-    selector: .top-back
-    parent: html > body
-    title: Карта сайта
-    heading: Карта сайта
-    description: 'Hero блок с заголовком раздела (заголовок: "Карта сайта")'
-  - id: services
-    selector: '#services.gray-block'
-    parent: html > body
-    title: Услуги
-    description: Быстрые ссылки на разделы услуг ("Услуги"). Иконки с названием услуги со ссылками на страницы услуг
-    snippet: Главная / Карта сайта Главная Услуги Продать квартиру Купить квартиру Сдать квартиру Снять квартиру ...
-  - id: page-title
-    selector: p.caption
-    parent: html > body > div.top-back > div.top-back__bg.inner-top > div
-    title: Карта сайта
-    description: 'Заголовок страницы: "Карта сайта"'
-  pages_count: 1
-Список FAQ:
-  id: faq-list
-  description: Список FAQ
-  example_url: https://zdkvartira.ru/часто-задаваемы-вопросы/
-  example_title: Часто задаваемые вопросы - Миэль Офис в Железнодорожном.
-  total_pages: 1
-  blocks:
-  - id: top-back
-    selector: .top-back
-    parent: html > body
-    title: Часто задаваемые вопросы
-    heading: Часто задаваемые вопросы
-    description: 'Hero блок с заголовком раздела (заголовок: "Часто задаваемые вопросы")'
-  - id: breadcrumbs
-    selector: .breadcrumbs
-    parent: html > body
-    title: Навигационная цепочка
-    description: Навигационная цепочка (хлебные крошки)
-  - id: page-title
-    selector: p.caption
-    parent: html > body > div.top-back > div.top-back__bg.inner-top > div
-    title: Часто задаваемые вопросы
-    description: 'Заголовок страницы: "Часто задаваемые вопросы"'
-  - id: faq-list
-    selector: '#faq-list'
-    parent: html > body
-    title: Часто задаваемые вопросы
-    heading: Часто задаваемые вопросы
-    description: Список часто задаваемых вопросов. Категории вопросов с раскрывающимися ответами
-    snippet: Часто задаваемые вопросы Продажа квартиры Сколько стоят услуги по продаже квартиры? Ответ С ценами н...
-  pages_count: 1
-Список акций:
-  id: promotions-list
-  description: Список акций
-  example_url: https://zdkvartira.ru/акции-и-скидки/
-  example_title: Действующие акции
-  total_pages: 1
-  blocks:
-  - id: breadcrumbs
-    selector: .breadcrumbs
-    parent: html > body
-    title: Навигационная цепочка
-    description: Навигационная цепочка (хлебные крошки)
-  - id: content
-    selector: '#content'
-    parent: html > body
-    title: Все акции
-    heading: Все акции
-    description: Акции и специальные предложения
-    snippet: Все акции Для продавцов и покупателей Для учителей, военных и врачей! Срок действия акции бессрочно ...
-  pages_count: 1
-Список новостей:
+    title: Другие новости
+    description: Навигация по другим новостям. Ссылки на предыдущую и следующую новость, превью связанной новости
+    snippet: Предыдущая новость Следующая новость Компании «МИЭЛЬ-Аренда» исполняется 26 лет Новости компании 1 м...
+  pages_count: 1246
+News List:
   id: news-list
-  description: Список новостей
+  description: News List
   example_url: https://zdkvartira.ru/новости/
   example_title: Последние новости в сфере недвижимости. Агентство недвижимости «МИЭЛЬ»
   total_pages: 2
@@ -743,11 +474,100 @@
     title: Навигация по страницам
     description: Навигация по страницам (пагинация). Ссылки на предыдущую/следующую страницу, номера страниц
   pages_count: 2
-Список новостроек:
-  id: new-buildings-list
-  description: Список новостроек
-  example_url: https://zdkvartira.ru/новостройки/
-  example_title: Купить новостройку в Железнодорожном, Балашихе. 1, 2, 3 и 4-комнатные квартиры, студии.
+Other Pages:
+  id: other-pages
+  description: Other Pages
+  example_url: https://zdkvartira.ru/arenda-kvartir-balashiha/
+  example_title: Снять квартиру в Балашихе. Аренда недорого. От 3 выгодных вариантов
+  total_pages: 14
+  blocks:
+  - id: search-inner
+    selector: '#search-inner.py-4'
+    parent: '#common-search-form'
+    title: Расширенный поиск
+    description: 'Расширенный поиск недвижимости. Фильтры по параметрам: тип сделки, тип объекта, цена, площадь, этаж и другие
+      параметры'
+    snippet: 'Купить Снять Все объекты × Городская недвижимость: Квартиру Студию Комнату Загородная недвижимость Д...'
+  - id: search-more
+    selector: '#search-more.collapse.search-more'
+    parent: '#common-search-form'
+    title: Дополнительные фильтры
+    description: Форма поиска и фильтрации объектов
+    snippet: 'Площадь, м 2 : Общая: Кухня: Жилая: Этаж : Не первый Этажей в доме : Есть балкон / лоджия Тип дома :...'
+  - id: map
+    selector: '#map.object__map.result-map__map.col-12.col-lg-8.p-0'
+    parent: html > body > div.mx-0.result-map
+    title: Карта расположения
+    description: Карта проезда. Интерактивная карта Яндекс с отметкой расположения офиса
+  - id: form
+    selector: '#form.blue-block.text-center'
+    parent: html > body
+    title: Не нашли ответ на свой вопрос?
+    heading: Не нашли ответ на свой вопрос?
+    description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
+    snippet: Не нашли ответ на свой вопрос? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. От...
+  - id: special
+    selector: '#special.result-map__list.gray-block.p-4.col-12.col-lg-4'
+    parent: html > body > div.mx-0.result-map
+    title: Специальные предложения
+    description: Секция с объектами недвижимости ("Суперпредложения"). Карточки объектов с превью, кнопками "к сравнению"
+      и "в избранное", адресом, типом объекта и параметрами (площадь, этаж, направление)
+  - id: seo
+    selector: '#seo'
+    parent: html > body
+    title: Seo
+    description: Каталог объектов недвижимости
+    snippet: Наше агентство недвижимости поможет найти жилье с подходящим количеством комнат и в хорошем состояни...
+  - id: page-title
+    selector: p.caption
+    parent: '#form > div'
+    title: Не нашли ответ на свой вопрос?
+    description: 'Заголовок страницы: "Не нашли ответ на свой вопрос?"'
+  - id: search-gray
+    selector: '#search-gray'
+    parent: '#common-search-form'
+    title: Аренда квартир в Балашихе
+    heading: Аренда квартир в Балашихе
+    description: Форма обратной связи или заявки; каталог объектов недвижимости
+    snippet: Аренда квартир в Балашихе Искать на карте Сначала новые Сначала дешевле Сначала дороже
+  pages_count: 14
+Promotion Detail:
+  id: promotion-detail
+  description: Promotion Detail
+  example_url: https://zdkvartira.ru/акции-и-скидки/в-день-рождения-особые-условия-и-скидка-10-на-любую-услугу/
+  example_title: В День Рождения особые условия и скидка -10% на любую услугу. Миэль офис в Железнодорожном. 2542
+  total_pages: 6
+  blocks:
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    parent: html > body
+    title: Навигационная цепочка
+    description: Навигационная цепочка (хлебные крошки)
+  - id: content
+    selector: '#content.pb-2'
+    parent: html > body
+    title: В День Рождения особые условия и скидка -10% на любую услугу
+    heading: В День Рождения особые условия и скидка -10% на любую услугу
+    description: Акции и специальные предложения
+    snippet: В День Рождения особые условия и скидка -10% на любую услугу Акция суммируется с дисконтной программ...
+  - id: form
+    selector: '#form.blue-block.text-center'
+    parent: html > body
+    title: Не нашли ответ на свой вопрос?
+    heading: Не нашли ответ на свой вопрос?
+    description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
+    snippet: Не нашли ответ на свой вопрос? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. От...
+  - id: page-title
+    selector: p.caption
+    parent: '#content > div.sml-max-view-block'
+    title: В День Рождения особые условия и скидка -10% на любую услугу
+    description: 'Заголовок страницы: "В День Рождения особые условия и скидка -10% на любую услугу"'
+  pages_count: 6
+Promotions List:
+  id: promotions-list
+  description: Promotions List
+  example_url: https://zdkvartira.ru/акции-и-скидки/
+  example_title: Действующие акции
   total_pages: 1
   blocks:
   - id: breadcrumbs
@@ -755,21 +575,125 @@
     parent: html > body
     title: Навигационная цепочка
     description: Навигационная цепочка (хлебные крошки)
+  - id: content
+    selector: '#content'
+    parent: html > body
+    title: Все акции
+    heading: Все акции
+    description: Акции и специальные предложения
+    snippet: Все акции Для продавцов и покупателей Для учителей, военных и врачей! Срок действия акции бессрочно ...
+  pages_count: 1
+Property Catalog:
+  id: property-catalog
+  description: Property Catalog
+  example_url: https://zdkvartira.ru/1k-kvartira-zheleznodorozhnyy/
+  example_title: Купить 1-комнатную квартиру в Железнодорожном недорого. Агентство по недвижимости
+  total_pages: 11
+  blocks:
+  - id: search-inner
+    selector: '#search-inner.py-4'
+    parent: '#common-search-form'
+    title: Расширенный поиск
+    description: 'Расширенный поиск недвижимости. Фильтры по параметрам: тип сделки, тип объекта, цена, площадь, этаж и другие
+      параметры'
+    snippet: 'Купить Снять Все объекты × Городская недвижимость: Квартиру Студию Комнату Загородная недвижимость Д...'
+  - id: search-more
+    selector: '#search-more.collapse.search-more'
+    parent: '#common-search-form'
+    title: Дополнительные фильтры
+    description: Форма поиска и фильтрации объектов
+    snippet: 'Площадь, м 2 : Общая: Кухня: Жилая: Этаж : Не первый Этажей в доме : Есть балкон / лоджия Тип дома :...'
+  - id: map
+    selector: '#map.object__map.result-map__map.col-12.col-lg-8.p-0'
+    parent: html > body > div.mx-0.result-map
+    title: Карта расположения
+    description: Карта проезда. Интерактивная карта Яндекс с отметкой расположения офиса
+  - id: form
+    selector: '#form.blue-block.text-center'
+    parent: html > body
+    title: Не нашли ответ на свой вопрос?
+    heading: Не нашли ответ на свой вопрос?
+    description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
+    snippet: Не нашли ответ на свой вопрос? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. От...
+  - id: special
+    selector: '#special.result-map__list.gray-block.p-4.col-12.col-lg-4'
+    parent: html > body > div.mx-0.result-map
+    title: Специальные предложения
+    description: Секция с объектами недвижимости ("Суперпредложения"). Карточки объектов с превью, кнопками "к сравнению"
+      и "в избранное", адресом, типом объекта и параметрами (площадь, этаж, направление)
+  - id: seo
+    selector: '#seo'
+    parent: html > body
+    title: Seo
+    description: Блок новостей
+    snippet: У нас всегда огромный выбор однокомнатных квартир в Железнодорожном. Благодаря нашим экспертам вы см...
   - id: page-title
     selector: p.caption
+    parent: '#form > div'
+    title: Не нашли ответ на свой вопрос?
+    description: 'Заголовок страницы: "Не нашли ответ на свой вопрос?"'
+  - id: search-gray
+    selector: '#search-gray'
+    parent: '#common-search-form'
+    title: 1-комнатные квартиры в Железнодорожном
+    heading: 1-комнатные квартиры в Железнодорожном
+    description: Форма обратной связи или заявки; каталог объектов недвижимости
+    snippet: 1-комнатные квартиры в Железнодорожном Искать на карте Сначала новые Сначала дешевле Сначала дороже
+  pages_count: 11
+Property Single:
+  id: property-single
+  description: Property Single
+  example_url: https://zdkvartira.ru/объекты/городская-недвижимость/
+  example_title: Купить квартиру в Железнодорожном, Балашихе.  1,2,3 и 4-комнатные квартиры
+  total_pages: 39
+  blocks:
+  - id: search-inner
+    selector: '#search-inner.py-4'
+    parent: '#common-search-form'
+    title: Расширенный поиск
+    description: 'Расширенный поиск недвижимости. Фильтры по параметрам: тип сделки, тип объекта, цена, площадь, этаж и другие
+      параметры'
+    snippet: 'Купить Снять Все объекты × Городская недвижимость: Квартиру Студию Комнату Загородная недвижимость Д...'
+  - id: search-more
+    selector: '#search-more.collapse.search-more'
+    parent: '#common-search-form'
+    title: Дополнительные фильтры
+    description: Форма поиска и фильтрации объектов
+    snippet: 'Площадь, м 2 : Общая: Кухня: Жилая: Этаж : Не первый Этажей в доме : Есть балкон / лоджия Тип дома :...'
+  - id: map
+    selector: '#map.object__map.result-map__map.col-12.col-lg-8.p-0'
+    parent: html > body > div.mx-0.result-map
+    title: Карта расположения
+    description: Карта проезда. Интерактивная карта Яндекс с отметкой расположения офиса
+  - id: form
+    selector: '#form.blue-block.text-center'
     parent: html > body
-    title: Новостройки
-    description: 'Заголовок страницы: "Новостройки"'
-  - id: newhousing-item
-    selector: .newhousing-item
-    parent: html > body > div
-    title: Центр на проспекте Героев
-    description: 'Карточка объекта недвижимости с названием: "Центр на проспекте Героев"; тип/адрес: Московская область, г.Балашиха,
-      мкр. Железнодорожный, Центр-2; цена: Цена от: 3.5 млн руб.'
-  pages_count: 1
-Список отзывов:
+    title: Не нашли ответ на свой вопрос?
+    heading: Не нашли ответ на свой вопрос?
+    description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
+    snippet: Не нашли ответ на свой вопрос? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. От...
+  - id: special
+    selector: '#special.result-map__list.gray-block.p-4.col-12.col-lg-4'
+    parent: html > body > div.mx-0.result-map
+    title: Специальные предложения
+    description: Секция с объектами недвижимости ("Суперпредложения"). Карточки объектов с превью, кнопками "к сравнению"
+      и "в избранное", адресом, типом объекта и параметрами (площадь, этаж, направление)
+  - id: page-title
+    selector: p.caption
+    parent: '#form > div'
+    title: Не нашли ответ на свой вопрос?
+    description: 'Заголовок страницы: "Не нашли ответ на свой вопрос?"'
+  - id: search-gray
+    selector: '#search-gray'
+    parent: '#common-search-form'
+    title: Квартиры в Железнодорожном, Балашихе
+    heading: Квартиры в Железнодорожном, Балашихе
+    description: Форма обратной связи или заявки; каталог объектов недвижимости
+    snippet: Квартиры в Железнодорожном, Балашихе Искать на карте Сначала новые Сначала дешевле Сначала дороже
+  pages_count: 39
+Reviews List:
   id: reviews-list
-  description: Список отзывов
+  description: Reviews List
   example_url: https://zdkvartira.ru/список-отзывов/
   example_title: Отзывы об агентстве недвижимости «МИЭЛЬ», Офис «В Железнодорожном»
   total_pages: 1
@@ -808,104 +732,36 @@
     title: Навигация по страницам
     description: Навигация по страницам (пагинация). Ссылки на предыдущую/следующую страницу, номера страниц
   pages_count: 1
-Список сотрудников:
-  id: staff-list
-  description: Список сотрудников
-  example_url: https://zdkvartira.ru/команда-миэль/
-  example_title: Команда МИЭЛЬ, Офис в Железнодорожном. Работаем 7 дней  в неделю.
+Search Results:
+  id: search-results
+  description: Search Results
+  example_url: https://zdkvartira.ru/search/
+  example_title: ''
   total_pages: 1
   blocks:
-  - id: top-back
-    selector: .top-back
-    parent: html > body
-    title: Наши Эксперты
-    heading: Наши Эксперты
-    description: 'Hero блок с заголовком раздела (заголовок: "Наши Эксперты")'
-  - id: breadcrumbs
-    selector: .breadcrumbs
-    parent: html > body
-    title: Навигационная цепочка
-    description: Навигационная цепочка (хлебные крошки)
-  - id: page-title
-    selector: p.caption
-    parent: html > body > div.top-back > div.top-back__bg.inner-top > div
-    title: Наши Эксперты
-    description: 'Заголовок страницы: "Наши Эксперты"'
-  - id: team
-    selector: '#team'
-    parent: html > body
-    title: Команда МИЭЛЬ, Офис в Железнодорожном
-    heading: Команда МИЭЛЬ, Офис в Железнодорожном
-    description: Информация о команде сотрудников. Карточки специалистов с фото, должностью, контактами
-    snippet: Команда МИЭЛЬ, Офис в Железнодорожном Мастер качества Кондауров Андрей Руководитель отдела аренды Жи...
-  - id: all-team
-    selector: '#all-team.gray-block.all-team'
-    parent: html > body
-    title: Отдел продаж
-    heading: Отдел продаж
-    description: Информация о команде сотрудников
-    snippet: Отдел продаж Бутыркина Елена Генеральный директор, ведущий эксперт Я считаю, что работа риэлтора сро...
-  - id: pb-2
-    selector: section.all-team
-    parent: html > body
-    title: Отдел аренды
-    heading: Отдел аренды
-    description: Галерея карточек с изображениями
-    snippet: Отдел аренды Ахмадиев Владимир Специалист по аренде Переехал в Железнодорожный более пяти лет назад ...
-  - id: admin-team
-    selector: '#admin-team.gray-block'
-    parent: html > body
-    title: Менеджмент
-    heading: Менеджмент
-    description: Информация о команде сотрудников
-    snippet: Менеджмент Бутыркина Елена Генеральный директор, ведущий эксперт Я считаю, что работа риэлтора сродн...
+  - id: search-list
+    selector: '#search-list.gray-block.pt-2'
+    parent: html > body.template-searchresults
+    title: Страница поиска
+    heading: Страница поиска
+    description: Форма обратной связи или заявки; форма поиска и фильтрации объектов
+    snippet: Страница поиска
   - id: form
-    selector: '#form.blue-block'
-    parent: html > body
-    title: Хотите стать частью нашей команды?
-    heading: Хотите стать частью нашей команды?
+    selector: '#form.blue-block.text-center'
+    parent: html > body.template-searchresults
+    title: Нужна помощь?
+    heading: Нужна помощь?
     description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
-    snippet: Хотите стать частью нашей команды? Отправьте нам Ваше резюме и наш специалист свяжется с Вами для оп...
-  pages_count: 1
-Страница новости:
-  id: news-article
-  description: Страница новости
-  example_url: https://zdkvartira.ru/новости/1-марта-офису-в-тюмени-год/
-  example_title: 1 марта офису «В ТЮМЕНИ» – год! Миэль офис в Железнодорожном. 260
-  total_pages: 1246
-  blocks:
-  - id: top-back
-    selector: .top-back
-    parent: html > body
-    title: Новости
-    heading: Новости
-    description: 'Hero блок с заголовком раздела (заголовок: "Новости")'
-  - id: breadcrumbs
-    selector: .breadcrumbs
-    parent: html > body
-    title: Навигационная цепочка
-    description: Навигационная цепочка (хлебные крошки)
+    snippet: Нужна помощь? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. Отправить заявку Та...
   - id: page-title
     selector: p.caption
-    parent: html > body > div.top-back > div.top-back__bg.inner-top.top-back__fixed-height > div
-    title: Новости
-    description: 'Заголовок страницы: "Новости"'
-  - id: news-detail
-    selector: '#news-detail'
-    parent: html > body
-    title: Содержание новости
-    description: Детальное содержание новости. Заголовок, дата публикации, автор, полный текст новости с изображениями
-    snippet: Новости компании 1 марта офису «В ТЮМЕНИ» – год! 1 марта 2019 Ровно год назад на улице Максима Горьк...
-  - id: other-news
-    selector: '#other-news.gray-block.other-news'
-    parent: html > body
-    title: Другие новости
-    description: Навигация по другим новостям. Ссылки на предыдущую и следующую новость, превью связанной новости
-    snippet: Предыдущая новость Следующая новость Компании «МИЭЛЬ-Аренда» исполняется 26 лет Новости компании 1 м...
-  pages_count: 1246
-Страница услуги:
+    parent: '#search-list > div.sml-max-view-block'
+    title: Страница поиска
+    description: 'Заголовок страницы: "Страница поиска"'
+  pages_count: 1
+Service Page:
   id: service-page
-  description: Страница услуги
+  description: Service Page
   example_url: https://zdkvartira.ru/услуги/ипотека/
   example_title: Покупка квартиры, дома в ипотеку в Железнодорожном, Балашихе.
   total_pages: 7
@@ -936,7 +792,7 @@
     description: Форма обратной связи или заявки; текстовый информационный блок
     snippet: 'Ипотечный Калькулятор По стоимости По сумме кредита Руб % Сумма кредита: 0 Лет Месяцев Рассчитать Еж...'
   - id: bg-white
-    selector: ''
+    selector: .bg-white.py-2.py-4
     parent: html > body
     description: Текстовый информационный блок
     snippet: В 97% случаев, мы подбираем более интересный и выгодный кредит, чем наши клиенты находят сами*. из н...
@@ -948,14 +804,14 @@
     description: Этапы оказания услуги
     snippet: Этапы работы с нами 1 Знакомимся и определяем цель Знакомимся, определяем параметры нужного кредита,...
   - id: facts
-    selector: '#facts.gray-block'
+    selector: '#facts.gray-block.pt-2'
     parent: html > body
     title: Факты о нас
     heading: Факты о нас
     description: Акции и специальные предложения
     snippet: Факты о нас Более 5 000 одобренных заявок Вероятность одобрения выше 97% Рассмотрение заявки 30 мину...
   - id: actions
-    selector: '#actions.serial-section'
+    selector: '#actions.serial-section.py-3'
     parent: html > body
     title: Действующие акции и скидки по услуге
     heading: Действующие акции и скидки по услуге
@@ -970,7 +826,7 @@
     description: Акции и специальные предложения
     snippet: Хотим Вам рассказать, как мы работаем со своими клиентами Честный и открытый сервис Мы расскажем обо...
   - id: banks
-    selector: '#banks'
+    selector: '#banks.py-4'
     parent: html > body
     title: Наши банки-партнеры
     heading: Наши банки-партнеры
@@ -984,10 +840,204 @@
     description: Каталог услуг компании
     snippet: Часто задаваемые вопросы Смогу ли я одобрить ипотеку, обратившись в МИЭЛЬ? Мы получаем одобрения бан...
   - id: form
-    selector: '#form.blue-block'
+    selector: '#form.blue-block.text-center'
     parent: html > body
     title: Не нашли ответ на свой вопрос?
     heading: Не нашли ответ на свой вопрос?
     description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
     snippet: Не нашли ответ на свой вопрос? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. От...
   pages_count: 7
+Staff List:
+  id: staff-list
+  description: Staff List
+  example_url: https://zdkvartira.ru/команда-миэль/
+  example_title: Команда МИЭЛЬ, Офис в Железнодорожном. Работаем 7 дней  в неделю.
+  total_pages: 1
+  blocks:
+  - id: top-back
+    selector: .top-back
+    parent: html > body
+    title: Наши Эксперты
+    heading: Наши Эксперты
+    description: 'Hero блок с заголовком раздела (заголовок: "Наши Эксперты")'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    parent: html > body
+    title: Навигационная цепочка
+    description: Навигационная цепочка (хлебные крошки)
+  - id: page-title
+    selector: p.caption
+    parent: html > body > div.top-back > div.top-back__bg.inner-top > div
+    title: Наши Эксперты
+    description: 'Заголовок страницы: "Наши Эксперты"'
+  - id: team
+    selector: '#team.pb-2'
+    parent: html > body
+    title: Команда МИЭЛЬ, Офис в Железнодорожном
+    heading: Команда МИЭЛЬ, Офис в Железнодорожном
+    description: Информация о команде сотрудников. Карточки специалистов с фото, должностью, контактами
+    snippet: Команда МИЭЛЬ, Офис в Железнодорожном Мастер качества Кондауров Андрей Руководитель отдела аренды Жи...
+  - id: all-team
+    selector: '#all-team.gray-block.pb-2.all-team'
+    parent: html > body
+    title: Отдел продаж
+    heading: Отдел продаж
+    description: Информация о команде сотрудников
+    snippet: Отдел продаж Бутыркина Елена Генеральный директор, ведущий эксперт Я считаю, что работа риэлтора сро...
+  - id: pb-2
+    selector: section.pb-2.all-team
+    parent: html > body
+    title: Отдел аренды
+    heading: Отдел аренды
+    description: Галерея карточек с изображениями
+    snippet: Отдел аренды Ахмадиев Владимир Специалист по аренде Переехал в Железнодорожный более пяти лет назад ...
+  - id: admin-team
+    selector: '#admin-team.gray-block'
+    parent: html > body
+    title: Менеджмент
+    heading: Менеджмент
+    description: Информация о команде сотрудников
+    snippet: Менеджмент Бутыркина Елена Генеральный директор, ведущий эксперт Я считаю, что работа риэлтора сродн...
+  - id: form
+    selector: '#form.blue-block.text-center'
+    parent: html > body
+    title: Хотите стать частью нашей команды?
+    heading: Хотите стать частью нашей команды?
+    description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
+    snippet: Хотите стать частью нашей команды? Отправьте нам Ваше резюме и наш специалист свяжется с Вами для оп...
+  pages_count: 1
+Staff Profile:
+  id: staff-profile
+  description: Staff Profile
+  example_url: https://zdkvartira.ru/команда-миэль/ahmadiev-vladimir-vladimirovich/
+  example_title: Ахмадиев Владимир Владимирович. Специалист по аренде. Миэль офис в Железнодорожном
+  total_pages: 18
+  blocks:
+  - id: top-back
+    selector: .top-back
+    parent: html > body
+    title: Наши Эксперты
+    heading: Наши Эксперты
+    description: 'Hero блок с заголовком раздела (заголовок: "Наши Эксперты")'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    parent: html > body
+    title: Навигационная цепочка
+    description: Навигационная цепочка (хлебные крошки)
+  - id: page-title
+    selector: p.caption
+    parent: html > body > div.top-back > div.top-back__bg.inner-top > div
+    title: Наши Эксперты
+    description: 'Заголовок страницы: "Наши Эксперты"'
+  - id: word
+    selector: '#word'
+    parent: html > body
+    title: Ахмадиев Владимир
+    heading: Ахмадиев Владимир
+    description: Обращение руководителя. Фото генерального директора, текст обращения
+    snippet: Ахмадиев Владимир Специалист по аренде +7 (495) 505-505-1 18@zdkvartira.ru 8(915)205-35-55 Переехал ...
+  - id: my-obj
+    selector: '#my-obj.gray-block'
+    parent: html > body
+    title: Мои объекты
+    heading: Мои объекты
+    description: Каталог объектов недвижимости
+    snippet: Мои объекты Городские Московская обл, г Балашиха, мкр Железнодорожный, пр-кт Героев, д 20 Аренда ква...
+  pages_count: 18
+System Page:
+  id: system-page
+  description: System Page
+  example_url: https://zdkvartira.ru/pages/sitemap.html/
+  example_title: Карта сайта - Миэль Офис в Железнодорожном.
+  total_pages: 1
+  blocks:
+  - id: top-back
+    selector: .top-back
+    parent: html > body
+    title: Карта сайта
+    heading: Карта сайта
+    description: 'Hero блок с заголовком раздела (заголовок: "Карта сайта")'
+  - id: services
+    selector: '#services.gray-block'
+    parent: html > body
+    title: Услуги
+    description: Быстрые ссылки на разделы услуг ("Услуги"). Иконки с названием услуги со ссылками на страницы услуг
+    snippet: Главная / Карта сайта Главная Услуги Продать квартиру Купить квартиру Сдать квартиру Снять квартиру ...
+  - id: page-title
+    selector: p.caption
+    parent: html > body > div.top-back > div.top-back__bg.inner-top > div
+    title: Карта сайта
+    description: 'Заголовок страницы: "Карта сайта"'
+  pages_count: 1
+User Account:
+  id: user-account
+  description: User Account
+  example_url: https://zdkvartira.ru/realty/compares.html/
+  example_title: Сравнение.
+  total_pages: 2
+  blocks:
+  - id: page-title
+    selector: p.caption
+    parent: html > body
+    title: Нет выбранных объектов для сравнения!
+    description: 'Заголовок страницы: "Нет выбранных объектов для сравнения!"'
+  - id: form
+    selector: '#form.blue-block.text-center'
+    parent: html > body
+    title: Не нашли ответ на свой вопрос?
+    heading: Не нашли ответ на свой вопрос?
+    description: 'Форма обратной связи ("Не нашли ответ на свой вопрос?"). Поля: имя, телефон, email, кнопка отправки'
+    snippet: Не нашли ответ на свой вопрос? Отправьте нам заявку и мы ответим на все интересующие Вас вопросы. От...
+  pages_count: 2
+Vacancies:
+  id: vacancies
+  description: Vacancies
+  example_url: https://zdkvartira.ru/вакансии/
+  example_title: Работа в «МИЭЛЬ - Железнодорожный». Привлекательные условия оплаты.
+  total_pages: 1
+  blocks:
+  - id: top-back
+    selector: .top-back
+    parent: html > body
+    title: Работа в «МИЭЛЬ - Железнодорожный»
+    heading: Работа в «МИЭЛЬ - Железнодорожный»
+    description: 'Hero блок с заголовком раздела (заголовок: "Работа в «МИЭЛЬ - Железнодорожный»")'
+  - id: breadcrumbs
+    selector: .breadcrumbs
+    parent: html > body
+    title: Навигационная цепочка
+    description: Навигационная цепочка (хлебные крошки)
+  - id: page-title
+    selector: p.caption
+    parent: html > body > div.top-back > div.top-back__bg.inner-top > div
+    title: Работа в «МИЭЛЬ - Железнодорожный»
+    description: 'Заголовок страницы: "Работа в «МИЭЛЬ - Железнодорожный»"'
+  - id: word
+    selector: '#word'
+    parent: html > body
+    title: Почему мы?
+    heading: Почему мы?
+    description: Обращение руководителя. Фото генерального директора, текст обращения
+    snippet: Почему мы? Наша компания более 20 лет занимает лидирующую позицию на рынке недвижимости Железнодорож...
+  - id: vacancy
+    selector: '#vacancy'
+    parent: html > body
+    title: Открытые вакансии
+    heading: Открытые вакансии
+    description: Блок новостей
+    snippet: Открытые вакансии Будем рады увидеть вас в нашей команде! Эксперт в отдел продаж городской недвижимо...
+  - id: story
+    selector: '#story.gray-block'
+    parent: html > body
+    title: Истории успеха
+    heading: Истории успеха
+    description: Информация о команде сотрудников
+    snippet: Истории успеха Назад Вперёд Глушкова Юлия Моя работа - это возможность каждый день узнавать что-то н...
+  - id: prefuter
+    selector: '#prefuter.img-block'
+    parent: html > body
+    title: Не нашли нужной вакансии, но хотите присоединиться к нам?
+    heading: Не нашли нужной вакансии, но хотите присоединиться к нам?
+    description: Текстовый информационный блок
+    snippet: Не нашли нужной вакансии, но хотите присоединиться к нам? Отправить резюме
+  pages_count: 1

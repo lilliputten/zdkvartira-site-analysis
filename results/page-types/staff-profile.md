@@ -1,4 +1,4 @@
-# Профиль сотрудника
+# Staff Profile
 
 **ID:** `staff-profile`
 

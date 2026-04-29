@@ -1,4 +1,4 @@
-# Страница новости
+# News Article
 
 **ID:** `news-article`
 
