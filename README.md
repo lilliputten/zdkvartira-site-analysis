@@ -21,14 +21,19 @@ comprehensive documentation of the website's architecture.
 - **Block Structure Extraction**: Identifies and documents
   content blocks with CSS selectors, parent context, and content snippets
 - **Page Type Classification**: Automatically classifies
-  pages into 23 different types
+  pages into 24 different types including:
+  - Home page, news articles, service pages
+  - Property catalog (listing pages with filters and maps)
+  - Property object (individual property detail pages)
+  - Staff profiles, promotions, FAQ, reviews, and more
 - **Multiple Output Formats**: Generates results in TXT,
   CSV, YAML, and Markdown formats
 - **Structured Documentation**: Creates detailed
   documentation for each page type
 - **Smart Title Generation**: Uses meaningful headings or descriptions instead of technical CSS class names
-- **Enhanced Block Detection**: Detects page titles, realty cards, and other specialized elements
+- **Enhanced Block Detection**: Detects page titles, realty cards, breadcrumbs, and other specialized elements
 - **Human-Readable Output**: Capitalized descriptions, deduplicated fields, and clean formatting
+- **Intelligent Filtering**: Automatically excludes broken links (404, 500) and redirected pages (301, 302) from analysis
 
 ## Requirements
 
@@ -299,14 +304,18 @@ results/
 ├── types.yaml         # Complete structured data for all types
 ├── page-types/        # Page type descriptions (Markdown)
 │   ├── 00-main.md     # Main page (includes header/footer)
+│   ├── property-catalog.md   # Property listing pages (23 pages)
+│   ├── property-object.md    # Individual property details (36 pages)
 │   ├── analytics.md   # Analytics page (4 blocks)
 │   ├── news-list.md   # News list (5 blocks with pagination)
-│   └── ...            # 20 more page type descriptions
+│   └── ...            # 21 more page type descriptions
 └── page-lists/        # Page lists organized by type
     ├── 00-main.txt    # TAB-delimited: {url}\t{title}
+    ├── property-catalog.txt  # 23 property listing pages
+    ├── property-object.txt   # 36 individual property pages
     ├── news-article.txt  # 1,246 news article pages
     ├── about.txt      # About page listings
-    └── ...            # 20 more type-specific page lists
+    └── ...            # 21 more type-specific page lists
 ```
 
 ## Output Formats
@@ -356,22 +365,46 @@ Tab-delimited page lists for each type:
 
 ## Page Types
 
-The analyzer identifies 23 page types:
+The analyzer identifies 24 page types:
 
-1. **Главная страница** (home-page) - Main homepage
-2. **Каталог объектов недвижимости** (property-catalog) -
-   Property catalogs
-3. **Страница новости** (news-article) - Individual news
-   articles (1,246 pages)
-4. **Список новостей** (news-list) - News listing
-5. **Страница услуги** (service-page) - Service pages
-6. **Детальная страница объекта** (property-detail) -
-   Individual property pages
-7. **Контакты** (contacts) - Contact page
-8. **О компании** (about) - About company
-9. **Вакансии** (vacancies) - Vacancies page
-10. **Профиль сотрудника** (staff-profile) - Staff profiles
-11. And 13 more specialized page types
+1. **Home Page** (00-main) - Main homepage
+2. **Property Catalog** (property-catalog) - Property listing pages with filters, maps, and object lists (23 pages)
+3. **Property Object** (property-object) - Individual property detail pages with breadcrumbs, gallery, agent info, mortgage calculator, and similar objects (36 pages)
+4. **News Article** (news-article) - Individual news articles (1,246 pages)
+5. **News List** (news-list) - News listing pages
+6. **Service Page** (service-page) - Service description pages
+7. **Service List** (service-list) - Service listing pages
+8. **Contacts** (contacts) - Contact page
+9. **About** (about) - About company page
+10. **Vacancies** (vacancies) - Vacancies page
+11. **Staff List** (staff-list) - Staff listing page
+12. **Staff Profile** (staff-profile) - Individual staff profiles
+13. **Promotions List** (promotions-list) - Promotions listing
+14. **Promotion Detail** (promotion-detail) - Individual promotion pages
+15. **FAQ List** (faq-list) - FAQ listing page
+16. **Reviews List** (reviews-list) - Customer reviews
+17. **Analytics** (analytics) - Analytics page
+18. **New Buildings List** (new-buildings-list) - New buildings listing
+19. **New Building Detail** (new-building-detail) - Individual new building pages
+20. **Search Results** (search-results) - Search results pages
+21. **User Account** (user-account) - User account pages (favorites, comparisons)
+22. **System Page** (system-page) - System/utility pages
+23. **Other Pages** (other-pages) - Other miscellaneous pages
+24. Additional specialized page types as needed
+
+### Property Page Classification
+
+The analyzer distinguishes between two types of property pages:
+
+**Property Catalog** - Listing pages that show multiple properties:
+- City/area-based listings (e.g., `/arenda-kvartir-balashiha/`, `/kvartiri-v-balashihe/`)
+- Category listings (e.g., `/1k-kvartira-zheleznodorozhnyy/`, `/студии-balashiha/`)
+- Objects directory category pages (e.g., `/объекты/городская-недвижимость/`)
+- Include filters, search forms, maps, and property card lists
+
+**Property Object** - Individual property detail pages:
+- Specific property URLs (e.g., `/объекты/городская-недвижимость/1-комнатная-квартира-в-г-балашиха-41/`)
+- Include breadcrumbs, property details, image gallery, agent information, mortgage calculator, and similar properties
 
 ## Special Features
 

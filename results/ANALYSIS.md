@@ -19,11 +19,11 @@ This report analyzes page types to identify potential duplicates.
 | New Buildings List | `new-buildings-list` | 1 | 1 |
 | News Article | `news-article` | 1246 | 1 |
 | News List | `news-list` | 2 | 1 |
-| Other Pages | `other-pages` | 14 | 1 |
+| Other Pages | `other-pages` | 5 | 1 |
 | Promotion Detail | `promotion-detail` | 6 | 1 |
 | Promotions List | `promotions-list` | 1 | 1 |
-| Property Catalog | `property-catalog` | 11 | 1 |
-| Property Single | `property-single` | 39 | 1 |
+| Property Catalog | `property-catalog` | 23 | 1 |
+| Property Object | `property-object` | 36 | 1 |
 | Reviews List | `reviews-list` | 1 | 1 |
 | Search Results | `search-results` | 1 | 1 |
 | Service Page | `service-page` | 7 | 1 |
@@ -37,32 +37,12 @@ This report analyzes page types to identify potential duplicates.
 
 Page types with similar block structures:
 
-### Other Pages vs Property Catalog
+### Other Pages vs Promotion Detail
 
-- **Similarity:** 100.0%
-- **Common Blocks:** 8/8
-- **Pages:** 14 vs 11
-- **IDs:** `other-pages` vs `property-catalog`
-
-**Recommendation:** HIGH - Consider merging these types.
-
-
-### Other Pages vs Property Single
-
-- **Similarity:** 87.5%
-- **Common Blocks:** 7/8
-- **Pages:** 14 vs 39
-- **IDs:** `other-pages` vs `property-single`
-
-**Recommendation:** MEDIUM - Review for possible merge.
-
-
-### Property Catalog vs Property Single
-
-- **Similarity:** 87.5%
-- **Common Blocks:** 7/8
-- **Pages:** 11 vs 39
-- **IDs:** `property-catalog` vs `property-single`
+- **Similarity:** 75.0%
+- **Common Blocks:** 3/4
+- **Pages:** 5 vs 6
+- **IDs:** `other-pages` vs `promotion-detail`
 
 **Recommendation:** MEDIUM - Review for possible merge.
 
@@ -79,6 +59,4 @@ Page types with similar block structures:
 
 ## Recommendations
 
-**High Priority:** 1 pair(s) need review.
-
-**Medium Priority:** 3 pair(s) may need review.
+**Medium Priority:** 2 pair(s) may need review.

@@ -14,7 +14,7 @@ Output:
 - results/page-lists/*-pages.txt: Page lists organized by type
 
 Features:
-- Automatic page type classification (23 types identified)
+- Automatic page type classification (24 types identified)
 - Block structure extraction with CSS selectors
 - Text cleaning (removes line breaks and multiple spaces)
 - Main page includes header/footer blocks; other pages exclude common blocks
@@ -78,7 +78,7 @@ def page_type_to_id(page_type):
         'Список новостей': 'news-list',
         'Страница услуги': 'service-page',
         'Список услуг': 'service-list',
-        'Детальная страница объекта': 'property-single',
+        'Детальная страница объекта': 'property-object',
         'Контакты': 'contacts',
         'О компании': 'about',
         'Вакансии': 'vacancies',
@@ -103,7 +103,7 @@ def page_type_to_id(page_type):
         'News List': 'news-list',
         'Service Page': 'service-page',
         'Service List': 'service-list',
-        'Property Single': 'property-single',
+        'Property Object': 'property-object',
         'Contacts': 'contacts',
         'About': 'about',
         'Vacancies': 'vacancies',
@@ -1311,13 +1311,38 @@ def classify_page_type(page_info):
         else:
             return 'Service Page'
 
-    # Property catalog pages
+    # Property pages in objects directory
+    if 'объекты/' in path:
+        # Check if it's the main objects listing or a category listing
+        if path == 'объекты/index.html':
+            return 'Property Catalog'
+
+        # Check if it's a category listing (e.g., объекты/городская-недвижимость/index.html)
+        if path.endswith('/index.html'):
+            # Remove index.html and count path segments
+            path_without_index = path.replace('/index.html', '')
+            path_parts = path_without_index.replace('объекты/', '').split('/')
+            # If only one part after объекты/, it's a category listing
+            if len(path_parts) == 1:
+                return 'Property Catalog'
+            # If two or more parts, it's a specific property detail page
+            else:
+                return 'Property Object'
+
+    # Property catalog pages (object listing pages with filters and maps)
+    # These are city/area-based listing pages for buying or renting
     if any(x in path for x in ['1k-', '2k-', '3k-', 'студии', 'аренда']):
         return 'Property Catalog'
 
-    # Property detail pages
-    if 'объекты/' in path:
-        return 'Property Single'
+    # Additional property catalog patterns (city/area listings)
+    if any(
+        x in path for x in ['kvartiri-v-', 'kupit-dom-', 'studiya-', 'studii-']
+    ):
+        return 'Property Catalog'
+
+    # Catch all rental listing pages (arenda-*)
+    if path.startswith('arenda-') and path.endswith('/index.html'):
+        return 'Property Catalog'
 
     # Team pages
     if 'команда-миэль/' in path:

@@ -5,6 +5,46 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.4] - 2026-04-29
+
+### Added
+- New page type: **Property Object** for individual property detail pages
+- Enhanced property page classification to distinguish between listing and detail pages
+
+### Changed
+- Renamed "Property Single" to "Property Object" for clarity
+- Improved classification logic to properly separate:
+  - **Property Catalog**: Object listing pages with filters, maps, and object lists (23 pages)
+  - **Property Object**: Individual property detail pages with breadcrumbs, object info, gallery, agent details, mortgage calculator, and similar objects (36 pages)
+- Moved all city/area-based listing pages (аренда, купить, студии, etc.) from "Other Pages" to "Property Catalog"
+- Updated total page type count from 23 to 24 types
+
+### Fixed
+- Property listing pages incorrectly classified as "Other Pages" or "Property Single"
+- Category listing pages (e.g., `объекты/городская-недвижимость/`) now correctly classified as "Property Catalog" instead of "Property Object"
+- Individual property detail pages (e.g., `объекты/городская-недвижимость/1-комнатная-квартира-в-г-балашиха-41/`) now correctly classified as "Property Object"
+
+### Page Type Structure
+
+**Property Catalog** pages include:
+- Filter section (`#common-search-form > #search-inner`)
+- List control (`#search-gray > .sub-search`)
+- Map (`.result-map > #map`)
+- Object items (`.result-map__list`)
+
+**Property Object** pages include:
+- Breadcrumbs navigation
+- Object ID and view statistics
+- Property title and address with badges
+- Image gallery (main image and thumbnails)
+- Property details (price, area, floor, etc.) with action links
+- Realtor agent information with contacts
+- Mortgage calculator
+- Object description
+- Nearby facilities information
+- Location map
+- Similar objects section
+
 ## [0.0.3] - 2026-04-25
 
 ### Added
