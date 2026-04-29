@@ -40,7 +40,7 @@ div`
 
 ### 5. Другие новости
 
-- **Selector:** `#other-news.gray-block.other-news`
+- **Selector:** `#other-news`
 - **Parent:** `html > body`
 - **Description:** Навигация по другим новостям. Ссылки на предыдущую и
 следующую новость, превью связанной новости

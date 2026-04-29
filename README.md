@@ -24,8 +24,9 @@ comprehensive documentation of the website's architecture.
   pages into 24 different types including:
   - Home page, news articles, service pages
   - Property catalog (listing pages with filters and maps)
-  - Property object (individual property detail pages)
+  - Property object (individual property detail pages with custom sections)
   - Staff profiles, promotions, FAQ, reviews, and more
+- **Custom Section Extraction**: Specialized section detection for Property Object and Property Catalog pages
 - **Multiple Output Formats**: Generates results in TXT,
   CSV, YAML, and Markdown formats
 - **Structured Documentation**: Creates detailed
@@ -34,6 +35,7 @@ comprehensive documentation of the website's architecture.
 - **Enhanced Block Detection**: Detects page titles, realty cards, breadcrumbs, and other specialized elements
 - **Human-Readable Output**: Capitalized descriptions, deduplicated fields, and clean formatting
 - **Intelligent Filtering**: Automatically excludes broken links (404, 500) and redirected pages (301, 302) from analysis
+- **Smart Directory Cleanup**: Recursively cleans output directory while gracefully handling locked temp files
 
 ## Requirements
 
@@ -394,17 +396,36 @@ The analyzer identifies 24 page types:
 
 ### Property Page Classification
 
-The analyzer distinguishes between two types of property pages:
+The analyzer distinguishes between two types of property pages with custom section extraction:
 
-**Property Catalog** - Listing pages that show multiple properties:
+**Property Catalog** - Listing pages that show multiple properties (14 pages):
 - City/area-based listings (e.g., `/arenda-kvartir-balashiha/`, `/kvartiri-v-balashihe/`)
 - Category listings (e.g., `/1k-kvartira-zheleznodorozhnyy/`, `/студии-balashiha/`)
 - Objects directory category pages (e.g., `/объекты/городская-недвижимость/`)
 - Include filters, search forms, maps, and property card lists
+- **Custom sections extracted**:
+  - Breadcrumbs (`.breadcrumbs`)
+  - Filters (`#search-inner`)
+  - View control (`#search-gray > .sub-search`)
+  - Map widget (`#map`)
+  - Objects list (`.result-map__list`)
 
-**Property Object** - Individual property detail pages:
+**Property Object** - Individual property detail pages (36 pages):
 - Specific property URLs (e.g., `/объекты/городская-недвижимость/1-комнатная-квартира-в-г-балашиха-41/`)
 - Include breadcrumbs, property details, image gallery, agent information, mortgage calculator, and similar properties
+- **Custom sections extracted**:
+  - Breadcrumbs (`.breadcrumbs`)
+  - ID and view statistics (element containing "ID:" text)
+  - Title (`.object-info__head`)
+  - Address with badges (`.object-info__address`)
+  - Gallery - main image and thumbnails (`.slick-gallery`)
+  - Details - price, area, floor, links (`.object-characters__section`)
+  - Realtor agent with contacts (`.object-characters__section`)
+  - Mortgage calculator (`.ion-calc`)
+  - Object description (`.object-info__text`)
+  - Nearby infrastructure (`.object-info__infrastructure`)
+  - Location map (`.serial-section > #map`)
+  - Similar objects (`.object__similars`)
 
 ## Special Features
 
@@ -427,6 +448,7 @@ The analyzer distinguishes between two types of property pages:
   delimiters for easy parsing
 - **Clean Filenames**: Page list files use simple `{type}.txt`
   naming without `-pages` suffix
+- **Smart Directory Cleanup**: Automatically cleans the results directory before each run, recursively removing all nested files while gracefully skipping locked temp files (e.g., `.swp` files from editors)
 
 ## Project Structure
 

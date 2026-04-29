@@ -14,7 +14,7 @@ Output:
 - results/page-lists/*-pages.txt: Page lists organized by type
 
 Features:
-- Automatic page type classification (24 types identified)
+- Automatic page type classification (23 types identified)
 - Block structure extraction with CSS selectors
 - Text cleaning (removes line breaks and multiple spaces)
 - Main page includes header/footer blocks; other pages exclude common blocks
@@ -85,7 +85,7 @@ def page_type_to_id(page_type):
         'Список сотрудников': 'staff-list',
         'Профиль сотрудника': 'staff-profile',
         'Список акций': 'promotions-list',
-        'Детальная страница акции': 'promotion-detail',
+        'Детальная страницы акции': 'promotion-detail',
         'Список FAQ': 'faq-list',
         'Детальная страница FAQ': 'faq-detail',
         'Список отзывов': 'reviews-list',
@@ -154,59 +154,15 @@ def generate_parent_selector(element):
             current.get('class') or []
         )  # pyright: ignore[reportArgumentType]
 
-        # Filter utility classes but keep more semantic ones
-        utility_classes = {
-            'container',
-            'container-fluid',
-            'row',
-            'col',
-            'col-md',
-            'col-lg',
-            'col-sm',
-            'col-xl',
-            'col-12',
-            'col-lg-8',
-            'col-lg-4',
-            'pb-5',
-            'pt-5',
-            'mb-5',
-            'mt-5',
-            'py-5',
-            'my-5',
-            'px-5',
-            'mx-5',
-            'pb-3',
-            'pt-3',
-            'mb-3',
-            'mt-3',
-            'py-3',
-            'my-3',
-            'px-3',
-            'mx-3',
-            'pb-4',
-            'pt-4',
-            'mb-4',
-            'mt-4',
-            'py-4',
-            'my-4',
-            'px-4',
-            'mx-4',
-            'pt-0',
-            'pb-0',
-            'mb-0',
-            'mt-0',
-            'p-0',
-            'm-0',
-            'd-flex',
-            'flex-column',
-            'align-items-center',
-            'justify-content-center',
-            'text-center',
-            'text-left',
-            'text-right',
-        }
+        # Filter utility classes using regex pattern - matches all Bootstrap/Tailwind utility classes
         meaningful_classes = [
-            c for c in parent_classes if c not in utility_classes
+            c
+            for c in parent_classes
+            if not re.match(
+                r'^(container|row|col|d-|p[trblxy]?-|m[trblxy]?-|text-|bg-|border-|flex-|justify-|align-|w-|h-|mx-|my-|px-|py-|mt-|mb-|ml-|mr-|pt-|pb-|pl-|pr-|sm-|md-|lg-|xl-|xxl-)',
+                c,
+                re.IGNORECASE,
+            )
         ]
 
         if parent_id:
@@ -246,63 +202,24 @@ def generate_specific_selector(soup, element):
     Returns:
         A specific CSS selector string with parent context when needed
     """
-    # Priority 1: Use ID if present
+    # Priority 1: Use ID if present - simplify to just the ID
     elem_id = element.get('id')
     if elem_id:
-        classes = (
-            element.get('class') or []
-        )  # pyright: ignore[reportArgumentType]
-        # Filter out common utility classes
-        meaningful_classes = [
-            c
-            for c in classes
-            if c
-            not in [
-                'container',
-                'row',
-                'col',
-                'col-md',
-                'col-lg',
-                'col-sm',
-                'pb-5',
-                'pt-5',
-                'mb-5',
-                'mt-5',
-                'py-5',
-                'my-5',
-                'pb-3',
-                'pt-3',
-                'mb-3',
-                'mt-3',
-            ]
-        ]
-
-        if meaningful_classes:
-            return f"#{elem_id}.{'.'.join(meaningful_classes)}"
-        return f'#{elem_id}'
+        # When an element has a unique ID, use only the ID without classes
+        return f"#{elem_id}"
 
     # Priority 2: Use class combination with parent context
-    classes = element.get('class') or []  # pyright: ignore[reportArgumentType]
+    classes = element.get('class', [])
     if classes:
-        # Filter common classes
+        # Filter common utility classes including all spacing utilities
         meaningful_classes = [
             c
             for c in classes
-            if c
-            not in [
-                'container',
-                'row',
-                'col',
-                'col-md',
-                'col-lg',
-                'col-sm',
-                'pb-5',
-                'pt-5',
-                'mb-5',
-                'mt-5',
-                'py-5',
-                'my-5',
-            ]
+            if not re.match(
+                r'^(container|row|col|d-|p[trblxy]?-|m[trblxy]?-|text-|bg-|border-|flex-|justify-|align-|w-|h-|mx-|my-|px-|py-|mt-|mb-|ml-|mr-|pt-|pb-|pl-|pr-|sm-|md-|lg-|xl-|xxl-)',
+                c,
+                re.IGNORECASE,
+            )
         ]
 
         if meaningful_classes:
@@ -316,15 +233,11 @@ def generate_specific_selector(soup, element):
             parent_chain = []
             parent = element.parent
             depth = 0
-            max_depth = (
-                3  # Limit to 3 levels up to avoid overly long selectors
-            )
+            max_depth = 3  # Limit to 3 levels up to avoid overly long selectors
 
             while parent and depth < max_depth:
                 parent_id = parent.get('id')
-                parent_classes = (
-                    parent.get('class') or []
-                )  # pyright: ignore[reportArgumentType]
+                parent_classes = parent.get('class', [])
 
                 if parent_id:
                     # Found parent with ID - use it
@@ -335,21 +248,11 @@ def generate_specific_selector(soup, element):
                     parent_meaningful = [
                         c
                         for c in parent_classes
-                        if c
-                        not in [
-                            'container',
-                            'row',
-                            'col',
-                            'col-md',
-                            'col-lg',
-                            'col-sm',
-                            'pb-5',
-                            'pt-5',
-                            'mb-5',
-                            'mt-5',
-                            'py-5',
-                            'my-5',
-                        ]
+                        if not re.match(
+                            r'^(container|row|col|d-|p[trblxy]?-|m[trblxy]?-|text-|bg-|border-|flex-|justify-|align-|w-|h-|mx-|my-|px-|py-|mt-|mb-|ml-|mr-|pt-|pb-|pl-|pr-|sm-|md-|lg-|xl-|xxl-)',
+                            c,
+                            re.IGNORECASE,
+                        )
                     ]
                     if parent_meaningful:
                         parent_selector = '.'.join(parent_meaningful)
@@ -386,21 +289,11 @@ def generate_specific_selector(soup, element):
             parent_meaningful = [
                 c
                 for c in parent_classes
-                if c
-                not in [
-                    'container',
-                    'row',
-                    'col',
-                    'col-md',
-                    'col-lg',
-                    'col-sm',
-                    'pb-5',
-                    'pt-5',
-                    'mb-5',
-                    'mt-5',
-                    'py-5',
-                    'my-5',
-                ]
+                if not re.match(
+                    r'^(container|row|col|d-|p[trblxy]?-|m[trblxy]?-|text-|bg-|border-|flex-|justify-|align-|w-|h-|mx-|my-|px-|py-|mt-|mb-|ml-|mr-|pt-|pb-|pl-|pr-|sm-|md-|lg-|xl-|xxl-)',
+                    c,
+                    re.IGNORECASE,
+                )
             ]
             if parent_meaningful:
                 parent_selector = '.'.join(parent_meaningful)
@@ -432,6 +325,240 @@ def get_content_snippet(element, max_chars=80):
         text = text[:max_chars] + '...'
 
     return text.strip()
+
+
+def extract_property_object_sections(soup):
+    """
+    Extract specific sections for property-object pages according to requirements.
+
+    Args:
+        soup: BeautifulSoup object
+
+    Returns:
+        List of block dictionaries with predefined sections
+    """
+    blocks = []
+
+    # 1. Breadcrumbs (selector: .breadcrumbs)
+    breadcrumbs = soup.find(class_='breadcrumbs')
+    if breadcrumbs:
+        blocks.append({
+            'element': breadcrumbs,
+            'data': {
+                'id': 'breadcrumbs',
+                'selector': '.breadcrumbs',
+                'parent': generate_parent_selector(breadcrumbs),
+                'heading': '',
+                'title': 'Навигационная цепочка',
+                'description': 'Навигационная цепочка (хлебные крошки)',
+                'snippet': '',
+                'tag': breadcrumbs.name,
+            },
+        })
+
+    # 2. ID and view statistics (starting with "ID:")
+    # Look for element containing "ID:"
+    id_stats_elem = None
+    for elem in soup.find_all(['div', 'span', 'p']):
+        text = elem.get_text()
+        if text and 'ID:' in text and 'просмотров' in text:
+            id_stats_elem = elem
+            break
+
+    if id_stats_elem:
+        blocks.append({
+            'element': id_stats_elem,
+            'data': {
+                'id': 'object-id-stats',
+                'selector': generate_specific_selector(soup, id_stats_elem),
+                'parent': generate_parent_selector(id_stats_elem),
+                'heading': '',
+                'title': 'ID и статистика просмотров',
+                'description': 'Идентификатор объекта и статистика просмотров',
+                'snippet': get_content_snippet(id_stats_elem, max_chars=80),
+                'tag': id_stats_elem.name,
+            },
+        })
+
+    # 3. Title (selector: .object-info__head)
+    title_elem = soup.find(class_='object-info__head')
+    if title_elem:
+        blocks.append({
+            'element': title_elem,
+            'data': {
+                'id': 'object-title',
+                'selector': '.object-info__head',
+                'parent': generate_parent_selector(title_elem),
+                'heading': clean_text(title_elem.get_text()),
+                'title': 'Заголовок объекта',
+                'description': 'Заголовок объекта недвижимости',
+                'snippet': '',
+                'tag': title_elem.name,
+            },
+        })
+
+    # 4. Address with badges (selector: .object-info__address)
+    address_elem = soup.find(class_='object-info__address')
+    if address_elem:
+        blocks.append({
+            'element': address_elem,
+            'data': {
+                'id': 'object-address',
+                'selector': '.object-info__address',
+                'parent': generate_parent_selector(address_elem),
+                'heading': '',
+                'title': 'Адрес с метками',
+                'description': 'Адрес объекта с информационными метками',
+                'snippet': get_content_snippet(address_elem, max_chars=80),
+                'tag': address_elem.name,
+            },
+        })
+
+    # 5. Gallery (big image and thumbnails) (selector: .slick-gallery)
+    gallery_elem = soup.find(class_='slick-gallery')
+    if gallery_elem:
+        blocks.append({
+            'element': gallery_elem,
+            'data': {
+                'id': 'object-gallery',
+                'selector': '.slick-gallery',
+                'parent': generate_parent_selector(gallery_elem),
+                'heading': '',
+                'title': 'Галерея изображений',
+                'description': 'Галерея с большим изображением и миниатюрами',
+                'snippet': '',
+                'tag': gallery_elem.name,
+            },
+        })
+
+    # 6. Details section - contains price, info, links (selector: .object-characters__section)
+    # There are multiple .object-characters__section elements, we need to find the first one with price
+    details_sections = soup.find_all(class_='object-characters__section')
+    if details_sections:
+        # First section typically contains price and characteristics
+        details_elem = details_sections[0]
+        blocks.append({
+            'element': details_elem,
+            'data': {
+                'id': 'object-details',
+                'selector': '.object-characters__section',
+                'parent': generate_parent_selector(details_elem),
+                'heading': '',
+                'title': 'Детали объекта',
+                'description': 'Цена, характеристики (площадь, этаж), ссылки (скачать информацию, подписаться на изменение цены)',
+                'snippet': get_content_snippet(details_elem, max_chars=100),
+                'tag': details_elem.name,
+            },
+        })
+
+    # 7. Realtor agent in charge with contacts (selector: .object-characters__section)
+    # This is typically the second .object-characters__section
+    if len(details_sections) > 1:
+        agent_elem = details_sections[1]
+        blocks.append({
+            'element': agent_elem,
+            'data': {
+                'id': 'realtor-agent',
+                'selector': '.object-characters__section',
+                'parent': generate_parent_selector(agent_elem),
+                'heading': '',
+                'title': 'Агент-риелтор с контактами',
+                'description': 'Информация о риелторе, ответственном за объект, с контактными данными',
+                'snippet': get_content_snippet(agent_elem, max_chars=100),
+                'tag': agent_elem.name,
+            },
+        })
+
+    # 8. Mortgage calculator (selector: .ion-calc or #ion-calc)
+    mortgage_elem = soup.find(id='ion-calc') or soup.find(class_='ion-calc')
+    if mortgage_elem:
+        blocks.append({
+            'element': mortgage_elem,
+            'data': {
+                'id': 'mortgage-calculator',
+                'selector': '#ion-calc',
+                'parent': generate_parent_selector(mortgage_elem),
+                'heading': '',
+                'title': 'Ипотечный калькулятор',
+                'description': 'Калькулятор для расчета ипотечных платежей',
+                'snippet': '',
+                'tag': mortgage_elem.name,
+            },
+        })
+
+    # 9. Object description (selector: .object-info__text)
+    description_elem = soup.find(class_='object-info__text')
+    if description_elem:
+        blocks.append({
+            'element': description_elem,
+            'data': {
+                'id': 'object-description',
+                'selector': '.object-info__text',
+                'parent': generate_parent_selector(description_elem),
+                'heading': '',
+                'title': 'Описание объекта',
+                'description': 'Подробное текстовое описание объекта недвижимости',
+                'snippet': get_content_snippet(description_elem, max_chars=150),
+                'tag': description_elem.name,
+            },
+        })
+
+    # 10. Nearby infrastructure objects (selector: .object-info__infrastructure)
+    infrastructure_elem = soup.find(class_='object-info__infrastructure')
+    if infrastructure_elem:
+        blocks.append({
+            'element': infrastructure_elem,
+            'data': {
+                'id': 'nearby-infrastructure',
+                'selector': '.object-info__infrastructure',
+                'parent': generate_parent_selector(infrastructure_elem),
+                'heading': '',
+                'title': 'Ближайшая инфраструктура',
+                'description': 'Объекты инфраструктуры рядом с недвижимостью (школы, магазины, транспорт)',
+                'snippet': '',
+                'tag': infrastructure_elem.name,
+            },
+        })
+
+    # 11. Location on the map (selector: .serial-section > #map)
+    map_section = soup.find('section', class_='serial-section')
+    map_elem = None
+    if map_section:
+        map_elem = map_section.find(id='map')
+
+    if map_elem:
+        blocks.append({
+            'element': map_section or map_elem,
+            'data': {
+                'id': 'location-map',
+                'selector': '.serial-section > #map',
+                'parent': generate_parent_selector(map_section or map_elem),
+                'heading': '',
+                'title': 'Расположение на карте',
+                'description': 'Интерактивная карта с местоположением объекта',
+                'snippet': '',
+                'tag': (map_section or map_elem).name,
+            },
+        })
+
+    # 12. Similar objects (selector: .object__similars)
+    similars_elem = soup.find(class_='object__similars')
+    if similars_elem:
+        blocks.append({
+            'element': similars_elem,
+            'data': {
+                'id': 'similar-objects',
+                'selector': '.object__similars',
+                'parent': generate_parent_selector(similars_elem),
+                'heading': '',
+                'title': 'Похожие объекты',
+                'description': 'Список похожих объектов недвижимости',
+                'snippet': get_content_snippet(similars_elem, max_chars=100),
+                'tag': similars_elem.name,
+            },
+        })
+
+    return blocks
 
 
 def extract_page_info(html_path, base_url=None, base_dir=None):
@@ -480,7 +607,32 @@ def extract_page_info(html_path, base_url=None, base_dir=None):
         path_part = rel_path.replace('/index.html', '')
         url = f'{base_url}/{path_part}/'
 
-    # Extract all blocks in document order
+    # Detect if this is a property-object page
+    is_property_object = False
+    if 'объекты/' in rel_path:
+        # Count path segments after объекты
+        path_parts = rel_path.split('/')
+        objects_index = path_parts.index('объекты') if 'объекты' in path_parts else -1
+
+        if objects_index >= 0:
+            remaining_parts = path_parts[objects_index + 1:]
+            # If we have more than 2 parts (category + item), it's a single property
+            if len(remaining_parts) > 2:
+                is_property_object = True
+
+    # For property-object pages, use custom section extraction
+    if is_property_object:
+        block_elements_data = extract_property_object_sections(soup)
+        blocks = [item['data'] for item in block_elements_data]
+
+        return {
+            'url': url,
+            'title': title,
+            'blocks': blocks,
+            'rel_path': rel_path,
+        }
+
+    # Extract all blocks in document order (for non-property-object pages)
     blocks = []
 
     # Track all elements with their position in the document
@@ -1311,38 +1463,27 @@ def classify_page_type(page_info):
         else:
             return 'Service Page'
 
-    # Property pages in objects directory
-    if 'объекты/' in path:
-        # Check if it's the main objects listing or a category listing
-        if path == 'объекты/index.html':
-            return 'Property Catalog'
-
-        # Check if it's a category listing (e.g., объекты/городская-недвижимость/index.html)
-        if path.endswith('/index.html'):
-            # Remove index.html and count path segments
-            path_without_index = path.replace('/index.html', '')
-            path_parts = path_without_index.replace('объекты/', '').split('/')
-            # If only one part after объекты/, it's a category listing
-            if len(path_parts) == 1:
-                return 'Property Catalog'
-            # If two or more parts, it's a specific property detail page
-            else:
-                return 'Property Object'
-
-    # Property catalog pages (object listing pages with filters and maps)
-    # These are city/area-based listing pages for buying or renting
+    # Property catalog pages
     if any(x in path for x in ['1k-', '2k-', '3k-', 'студии', 'аренда']):
         return 'Property Catalog'
 
-    # Additional property catalog patterns (city/area listings)
-    if any(
-        x in path for x in ['kvartiri-v-', 'kupit-dom-', 'studiya-', 'studii-']
-    ):
-        return 'Property Catalog'
+    # Property detail pages (property-object) - check before generic objects/ check
+    if 'объекты/' in path:
+        # Count path segments after объекты
+        path_parts = path.split('/')
+        objects_index = path_parts.index('объекты') if 'объекты' in path_parts else -1
 
-    # Catch all rental listing pages (arenda-*)
-    if path.startswith('arenda-') and path.endswith('/index.html'):
-        return 'Property Catalog'
+        if objects_index >= 0:
+            # Get parts after 'объекты'
+            remaining_parts = path_parts[objects_index + 1:]
+
+            # If we have more than 2 parts (category + item), it's a single property
+            # e.g., ['объекты', 'городская-недвижимость', '2-комнатная-квартира-...', 'index.html']
+            if len(remaining_parts) > 2:
+                return 'Property Object'
+            else:
+                # This is a category listing (property catalog)
+                return 'Property Catalog'
 
     # Team pages
     if 'команда-миэль/' in path:
@@ -1667,23 +1808,47 @@ def clean_results_directory(output_dir):
     """
     Clean up the results directory before generating new results.
     Removes all existing files and subdirectories in results/.
+    Skips files that cannot be deleted (e.g., locked .swp files).
 
     Args:
         output_dir: Path to the results directory
     """
-    if os.path.exists(output_dir):
-        print(f'Cleaning results directory: {output_dir}')
-        # Remove all contents but keep the directory itself
-        for item in os.listdir(output_dir):
-            item_path = os.path.join(output_dir, item)
+    if not os.path.exists(output_dir):
+        return
+
+    print(f'Cleaning results directory: {output_dir}')
+
+    removed_count = 0
+    skipped_count = 0
+
+    # Walk through directory tree from bottom to top (deepest first)
+    for root, dirs, files in os.walk(output_dir, topdown=False):
+        # Remove files first
+        for file_name in files:
+            file_path = os.path.join(root, file_name)
             try:
-                if os.path.isfile(item_path) or os.path.islink(item_path):
-                    os.unlink(item_path)
-                elif os.path.isdir(item_path):
-                    shutil.rmtree(item_path)
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                    removed_count += 1
             except Exception as e:
-                print(f'Warning: Could not remove {item_path}: {e}')
-        print('Results directory cleaned')
+                # Skip files that can't be deleted (locked temp files, etc.)
+                skipped_count += 1
+
+        # Then remove directories (except the root output_dir)
+        for dir_name in dirs:
+            dir_path = os.path.join(root, dir_name)
+            try:
+                if os.path.isdir(dir_path):
+                    shutil.rmtree(dir_path, ignore_errors=True)
+                    removed_count += 1
+            except Exception:
+                # Skip directories that can't be deleted
+                skipped_count += 1
+
+    if skipped_count > 0:
+        print(f'Results directory cleaned: {removed_count} items removed, {skipped_count} items skipped (locked)')
+    else:
+        print(f'Results directory cleaned: {removed_count} items removed')
 
 
 def main():

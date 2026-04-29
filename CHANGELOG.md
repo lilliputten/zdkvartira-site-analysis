@@ -9,20 +9,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - New page type: **Property Object** for individual property detail pages
+- New page type: **Property Catalog** for property listing pages with filters and maps
 - Enhanced property page classification to distinguish between listing and detail pages
+- Custom section extraction for Property Object pages with 12 specific sections
+- Custom section extraction for Property Catalog pages with 5 specific sections
+- Recursive directory cleanup with locked file handling
 
 ### Changed
 - Renamed "Property Single" to "Property Object" for clarity
 - Improved classification logic to properly separate:
-  - **Property Catalog**: Object listing pages with filters, maps, and object lists (23 pages)
+  - **Property Catalog**: Object listing pages with filters, maps, and object lists (14 pages)
   - **Property Object**: Individual property detail pages with breadcrumbs, object info, gallery, agent details, mortgage calculator, and similar objects (36 pages)
 - Moved all city/area-based listing pages (аренда, купить, студии, etc.) from "Other Pages" to "Property Catalog"
 - Updated total page type count from 23 to 24 types
+- Enhanced `clean_results_directory()` function to recursively clean nested files in subdirectories
+- Improved cleanup to gracefully skip locked temp files (.swp) without crashing
 
 ### Fixed
 - Property listing pages incorrectly classified as "Other Pages" or "Property Single"
 - Category listing pages (e.g., `объекты/городская-недвижимость/`) now correctly classified as "Property Catalog" instead of "Property Object"
 - Individual property detail pages (e.g., `объекты/городская-недвижимость/1-комнатная-квартира-в-г-балашиха-41/`) now correctly classified as "Property Object"
+- Old page type files not being removed from `results/page-types/` directory before generating new analysis
+- Directory cleanup failing when temp files are locked by editors
+
+### Technical Improvements
+- Implemented `os.walk()` with `topdown=False` for bottom-up directory traversal during cleanup
+- Added graceful error handling for locked files with skip counter
+- Cleanup now removes 25+ items including nested files while skipping only locked temp files
+- Property Object pages now extract 12 specific sections: breadcrumbs, ID/stats, title, address, gallery, details, agent info, mortgage calculator, description, infrastructure, map, and similar objects
+- Property Catalog pages now extract 5 specific sections: breadcrumbs, filters, view control, map widget, and objects list
 
 ### Page Type Structure
 

@@ -12,14 +12,14 @@
 
 ### 1. Страница поиска
 
-- **Selector:** `#search-list.gray-block.pt-2`
+- **Selector:** `#search-list`
 - **Parent:** `html > body.template-searchresults`
 - **Description:** Форма обратной связи или заявки; форма поиска и фильтрации объектов
 - **Пример содержимого:** Страница поиска
 
 ### 2. Нужна помощь?
 
-- **Selector:** `#form.blue-block.text-center`
+- **Selector:** `#form`
 - **Parent:** `html > body.template-searchresults`
 - **Description:** Форма обратной связи ("Не нашли ответ на свой вопрос?").
 Поля: имя, телефон, email, кнопка отправки
