@@ -18,7 +18,7 @@
 
 ### 2. Услуги
 
-- **Selector:** `#services.gray-block`
+- **Selector:** `#services`
 - **Parent:** `html > body`
 - **Description:** Быстрые ссылки на разделы услуг ("Услуги"). Иконки с
 названием услуги со ссылками на страницы услуг

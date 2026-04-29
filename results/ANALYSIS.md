@@ -19,10 +19,10 @@ This report analyzes page types to identify potential duplicates.
 | New Buildings List | `new-buildings-list` | 1 | 1 |
 | News Article | `news-article` | 1246 | 1 |
 | News List | `news-list` | 2 | 1 |
-| Other Pages | `other-pages` | 5 | 1 |
+| Other Pages | `other-pages` | 14 | 1 |
 | Promotion Detail | `promotion-detail` | 6 | 1 |
 | Promotions List | `promotions-list` | 1 | 1 |
-| Property Catalog | `property-catalog` | 23 | 1 |
+| Property Catalog | `property-catalog` | 14 | 1 |
 | Property Object | `property-object` | 36 | 1 |
 | Reviews List | `reviews-list` | 1 | 1 |
 | Search Results | `search-results` | 1 | 1 |
@@ -37,14 +37,14 @@ This report analyzes page types to identify potential duplicates.
 
 Page types with similar block structures:
 
-### Other Pages vs Promotion Detail
+### Other Pages vs Property Catalog
 
-- **Similarity:** 75.0%
-- **Common Blocks:** 3/4
-- **Pages:** 5 vs 6
-- **IDs:** `other-pages` vs `promotion-detail`
+- **Similarity:** 100.0%
+- **Common Blocks:** 8/8
+- **Pages:** 14 vs 14
+- **IDs:** `other-pages` vs `property-catalog`
 
-**Recommendation:** MEDIUM - Review for possible merge.
+**Recommendation:** HIGH - Consider merging these types.
 
 
 ### News List vs Reviews List
@@ -59,4 +59,6 @@ Page types with similar block structures:
 
 ## Recommendations
 
-**Medium Priority:** 2 pair(s) may need review.
+**High Priority:** 1 pair(s) need review.
+
+**Medium Priority:** 1 pair(s) may need review.

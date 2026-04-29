@@ -39,7 +39,7 @@ div`
 
 ### 5. Факты о МИЭЛЬ, Офис в Железнодорожном
 
-- **Selector:** `#services.gray-block.serial-section`
+- **Selector:** `#services`
 - **Parent:** `html > body`
 - **Description:** Быстрые ссылки на разделы услуг ("Услуги"). Иконки с
 названием услуги со ссылками на страницы услуг
@@ -48,7 +48,7 @@ div`
 
 ### 6. Не знаете кому довериться?
 
-- **Selector:** `#trust.serial-section`
+- **Selector:** `#trust`
 - **Parent:** `html > body`
 - **Description:** Каталог объектов недвижимости
 - **Пример содержимого:** Не знаете кому довериться? Общее количество
@@ -56,14 +56,14 @@ div`
 
 ### 7. Наши награды
 
-- **Selector:** `#sertificats.gray-block.serial-section`
+- **Selector:** `#sertificats`
 - **Parent:** `html > body`
 - **Description:** Изображения и фотографии
 - **Пример содержимого:** Наши награды
 
 ### 8. Будни и праздники
 
-- **Selector:** `#office.serial-section`
+- **Selector:** `#office`
 - **Parent:** `html > body`
 - **Description:** Фотографии офиса. Галерея фотографий офисных помещений с
 возможностью просмотра в полном размере
@@ -71,7 +71,7 @@ div`
 
 ### 9. Видеоотзывы
 
-- **Selector:** `#last-video-reviews.d-none.gray-block.serial-section`
+- **Selector:** `#last-video-reviews`
 - **Parent:** `html > body`
 - **Description:** Видеоотзывы. Видео с Rutube с описанием (имя клиента) и
 датой. Ссылка перехода в раздел видеоотзывов
@@ -80,7 +80,7 @@ div`
 
 ### 10. Отзывы
 
-- **Selector:** `#actions.serial-section`
+- **Selector:** `#actions`
 - **Parent:** `html > body`
 - **Description:** Анонсы акций ("Самое интересное"). Карточки с баннерами для
 акций: графическая подложка, аудитория, текст предложения, датой проведения
@@ -89,7 +89,7 @@ div`
 
 ### 11. Новости
 
-- **Selector:** `#news.serial-section.gray-block`
+- **Selector:** `#news`
 - **Parent:** `html > body`
 - **Description:** Новости сайта. Карточки новостей с превью, тегом, датой и кратким анонсом
 - **Пример содержимого:** Новости Уважаемые клиеты! Новости офиса 12 апреля 2026

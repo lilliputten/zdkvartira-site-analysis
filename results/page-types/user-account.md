@@ -18,7 +18,7 @@
 
 ### 2. Не нашли ответ на свой вопрос?
 
-- **Selector:** `#form.blue-block.text-center`
+- **Selector:** `#form`
 - **Parent:** `html > body`
 - **Description:** Форма обратной связи ("Не нашли ответ на свой вопрос?").
 Поля: имя, телефон, email, кнопка отправки

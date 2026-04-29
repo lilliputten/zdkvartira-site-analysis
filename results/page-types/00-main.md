@@ -36,7 +36,7 @@
 
 ### 4. Самое интересное
 
-- **Selector:** `#actions.gray-block.serial-section`
+- **Selector:** `#actions`
 - **Parent:** `html > body`
 - **Description:** Анонсы акций ("Самое интересное"). Карточки с баннерами для
 акций: графическая подложка, аудитория, текст предложения, датой проведения
@@ -45,7 +45,7 @@
 
 ### 5. Суперпредложения
 
-- **Selector:** `#special.white-block.serial-section`
+- **Selector:** `#special`
 - **Parent:** `html > body`
 - **Description:** Секция с объектами недвижимости ("Суперпредложения").
 Карточки объектов с превью, кнопками "к сравнению" и "в избранное", адресом,
@@ -55,7 +55,7 @@
 
 ### 6. Услуги
 
-- **Selector:** `#services.gray-block.serial-section`
+- **Selector:** `#services`
 - **Parent:** `html > body`
 - **Description:** Быстрые ссылки на разделы услуг ("Услуги"). Иконки с
 названием услуги со ссылками на страницы услуг
@@ -64,7 +64,7 @@
 
 ### 7. Новости
 
-- **Selector:** `#news.serial-section`
+- **Selector:** `#news`
 - **Parent:** `html > body`
 - **Description:** Новости сайта. Карточки новостей с превью, тегом, датой и кратким анонсом
 - **Пример содержимого:** Новости Уважаемые клиеты! Новости офиса 12 апреля 2026
@@ -72,7 +72,7 @@
 
 ### 8. Дополнительные ссылки
 
-- **Selector:** `#add.gray-block.rad-block`
+- **Selector:** `#add`
 - **Parent:** `html > body`
 - **Description:** Переходы к служебным разделам: "Проверено МИЭЛЬ", "Аналитика
 цен", "Работа в офисе"
@@ -80,7 +80,7 @@
 
 ### 9. Обращение руководителя
 
-- **Selector:** `#word.serial-section`
+- **Selector:** `#word`
 - **Parent:** `html > body`
 - **Description:** Обращение руководителя. Фото генерального директора, текст обращения
 - **Пример содержимого:** Обращение руководителя Бутыркина Елена Борисовна
@@ -88,7 +88,7 @@
 
 ### 10. Видеоотзывы
 
-- **Selector:** `#last-video-reviews.d-none.gray-block.serial-section`
+- **Selector:** `#last-video-reviews`
 - **Parent:** `html > body > noindex`
 - **Description:** Видеоотзывы. Видео с Rutube с описанием (имя клиента) и
 датой. Ссылка перехода в раздел видеоотзывов
@@ -97,7 +97,7 @@
 
 ### 11. Не нашли ответ на свой вопрос?
 
-- **Selector:** `#form.blue-block.text-center`
+- **Selector:** `#form`
 - **Parent:** `html > body`
 - **Description:** Форма обратной связи ("Не нашли ответ на свой вопрос?").
 Поля: имя, телефон, email, кнопка отправки
